@@ -1,14 +1,10 @@
 ------------------------------------------------------------------------
-Dies ist die README-Datei des Projekts. Hier sollten Sie Ihr Projekt
-beschreiben.
-Erzählen Sie dem Leser (jemand, der nichts über dieses Projekt weiss),
-alles, was er/sie wissen muss. Üblicherweise sollte der Kommentar 
-zumindest die folgenden Angaben umfassen:
+WORLD CUP BETTING by Jan Schneider
 ------------------------------------------------------------------------
 
-PROJEKTBEZEICHNUNG:
-PROJEKTZWECK:
-VERSION oder DATUM:
+PROJEKTBEZEICHNUNG: Fussballweltmeisterschaft Tippspiel 2018
+PROJEKTZWECK: Semesterprojekt Programmieren 2 bei Rainer Hönle
+VERSION oder DATUM: 2018.05.07
 WIE IST DAS PROJEKT ZU STARTEN:
-AUTOR(EN):
+AUTOR(EN): Jan Schneider, HfG, IoT3
 BENUTZERHINWEISE:
