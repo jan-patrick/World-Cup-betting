@@ -1,9 +1,8 @@
-
 /**
  * Beschreiben Sie hier die Klasse Land.
  * 
- * @author (Ihr Name) 
- * @version (eine Versionsnummer oder ein Datum)
+ * @author Jan Schneider, HfG, IoT3
+ * @version 2018.05.28
  */
 public class Land
 {

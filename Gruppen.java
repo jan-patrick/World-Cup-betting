@@ -1,22 +1,23 @@
+import java.util.ArrayList;
 
 /**
  * Beschreiben Sie hier die Klasse Gruppen.
  * 
- * @author (Ihr Name) 
- * @version (eine Versionsnummer oder ein Datum)
+ * @author Jan Schneider, HfG, IoT3
+ * @version 2018.05.28
  */
 public class Gruppen
 {
     // Instanzvariablen - ersetzen Sie das folgende Beispiel mit Ihren Variablen
-    private int x;
-
+    private ArrayList<Land> gruppe;
+    
     /**
      * Konstruktor für Objekte der Klasse Gruppen
      */
     public Gruppen()
     {
         // Instanzvariable initialisieren
-        x = 0;
+        gruppe = new ArrayList<>();
     }
 
     /**
@@ -25,9 +26,8 @@ public class Gruppen
      * @param  y    ein Beispielparameter für eine Methode
      * @return        die Summe aus x und y
      */
-    public int beispielMethode(int y)
+    public void addMitglied(Land name)
     {
-        // tragen Sie hier den Code ein
-        return x + y;
+        gruppe.add(name);
     }
 }

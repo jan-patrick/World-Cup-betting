@@ -2,16 +2,12 @@
 /**
  * Beschreiben Sie hier die Klasse test.
  * 
- * @author Jan Schneider 
+ * @author Jan Schneider, HfG, IoT3
  * @version 2018.05.28
  */
 import java.awt.*;      // Abstract Windowing Toolkit
 import javax.swing.*;   // Swing Komponenten fuer Oberflaeche
 import java.awt.event.*;// Ereignisse wie Klick auf Button
-
-
-
-
 
 public class GrafikTest extends JPanel {       // ein JPanel als Traeger der Komponenten
   JLabel literLabel = new JLabel("Liter");

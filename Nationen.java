@@ -3,8 +3,8 @@ import java.util.ArrayList;
 /**
  * Beschreiben Sie hier die Klasse Nationen.
  * 
- * @author (Ihr Name) 
- * @version (eine Versionsnummer oder ein Datum)
+ * @author Jan Schneider, HfG, IoT3
+ * @version 2018.05.28
  */
 public class Nationen
 {
@@ -29,5 +29,16 @@ public class Nationen
     public void addLand(String name, int tore, int punkte)
     {
         laender.add(new Land(name, tore, punkte));
+    }
+    
+    public int getLaenderSize()
+    {
+        return laender.size();
+    }
+    
+    public String getLandDetails(int index)
+    {
+        Land land = laender.get(index);
+        return land.getDetails();
     }
 }
