@@ -10,7 +10,7 @@ public class Nationen
 {
     // Instanzvariablen - ersetzen Sie das folgende Beispiel mit Ihren Variablen
     private ArrayList<Land> laender;
-
+ 
     /**
      * Konstruktor für Objekte der Klasse Nationen
      */
@@ -19,7 +19,7 @@ public class Nationen
         // Instanzvariable initialisieren
         laender = new ArrayList<>();
     }
-    
+           
     /**
      * Ein Beispiel einer Methode - ersetzen Sie diesen Kommentar mit Ihrem eigenen
      * 
@@ -40,5 +40,5 @@ public class Nationen
     {
         Land land = laender.get(index);
         return land.getDetails();
-    }
+    }      
 }

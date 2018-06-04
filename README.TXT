@@ -7,7 +7,8 @@ PROJEKTZWECK: Semesterprojekt Programmieren 2 bei Rainer Hönle
 VERSION oder DATUM: 2018.05.28
 WIE IST DAS PROJEKT ZU STARTEN:
 AUTOR: Jan Schneider, HfG, IoT3
-BENUTZERHINWEISE:
+PROJEKTSPEICHER: https://github.com/jan-patrick/World-Cup-betting
+BENUTZERHINWEISE: 
 PROJEKTZIEL: ausführbares BlueJ-Projekt mit allen Quellen und Dokumentationen
 
 PROJEKTBESCHREIBUNG: 

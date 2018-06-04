@@ -6,7 +6,7 @@
  */
 public class Land
 {
-    // Instanzvariablen - ersetzen Sie das folgende Beispiel mit Ihren Variablen
+    // Instanzvariablen   
     private String name;
     private int tore;
     private int punkte;
@@ -29,10 +29,22 @@ public class Land
 
     /**
      * Return details
-     * @return The track's details.
+     * @return The details.
      */
     public String getDetails()
     {
         return name + ": " + tore + " Tore,  " + punkte + " Punkte";
+    }
+    
+    public String getName() {
+        return name;
+    }
+    
+    public int getTore() {
+        return tore;
+    }
+    
+    public int getPunkte() {
+        return punkte;
     }
 }

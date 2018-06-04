@@ -26,8 +26,9 @@ public class Gruppen
      * @param  y    ein Beispielparameter für eine Methode
      * @return        die Summe aus x und y
      */
-    public void addMitglied(Land name)
+    public String addMitglied(String name)
     {
-        gruppe.add(name);
+        //gruppe.add(name);
+        return name;
     }
 }

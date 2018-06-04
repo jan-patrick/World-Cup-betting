@@ -1,9 +1,3 @@
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
-import java.io.File;
-import java.io.FileNotFoundException;
-
 /**
  * Beschreiben Sie hier die Klasse Main.
  * 
@@ -13,6 +7,7 @@ import java.io.FileNotFoundException;
 public class Main
 {
     // Instanzvariablen - ersetzen Sie das folgende Beispiel mit Ihren Variablen
+    private Interface gui;
     private Nationen teilnehmerlaender;
     private Paarungen begegnungen;
     private Landd landd;
@@ -23,8 +18,17 @@ public class Main
     public Main()
     {
         // Instanzvariable initialisieren
+        gui = new Interface();
         teilnehmerlaender = new Nationen();
         begegnungen = new Paarungen();
+    }
+    
+    /**
+     * In case the window was closed, show it again.
+     */
+    public void show()
+    {
+        gui.setVisible(true);
     }
 
     /**
@@ -61,27 +65,12 @@ public class Main
         System.out.println();
     }
 
-    public void addLandd()
+    public void addLandd(String name, int tore, int punkte)
     {
-        landd= new Landd("Testland", 2, 10);
+        landd= new Landd(name, tore, punkte);
     }
     
     public void tearDown() {
         landd = null;
     }
-
-    public void testObjectToXml() throws JAXBException, FileNotFoundException {
-
-        JAXBContext jaxbContext = JAXBContext.newInstance(Landd.class);
-
-        Marshaller marshaller = jaxbContext.createMarshaller();
-
-        marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-
-        marshaller.marshal(landd, new File("laender.xml"));
-
-        marshaller.marshal(landd, System.out);
-
-    }
-
 }
