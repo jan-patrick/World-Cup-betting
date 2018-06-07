@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Beschreiben Sie hier die Klasse Nationen.
@@ -9,7 +10,7 @@ import java.util.ArrayList;
 public class Nationen
 {
     // Instanzvariablen - ersetzen Sie das folgende Beispiel mit Ihren Variablen
-    private ArrayList<Land> laender;
+    private List<Land> laender;
  
     /**
      * Konstruktor für Objekte der Klasse Nationen
@@ -40,5 +41,18 @@ public class Nationen
     {
         Land land = laender.get(index);
         return land.getDetails();
-    }      
+    }
+    
+    public String landtoString(int index) {
+        Land land = laender.get(index);
+        return "{" +
+
+                "\n Name='" + land.getName() + '\'' +
+
+                ",\n Tore='" + land.getTore() + '\'' +
+
+                ",\n Punkte='" + land.getPunkte() + '\'' +
+
+                '}';
+    }
 }

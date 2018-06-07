@@ -1,3 +1,15 @@
+import java.io.*;
+
+import javax.xml.bind.JAXBContext;
+
+import javax.xml.bind.JAXBException;
+
+import javax.xml.bind.Marshaller;
+
+import java.io.File;
+
+import java.io.FileNotFoundException;
+
 /**
  * Beschreiben Sie hier die Klasse Main.
  * 
@@ -73,4 +85,16 @@ public class Main
     public void tearDown() {
         landd = null;
     }
+    
+    public void listInDatei() {
+        PrintWriter printWriter = null;
+        try {
+            printWriter = new PrintWriter(new FileWriter("laender.txt"));
+            for(int i = 0; i < teilnehmerlaender.getLaenderSize(); i++) {
+            printWriter.println(teilnehmerlaender.landtoString(i));
+            }    
+        } catch (IOException e) {
+            e.printStackTrace();
+        } 
+    } 
 }

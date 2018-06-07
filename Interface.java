@@ -49,8 +49,8 @@ public class Interface
         contentPane.add(display, BorderLayout.NORTH);
 
         JPanel buttonPanel = new JPanel(new GridLayout(4, 4));
-            addNumberButton(buttonPanel, 7);
-            addButton(buttonPanel, "C", () -> redisplay());
+        addNumberButton(buttonPanel, 7);
+        addButton(buttonPanel, "C", () -> redisplay());
         contentPane.add(buttonPanel, BorderLayout.CENTER);
 
         status = new JLabel("Jan Schneider, HfG, IoT3");
