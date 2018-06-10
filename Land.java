@@ -1,15 +1,22 @@
+import javax.xml.bind.annotation.*;
+
 /**
  * Beschreiben Sie hier die Klasse Land.
  * 
  * @author Jan Schneider, HfG, IoT3
  * @version 2018.05.28
  */
+@XmlRootElement(name = "Land")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Land
 {
-    // Instanzvariablen   
+    // Instanzvariablen 
+    @XmlAttribute(name = "name")
     private String name;
+    @XmlElement(name = "tore")
     private int tore;
-    private int punkte;
+    @XmlElement(name = "punkte")
+    private int punkte;   
 
     /**
      * Konstruktor für Objekte der Klasse Land
@@ -46,5 +53,19 @@ public class Land
     
     public int getPunkte() {
         return punkte;
+    }
+    
+    @Override
+
+    public String toString() {
+        return "Product{" +
+
+                "\n Name='" + name + '\'' +
+
+                ",\n Tore='" + tore + '\'' +
+
+                ",\n Punkte='" + punkte + '\'' +
+
+                '}';
     }
 }

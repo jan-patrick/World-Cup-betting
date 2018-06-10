@@ -3,6 +3,10 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.*;
 
+import java.awt.*;      // Abstract Windowing Toolkit
+import javax.swing.*;   // Swing Komponenten fuer Oberflaeche
+import java.awt.event.*;// Ereignisse wie Klick auf Button
+
 /**
  * Beschreiben Sie hier die Klasse Interface.
  * 

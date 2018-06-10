@@ -1,16 +1,22 @@
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.xml.bind.annotation.*;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
 /**
  * Beschreiben Sie hier die Klasse Nationen.
  * 
  * @author Jan Schneider, HfG, IoT3
  * @version 2018.05.28
  */
+@XmlRootElement(name = "nationen")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Nationen
 {
     // Instanzvariablen - ersetzen Sie das folgende Beispiel mit Ihren Variablen
-    private List<Land> laender;
+    public List<Land> laender;
  
     /**
      * Konstruktor für Objekte der Klasse Nationen
@@ -37,22 +43,24 @@ public class Nationen
         return laender.size();
     }
     
+    public List<Land> getLaender() {
+        return laender;
+    }
+    
+    @XmlElement(name = "laender")
+    public void setProducts(List<Land> laender) {
+
+        this.laender = laender;
+
+    }
+    
     public String getLandDetails(int index)
     {
         Land land = laender.get(index);
         return land.getDetails();
     }
     
-    public String landtoString(int index) {
-        Land land = laender.get(index);
-        return "{" +
-
-                "\n Name='" + land.getName() + '\'' +
-
-                ",\n Tore='" + land.getTore() + '\'' +
-
-                ",\n Punkte='" + land.getPunkte() + '\'' +
-
-                '}';
+    public void add(Land land) {
+        this.laender.add(land);
     }
 }

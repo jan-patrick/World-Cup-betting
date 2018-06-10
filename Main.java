@@ -1,13 +1,8 @@
-import java.io.*;
-
 import javax.xml.bind.JAXBContext;
-
 import javax.xml.bind.JAXBException;
-
 import javax.xml.bind.Marshaller;
-
+import javax.xml.bind.Unmarshaller;
 import java.io.File;
-
 import java.io.FileNotFoundException;
 
 /**
@@ -33,6 +28,15 @@ public class Main
         gui = new Interface();
         teilnehmerlaender = new Nationen();
         begegnungen = new Paarungen();
+    }
+    
+    public void createTestData(){
+        Land l1 = new Land("Deutschland", 9, 9);
+        Land l2 = new Land("Frankreich", 1, 2);
+        Land l3 = new Land("Portugal", 1, 7);
+        teilnehmerlaender.add(l1);
+        teilnehmerlaender.add(l2);
+        teilnehmerlaender.add(l3);
     }
     
     /**
@@ -86,15 +90,11 @@ public class Main
         landd = null;
     }
     
-    public void listInDatei() {
-        PrintWriter printWriter = null;
-        try {
-            printWriter = new PrintWriter(new FileWriter("laender.txt"));
-            for(int i = 0; i < teilnehmerlaender.getLaenderSize(); i++) {
-            printWriter.println(teilnehmerlaender.landtoString(i));
-            }    
-        } catch (IOException e) {
-            e.printStackTrace();
-        } 
-    } 
+    public void testObjectToXml() throws JAXBException, FileNotFoundException {
+        JAXBContext jaxbContext = JAXBContext.newInstance(Nationen.class);
+        Marshaller marshaller = jaxbContext.createMarshaller();
+        marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT,true);
+        marshaller.marshal(teilnehmerlaender, new File("laender.xml"));
+        marshaller.marshal(teilnehmerlaender, System.out);
+    }
 }
