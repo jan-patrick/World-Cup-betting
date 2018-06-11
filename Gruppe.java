@@ -1,17 +1,11 @@
 import java.util.HashMap;
 
-import javax.xml.bind.annotation.*;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-
 /**
  * Beschreiben Sie hier die Klasse Nationen.
  * 
  * @author Jan Schneider, HfG, IoT3
  * @version 2018.05.28
  */
-@XmlRootElement(name = "nationen")
-@XmlAccessorType(XmlAccessType.FIELD)
 public class Gruppe
 {
     // Instanzvariablen - ersetzen Sie das folgende Beispiel mit Ihren Variablen
