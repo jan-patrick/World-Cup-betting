@@ -12,6 +12,7 @@ public class Main
     // Instanzvariablen - ersetzen Sie das folgende Beispiel mit Ihren Variablen
     private List<Gruppe> gruppen;
     private Paarungen begegnungen;
+    private Daten daten;
 
     /**
      * Konstruktor für Objekte der Klasse Main
@@ -21,20 +22,33 @@ public class Main
         // Instanzvariable initialisieren
         gruppen = new ArrayList<>();
         begegnungen = new Paarungen();
+        daten = new Daten();
     }
     
+    /**
+     * Noch zu Beschreiben
+     * 
+     * @ToDo
+     */
     public void createTestData(){
         gruppen.add(new Gruppe());
     }
     
     /**
-     * In case the window was closed, show it again.
-     */    
+     * Noch zu Beschreiben
+     * 
+     * @ToDo
+     */  
     public void addSpiel(int tora, int torb, String landa, String landb, String beschreibung)
     {
         begegnungen.addSpiel(tora, torb, landa, landb, beschreibung);
     }
         
+    /**
+     * Noch zu Beschreiben
+     * 
+     * @ToDo
+     */
     public void getEverySpielDetails()
     {
         System.out.println("Spiel-Liste: ");

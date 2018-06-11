@@ -27,10 +27,9 @@ public class Gruppe
     }
            
     /**
-     * Ein Beispiel einer Methode - ersetzen Sie diesen Kommentar mit Ihrem eigenen
+     * Noch zu Beschreiben
      * 
-     * @param  y    ein Beispielparameter für eine Methode
-     * @return        die Summe aus x und y
+     * @ToDo
      */
     public void addLand(String name, int tore, int punkte)
     {
@@ -38,11 +37,21 @@ public class Gruppe
         laender.put(name, land);
     }
     
+    /**
+     * Noch zu Beschreiben
+     * 
+     * @ToDo
+     */
     public int getLaenderSize()
     {
         return laender.size();
     }
-        
+       
+    /**
+     * Noch zu Beschreiben
+     * 
+     * @ToDo
+     */
     public String getLandDetails(int index)
     {
         Land land = laender.get(index);

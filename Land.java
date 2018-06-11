@@ -27,6 +27,11 @@ public class Land
         setDetails(name, tore, punkte);
     }
     
+    /**
+     * Noch zu Beschreiben
+     * 
+     * @ToDo
+     */
     private void setDetails(String name, int tore, int punkte)
     {
         this.name = name;
@@ -43,22 +48,47 @@ public class Land
         return name + ": " + tore + " Tore,  " + punkte + " Punkte";
     }
     
+    /**
+     * Noch zu Beschreiben
+     * 
+     * @ToDo
+     */
     public String getName() {
         return name;
     }
     
+    /**
+     * Noch zu Beschreiben
+     * 
+     * @ToDo
+     */
     public int getTore() {
         return tore;
     }
     
+    /**
+     * Noch zu Beschreiben
+     * 
+     * @ToDo
+     */
     public int getPunkte() {
         return punkte;
     }
     
+    /**
+     * Noch zu Beschreiben
+     * 
+     * @ToDo
+     */
     public String toString() {
          return name + "," + String.valueOf(tore) + "," + String.valueOf(punkte);
     }
     
+    /**
+     * Noch zu Beschreiben
+     * 
+     * @ToDo
+     */
     public String gibUpdatedLandInfo (int tore, int punkte)
     {
         this.tore = tore;
