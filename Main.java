@@ -13,7 +13,6 @@ public class Main
     // Instanzvariablen - ersetzen Sie das folgende Beispiel mit Ihren Variablen
     private HashMap<String, Gruppe> gruppen;
     private HashMap<String, Spiel> spiele;
-    private Paarungen begegnungen;
     private Daten daten;
 
     /**
@@ -24,7 +23,6 @@ public class Main
         // Instanzvariable initialisieren
         gruppen = new HashMap<>();
         spiele = new HashMap<>();
-        begegnungen = new Paarungen();
         daten = new Daten();
     }
     
@@ -57,20 +55,6 @@ public class Main
     
     public void setProducts(List<Land> laender) {
         spiele.put( "a", new Spiel( 1, 1, "Griechenland", "Südamerika", "Do, 13.13.13"));
-    }
-        
-    /**
-     * Noch zu Beschreiben
-     * 
-     * @ToDo
-     */
-    public void getEverySpielDetails()
-    {
-        System.out.println("Spiel-Liste: ");
-        for(int i = 0; i < begegnungen.getSpieleSize(); i++) {
-            System.out.println(begegnungen.getSpielDetails(i));
-        }
-        System.out.println();
     }
     
     /**
