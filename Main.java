@@ -12,6 +12,7 @@ public class Main
 {
     // Instanzvariablen - ersetzen Sie das folgende Beispiel mit Ihren Variablen
     private HashMap<String, Gruppe> gruppen;
+    private HashMap<String, Spiel> spiele;
     private Paarungen begegnungen;
     private Daten daten;
 
@@ -22,6 +23,7 @@ public class Main
     {
         // Instanzvariable initialisieren
         gruppen = new HashMap<>();
+        spiele = new HashMap<>();
         begegnungen = new Paarungen();
         daten = new Daten();
     }
@@ -50,7 +52,7 @@ public class Main
      */  
     public void addSpiel(int tora, int torb, String landa, String landb, String beschreibung)
     {
-        begegnungen.addSpiel(tora, torb, landa, landb, beschreibung);
+        spiele.put( "a", new Spiel( tora, torb, landa, landb, beschreibung));
     }
         
     /**
