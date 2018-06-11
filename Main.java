@@ -57,4 +57,52 @@ public class Main
         }
         System.out.println();
     }
+    
+    /**
+     * Noch zu Beschreiben
+     * 
+     * @ToDo
+     */
+    public boolean speichereLand(String land, int tore, int punkte)
+    {
+        if(gibDatenSpielergebnis(land, tore, punkte) == null){
+            System.out.println("Das Land " + land + " existiert nicht");
+            return false;
+        }
+        else{
+            try{
+                io.speichereLand(gibDatenSpielergebnis(land, tore, punkte));
+            }
+            catch (Exception e) {
+                e.printStackTrace();
+            }
+            return true;
+        }
+    }
+    
+    /**
+     * Noch zu Beschreiben
+     * 
+     * @ToDo
+     */
+    private String gibDatenSpielergebnis(String land, int tore, int punkte)
+    {
+        boolean check = false;
+        String daten = "";
+
+        for (String key : gruppenHash.keySet()) {
+            Gruppe gruppe = gruppenHash.get(key);
+
+            if(gruppe.prüfeLand(land) == true){
+                check = true;      
+                daten = gruppe.gibUpdatedInfoLand(land, tore, punkte);
+            }
+        }
+
+        if(check == false){
+            return null;
+        }
+
+        return daten;
+    }
 }
