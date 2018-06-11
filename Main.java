@@ -52,7 +52,11 @@ public class Main
      */  
     public void addSpiel(int tora, int torb, String landa, String landb, String beschreibung)
     {
-        spiele.put( "a", new Spiel( tora, torb, landa, landb, beschreibung));
+        spiele.put( "0", new Spiel( tora, torb, landa, landb, beschreibung));
+    }
+    
+    public void setProducts(List<Land> laender) {
+        spiele.put( "a", new Spiel( 1, 1, "Griechenland", "Südamerika", "Do, 13.13.13"));
     }
         
     /**
