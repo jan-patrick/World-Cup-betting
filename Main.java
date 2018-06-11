@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Beschreiben Sie hier die Klasse Main.
@@ -9,7 +10,7 @@ import java.util.ArrayList;
 public class Main
 {
     // Instanzvariablen - ersetzen Sie das folgende Beispiel mit Ihren Variablen
-    private ArrayList<Gruppe> gruppen;
+    private List<Gruppe> gruppen;
     private Paarungen begegnungen;
 
     /**
