@@ -89,7 +89,7 @@ public class Land
      * 
      * @ToDo
      */
-    public String gibUpdatedLandInfo (int tore, int punkte)
+    public String getUpdatedLandInfo(int tore, int punkte)
     {
         this.tore = tore;
         this.punkte = punkte;

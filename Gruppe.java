@@ -46,6 +46,19 @@ public class Gruppe
     {
         return laender.size();
     }
+    
+    /**
+     * Noch zu Beschreiben
+     * 
+     * @ToDo
+     */
+    public boolean existiertLand(String name)
+    {
+        if(laender.containsKey(name)){
+            return true;
+        }
+        else{return false;}
+    }
        
     /**
      * Noch zu Beschreiben
@@ -56,5 +69,11 @@ public class Gruppe
     {
         Land land = laender.get(index);
         return land.getDetails();
+    }
+    
+    public String getUpdatedInfoLand(String name, int tore, int punkte)
+    {
+        Land land = laender.get(name);
+        return land.getUpdatedLandInfo(tore, punkte);
     }
 }

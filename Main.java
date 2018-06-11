@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.HashMap;
 
 /**
  * Beschreiben Sie hier die Klasse Main.
@@ -10,7 +11,7 @@ import java.util.List;
 public class Main
 {
     // Instanzvariablen - ersetzen Sie das folgende Beispiel mit Ihren Variablen
-    private List<Gruppe> gruppen;
+    private HashMap<String, Gruppe> gruppen;
     private Paarungen begegnungen;
     private Daten daten;
 
@@ -20,7 +21,7 @@ public class Main
     public Main()
     {
         // Instanzvariable initialisieren
-        gruppen = new ArrayList<>();
+        gruppen = new HashMap<>();
         begegnungen = new Paarungen();
         daten = new Daten();
     }
@@ -30,8 +31,16 @@ public class Main
      * 
      * @ToDo
      */
-    public void createTestData(){
-        gruppen.add(new Gruppe());
+    public void ladeGruppenTestData()
+    {
+        gruppen.put("A", new Gruppe("A"));
+        gruppen.put("B", new Gruppe("B"));
+        gruppen.put("C", new Gruppe("C"));
+        gruppen.put("D", new Gruppe("D"));
+        gruppen.put("E", new Gruppe("E"));
+        gruppen.put("F", new Gruppe("F"));
+        gruppen.put("G", new Gruppe("G"));
+        gruppen.put("H", new Gruppe("H"));
     }
     
     /**
@@ -71,7 +80,7 @@ public class Main
         }
         else{
             try{
-                io.speichereLand(gibDatenSpielergebnis(land, tore, punkte));
+                daten.landSpeichern(gibDatenSpielergebnis(land, tore, punkte));
             }
             catch (Exception e) {
                 e.printStackTrace();
@@ -90,10 +99,10 @@ public class Main
         boolean check = false;
         String daten = "";
 
-        for (String key : gruppenHash.keySet()) {
-            Gruppe gruppe = gruppenHash.get(key);
+        for (String key : gruppen.keySet()) {
+            Gruppe gruppe = gruppen.get(key);
 
-            if(gruppe.prüfeLand(land) == true){
+            if(gruppe.existiertLand(land) == true){
                 check = true;      
                 daten = gruppe.gibUpdatedInfoLand(land, tore, punkte);
             }
