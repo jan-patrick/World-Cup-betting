@@ -12,7 +12,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @XmlRootElement(name = "nationen")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class Nationen
+public class Gruppe
 {
     // Instanzvariablen - ersetzen Sie das folgende Beispiel mit Ihren Variablen
     private HashMap<String, Land> laender;
@@ -20,7 +20,7 @@ public class Nationen
     /**
      * Konstruktor für Objekte der Klasse Nationen
      */
-    public Nationen()
+    public Gruppe()
     {
         // Instanzvariable initialisieren
         laender = new HashMap<>();
