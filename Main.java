@@ -31,9 +31,6 @@ public class Main
         Land l1 = new Land("Deutschland", 9, 9);
         Land l2 = new Land("Frankreich", 1, 2);
         Land l3 = new Land("Portugal", 1, 7);
-        teilnehmerlaender.add(l1);
-        teilnehmerlaender.add(l2);
-        teilnehmerlaender.add(l3);
     }
     
     /**

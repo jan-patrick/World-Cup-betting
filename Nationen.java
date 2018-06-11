@@ -1,5 +1,4 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
 
 import javax.xml.bind.annotation.*;
 import javax.xml.bind.annotation.XmlElement;
@@ -16,7 +15,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Nationen
 {
     // Instanzvariablen - ersetzen Sie das folgende Beispiel mit Ihren Variablen
-    public List<Land> laender;
+    private HashMap<String, Land> laender;
  
     /**
      * Konstruktor für Objekte der Klasse Nationen
@@ -24,7 +23,7 @@ public class Nationen
     public Nationen()
     {
         // Instanzvariable initialisieren
-        laender = new ArrayList<>();
+        laender = new HashMap<>();
     }
            
     /**
@@ -35,32 +34,18 @@ public class Nationen
      */
     public void addLand(String name, int tore, int punkte)
     {
-        laender.add(new Land(name, tore, punkte));
+        Land land = new Land(name, 0, 0);
+        laender.put(name, land);
     }
     
     public int getLaenderSize()
     {
         return laender.size();
     }
-    
-    public List<Land> getLaender() {
-        return laender;
-    }
-    
-    @XmlElement(name = "laender")
-    public void setProducts(List<Land> laender) {
-
-        this.laender = laender;
-
-    }
-    
+        
     public String getLandDetails(int index)
     {
         Land land = laender.get(index);
         return land.getDetails();
-    }
-    
-    public void add(Land land) {
-        this.laender.add(land);
     }
 }
