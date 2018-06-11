@@ -104,7 +104,7 @@ public class Main
 
             if(gruppe.existiertLand(land) == true){
                 check = true;      
-                daten = gruppe.gibUpdatedInfoLand(land, tore, punkte);
+                daten = gruppe.getUpdatedInfoLand(land, tore, punkte);
             }
         }
 

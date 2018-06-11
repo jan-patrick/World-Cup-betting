@@ -10,11 +10,13 @@ public class Gruppe
 {
     // Instanzvariablen - ersetzen Sie das folgende Beispiel mit Ihren Variablen
     private HashMap<String, Land> laender;
+    private int gruppenGroesse;
+    private Daten daten;
  
     /**
      * Konstruktor für Objekte der Klasse Nationen
      */
-    public Gruppe()
+    public Gruppe(String name)
     {
         // Instanzvariable initialisieren
         laender = new HashMap<>();
@@ -29,6 +31,7 @@ public class Gruppe
     {
         Land land = new Land(name, 0, 0);
         laender.put(name, land);
+        gruppenGroesse += 1;
     }
     
     /**
