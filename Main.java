@@ -14,10 +14,8 @@ import java.io.FileNotFoundException;
 public class Main
 {
     // Instanzvariablen - ersetzen Sie das folgende Beispiel mit Ihren Variablen
-    private Interface gui;
     private Nationen teilnehmerlaender;
     private Paarungen begegnungen;
-    private Landd landd;
 
     /**
      * Konstruktor für Objekte der Klasse Main
@@ -25,7 +23,6 @@ public class Main
     public Main()
     {
         // Instanzvariable initialisieren
-        gui = new Interface();
         teilnehmerlaender = new Nationen();
         begegnungen = new Paarungen();
     }
@@ -42,10 +39,6 @@ public class Main
     /**
      * In case the window was closed, show it again.
      */
-    public void show()
-    {
-        gui.setVisible(true);
-    }
 
     /**
      * Ein Beispiel einer Methode - ersetzen Sie diesen Kommentar mit Ihrem eigenen
@@ -79,15 +72,6 @@ public class Main
             System.out.println(begegnungen.getSpielDetails(i));
         }
         System.out.println();
-    }
-
-    public void addLandd(String name, int tore, int punkte)
-    {
-        landd= new Landd(name, tore, punkte);
-    }
-    
-    public void tearDown() {
-        landd = null;
     }
     
     public void testObjectToXml() throws JAXBException, FileNotFoundException {
