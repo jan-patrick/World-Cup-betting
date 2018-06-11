@@ -55,17 +55,14 @@ public class Land
         return punkte;
     }
     
-    @Override
-
     public String toString() {
-        return "Product{" +
-
-                "\n Name='" + name + '\'' +
-
-                ",\n Tore='" + tore + '\'' +
-
-                ",\n Punkte='" + punkte + '\'' +
-
-                '}';
+         return name + "," + String.valueOf(tore) + "," + String.valueOf(punkte);
+    }
+    
+    public String gibUpdatedLandInfo (int tore, int punkte)
+    {
+        this.tore = tore;
+        this.punkte = punkte;
+        return toString();
     }
 }
