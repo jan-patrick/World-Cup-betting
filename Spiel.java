@@ -22,6 +22,11 @@ public class Spiel
         setDetails(tora, torb, landa, landb, beschreibung);
     }
     
+    /**
+     * Noch zu Beschreiben
+     * 
+     * @ToDo
+     */
     private void setDetails(int tora, int torb, String landa, String landb, String beschreibung)
     {
         this.tora = tora;
@@ -32,10 +37,9 @@ public class Spiel
     }
 
     /**
-     * Ein Beispiel einer Methode - ersetzen Sie diesen Kommentar mit Ihrem eigenen
+     * Noch zu Beschreiben
      * 
-     * @param  y    ein Beispielparameter für eine Methode
-     * @return        die Summe aus x und y
+     * @ToDo
      */
     public String getDetails()
     {

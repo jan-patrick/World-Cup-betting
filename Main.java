@@ -14,6 +14,7 @@ public class Main
     private HashMap<String, Gruppe> gruppen;
     private HashMap<String, Spiel> spiele;
     private Daten daten;
+    private Interface mainInterface;
 
     /**
      * Konstruktor für Objekte der Klasse Main
@@ -24,6 +25,8 @@ public class Main
         gruppen = new HashMap<>();
         spiele = new HashMap<>();
         daten = new Daten();
+        mainInterface = new Interface();
+        //mainInterface.setIconImage(Toolkit.getDefaultToolkit().getImage("img/icon.png"));
     }
     
     /**

@@ -16,6 +16,11 @@ public class GrafikTest extends JPanel {       // ein JPanel als Traeger der Kom
   JTextField kmEingabe = new JTextField(10);
   JButton berechneButton = new JButton("berechne");
   
+  /**
+     * Noch zu Beschreiben
+     * 
+     * @ToDo
+     */
   public static void main(String[] args){           // Startfunktion 
     GrafikTest derGrafikTest = new GrafikTest(); // die Oberflaeche erzeugen
     JFrame derRahmen = new JFrame("Grafik Test"); // einen Fensterrahmen erzeugen
@@ -25,6 +30,12 @@ public class GrafikTest extends JPanel {       // ein JPanel als Traeger der Kom
     derRahmen.setVisible(true);                     // das Fenster soll sichtbar sein
     derRahmen.setIconImage(Toolkit.getDefaultToolkit().getImage("img/icon.png"));
   } 
+  
+  /**
+     * Noch zu Beschreiben
+     * 
+     * @ToDo
+     */
   public GrafikTest(){         // Konstruktor der Oberflaeche
     setBackground(Color.yellow);// der Hintergrund ist gelb
     setLayout(null);            // selber machen
@@ -47,6 +58,12 @@ public class GrafikTest extends JPanel {       // ein JPanel als Traeger der Kom
       }
     });
   }
+  
+  /**
+     * Noch zu Beschreiben
+     * 
+     * @ToDo
+     */
   void berechneButtonClick(){
     double l,km,v;
     l = Double.parseDouble(literEingabe.getText());
