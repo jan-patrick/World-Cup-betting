@@ -1,4 +1,5 @@
 import java.io.*;
+import java.lang.*;
 
 /**
  * Beschreiben Sie hier die Klasse Nationen.
@@ -15,7 +16,7 @@ public class Daten
      */
     public Daten()
     {
-        // benötigt keine Initialisierung
+        // keine Instanzvariablen
     }
 
     /**
@@ -48,17 +49,15 @@ public class Daten
      * 
      * @ToDo
      */
-    public void landSpeichern(String landdaten) throws IOException
-    {
-        String[] landdatenteile = landdaten.split(",");
-        
-        String datei = "Land," + landdatenteile[0] + ".txt";
+    public void landSpeichern(String[] landteile) throws IOException
+    {        
+        String datei = "Laender/" + landteile[0] + ".txt";
         FileWriter fw = new FileWriter(datei);
         BufferedWriter bw = new BufferedWriter(fw);
 
-        for (int x = 0; x < landdatenteile.length; x++) {
-            bw.write(landdatenteile[x]);
-            if(x<landdatenteile.length){bw.newLine();};
+        for (int x = 0; x < landteile.length; x++) {
+            bw.write(landteile[x]);
+            if(x<landteile.length){bw.newLine();};
         }
         
         bw.close();
@@ -69,20 +68,14 @@ public class Daten
      * 
      * @ToDo
      */
-    public void gruppeSpeichern(String gruppendaten) throws IOException
-    {       
-        String[] teile = gruppendaten.split(",");
-        
-        String datei = "Gruppe" + teile[0] + ".txt";
+    public void gruppeSpeichern(String gruppendateiName, String gruppendaten) throws IOException
+    {              
+        String datei = "Gruppen/" + gruppendateiName + ".txt";
         FileWriter fw = new FileWriter(datei);
         BufferedWriter bw = new BufferedWriter(fw);
 
-        
-
-        for (int x = 0; x < teile.length; x++) {
-            bw.write(teile[x]);
-            if(x<teile.length){bw.newLine();};
-        }
+        bw.newLine();
+        bw.write(gruppendaten);
         
         bw.close();
     }
