@@ -41,16 +41,7 @@ public class Startscreen extends JDialog {
         add(basic); 
 
         JPanel topPanel = new JPanel(new BorderLayout(0, 0));
-        topPanel.setMaximumSize(new Dimension(450, 0));
-        JLabel titel = new JLabel("a project by Jan Schneider, HfG, IoT3");
-        titel.setBorder(BorderFactory.createEmptyBorder(0, 25, 0, 0));
-        topPanel.add(titel);
-
-        ImageIcon icon = new ImageIcon("icon.png");
-        JLabel label = new JLabel(icon);
-        label.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
-        topPanel.add(label, BorderLayout.EAST);
-        
+        topPanel.setMaximumSize(new Dimension(450, 0));        
 
         JSeparator separator = new JSeparator();
         separator.setForeground(Color.gray);
@@ -65,8 +56,8 @@ public class Startscreen extends JDialog {
 
         pane.setContentType("text/html");
         String text = "<p><b>Fussballweltmeisterschaft 2018 Übersichtsplan</b></p>" +
-            "<a href=\"https://github.com/jan-patrick/World-Cup-betting\">Projekt auf GitHub</a>" +
-            "<p>Semesterprojekt Programmieren 2 bei Rainer Hönle</p>";
+            "<p>Semesterprojekt Programmieren 2 von Jan Schneider, HfG, IoT3</p>" +
+            "<p>bei Rainer Hönle</p>";
         pane.setText(text);
         pane.setEditable(false);
         textPanel.add(pane);
@@ -75,27 +66,10 @@ public class Startscreen extends JDialog {
 
         JPanel boxPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 20, 0));
 
-        JCheckBox box = new JCheckBox("Show ReadMe at startup");
-        box.setMnemonic(KeyEvent.VK_S);
-
-        boxPanel.add(box);
-        basic.add(boxPanel);
-
         JPanel bottom = new JPanel(new FlowLayout(FlowLayout.RIGHT));
 
-        JButton ntip = new JButton("Next Tip");
-        ntip.setMnemonic(KeyEvent.VK_N);
-        JButton close = new JButton("Close");
-        close.setMnemonic(KeyEvent.VK_C);
-
-        bottom.add(ntip);
-        bottom.add(close);
-        basic.add(bottom);
-
-        bottom.setMaximumSize(new Dimension(450, 0));
-
         setTitle("world-cup-betting");
-        setSize(new Dimension(450, 350));
+        setSize(new Dimension(450, 250));
         setResizable(false);
         setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
