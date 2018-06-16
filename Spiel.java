@@ -35,6 +35,21 @@ public class Spiel
         this.landb = landb;
         this.beschreibung = beschreibung;
     }
+    
+    /**
+     * Noch zu Beschreiben
+     * 
+     * @ToDo
+     */
+    private int[] berechnePunkte(int tore1, int tore2)
+    {
+        int[] punkte = {0, 0};
+
+        if(tore1 > tore2){punkte[0] = 3;}
+        if(tore1 < tore2){punkte[1] = 3;}
+        if(tore1 == tore2){punkte[0] = 1; punkte[1] = 1;}
+        return punkte;
+    }
 
     /**
      * Noch zu Beschreiben

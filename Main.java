@@ -16,6 +16,7 @@ public class Main
     private HashMap<String, Spiel> spiele;
     private Daten daten;
     private Interface mainInterface;
+    private Startscreen startscreenReadMe;
 
     /**
      * Konstruktor für Objekte der Klasse Main
@@ -27,6 +28,7 @@ public class Main
         spiele = new HashMap<>();
         daten = new Daten();
         mainInterface = new Interface();
+        startscreenReadMe = new Startscreen();
         //mainInterface.setIconImage(Toolkit.getDefaultToolkit().getImage("img/icon.png"));
     }
     
@@ -57,6 +59,11 @@ public class Main
         spiele.put( "0", new Spiel( tora, torb, landa, landb, beschreibung));
     }
     
+    /**
+     * Noch zu Beschreiben
+     * 
+     * @ToDo
+     */
     public void setProducts(List<Land> laender) {
         spiele.put( "a", new Spiel( 1, 1, "Griechenland", "Südamerika", "Do, 13.13.13"));
     }
@@ -88,7 +95,7 @@ public class Main
      * 
      * @ToDo
      */
-    private String gibDatenSpielergebnis(String land, int tore, int punkte)
+    private String getDatenSpielergebnis(String land, int tore, int punkte)
     {
         boolean check = false;
         String daten = "";
@@ -107,5 +114,25 @@ public class Main
         }
 
         return daten;
+    }
+    
+    /**
+     * Noch zu Beschreiben
+     * 
+     * @ToDo
+     */
+    private Gruppe getGruppeWennLand(String land)
+    {
+        String daten = "";
+
+        for (String key : gruppen.keySet()) {
+            Gruppe gruppe = gruppen.get(key);
+
+            if(gruppe.existiertLand(land) == true){
+                return gruppe;
+            }
+        }
+
+        return null;
     }
 }
