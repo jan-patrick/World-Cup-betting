@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.target=GrafikTest
+comment1.params=args
+comment1.target=void\ main(java.lang.String[])
+comment1.text=\r\n\ Noch\ zu\ Beschreiben\r\n\ \r\n\ @ToDo\r\n
+comment2.params=
+comment2.target=GrafikTest()
+comment2.text=\r\n\ Noch\ zu\ Beschreiben\r\n\ \r\n\ @ToDo\r\n
+comment3.params=e
+comment3.target=void\ mousePressed(java.awt.event.MouseEvent)
+comment4.params=
+comment4.target=void\ berechneButtonClick()
+comment4.text=\r\n\ Noch\ zu\ Beschreiben\r\n\ \r\n\ @ToDo\r\n
+numComments=5

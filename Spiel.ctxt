@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=Spiel
+comment0.text=\r\n\ Beschreiben\ Sie\ hier\ die\ Klasse\ Spiel.\r\n\ \r\n\ @author\ Jan\ Schneider,\ HfG,\ IoT3\r\n\ @version\ 2018.05.28\r\n
+comment1.params=tora\ torb\ landa\ landb\ beschreibung
+comment1.target=Spiel(int,\ int,\ java.lang.String,\ java.lang.String,\ java.lang.String)
+comment1.text=\r\n\ Konstruktor\ f\u00FCr\ Objekte\ der\ Klasse\ Spiel\r\n
+comment2.params=tora\ torb\ landa\ landb\ beschreibung
+comment2.target=void\ setDetails(int,\ int,\ java.lang.String,\ java.lang.String,\ java.lang.String)
+comment2.text=\r\n\ Noch\ zu\ Beschreiben\r\n\ \r\n\ @ToDo\r\n
+comment3.params=
+comment3.target=java.lang.String\ getDetails()
+comment3.text=\r\n\ Noch\ zu\ Beschreiben\r\n\ \r\n\ @ToDo\r\n
+numComments=4

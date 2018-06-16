@@ -1,0 +1,21 @@
+#BlueJ class context
+comment0.target=Main
+comment0.text=\r\n\ Beschreiben\ Sie\ hier\ die\ Klasse\ Main.\r\n\ \r\n\ @author\ Jan\ Schneider,\ HfG,\ IoT3\r\n\ @version\ 2018.05.28\r\n
+comment1.params=
+comment1.target=Main()
+comment1.text=\r\n\ Konstruktor\ f\u00FCr\ Objekte\ der\ Klasse\ Main\r\n
+comment2.params=
+comment2.target=void\ ladeGruppenTestData()
+comment2.text=\r\n\ Noch\ zu\ Beschreiben\r\n\ \r\n\ @ToDo\r\n
+comment3.params=tora\ torb\ landa\ landb\ beschreibung
+comment3.target=void\ addSpiel(int,\ int,\ java.lang.String,\ java.lang.String,\ java.lang.String)
+comment3.text=\r\n\ Noch\ zu\ Beschreiben\r\n\ \r\n\ @ToDo\r\n
+comment4.params=laender
+comment4.target=void\ setProducts(java.util.List)
+comment5.params=land\ tore\ punkte
+comment5.target=boolean\ speichereLand(java.lang.String,\ int,\ int)
+comment5.text=\r\n\ Noch\ zu\ Beschreiben\r\n\ \r\n\ @ToDo\r\n
+comment6.params=land\ tore\ punkte
+comment6.target=java.lang.String\ gibDatenSpielergebnis(java.lang.String,\ int,\ int)
+comment6.text=\r\n\ Noch\ zu\ Beschreiben\r\n\ \r\n\ @ToDo\r\n
+numComments=7
