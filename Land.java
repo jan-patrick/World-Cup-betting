@@ -16,7 +16,6 @@ public class Land
      */
     public Land(String name, int tore, int punkte)
     {
-        // Instanzvariable initialisieren
         setDetails(name, tore, punkte);
     }
     
@@ -33,8 +32,9 @@ public class Land
     }
 
     /**
-     * Return details
-     * @return The details.
+     * Noch zu Beschreiben
+     * 
+     * @ToDo
      */
     public String getDetails()
     {
