@@ -82,10 +82,11 @@ public class Land
      * 
      * @ToDo
      */
-    public String getUpdatedLandInfo(int tore, int punkte)
+    public String[] getUpdatedInfo (int tore, int punkte)
     {
-        this.tore = tore;
-        this.punkte = punkte;
-        return toString();
+        this.tore += tore;
+        this.punkte += punkte;
+        String[] daten = {name, String.valueOf(this.tore), String.valueOf(this.punkte)};
+        return daten;
     }
 }

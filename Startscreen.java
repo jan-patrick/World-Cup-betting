@@ -15,6 +15,7 @@ import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.JTextPane;
 import javax.swing.SwingUtilities;
+import java.io.*;
 
 /**
  * Beschreiben Sie hier die Klasse Startscreen.
@@ -24,27 +25,32 @@ import javax.swing.SwingUtilities;
  */
 public class Startscreen extends JDialog {
 
-
     public Startscreen() {
         initUI();
     }
 
-    public final void initUI() {
+    /**
+     * Noch zu Beschreiben
+     * 
+     * @ToDo
+     */
+    private final void initUI() {
 
         JPanel basic = new JPanel();
         basic.setLayout(new BoxLayout(basic, BoxLayout.Y_AXIS));
-        add(basic);
+        add(basic); 
 
         JPanel topPanel = new JPanel(new BorderLayout(0, 0));
         topPanel.setMaximumSize(new Dimension(450, 0));
-        JLabel hint = new JLabel("JDeveloper Productivity Hints");
-        hint.setBorder(BorderFactory.createEmptyBorder(0, 25, 0, 0));
-        topPanel.add(hint);
+        JLabel titel = new JLabel("a project by Jan Schneider, HfG, IoT3");
+        titel.setBorder(BorderFactory.createEmptyBorder(0, 25, 0, 0));
+        topPanel.add(titel);
 
-        ImageIcon icon = new ImageIcon("jdev.png");
+        ImageIcon icon = new ImageIcon("icon.png");
         JLabel label = new JLabel(icon);
         label.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
         topPanel.add(label, BorderLayout.EAST);
+        
 
         JSeparator separator = new JSeparator();
         separator.setForeground(Color.gray);
@@ -58,9 +64,9 @@ public class Startscreen extends JDialog {
         JTextPane pane = new JTextPane();
 
         pane.setContentType("text/html");
-        String text = "<p><b>Closing windows using the mouse wheel</b></p>" +
-            "<p>Clicking with the mouse wheel on an editor tab closes the window. " +
-            "This method works also with dockable windows or Log window tabs.</p>";
+        String text = "<p><b>Fussballweltmeisterschaft 2018 Übersichtsplan</b></p>" +
+            "<a href=\"https://github.com/jan-patrick/World-Cup-betting\">Projekt auf GitHub</a>" +
+            "<p>Semesterprojekt Programmieren 2 bei Rainer Hönle</p>";
         pane.setText(text);
         pane.setEditable(false);
         textPanel.add(pane);
@@ -69,7 +75,7 @@ public class Startscreen extends JDialog {
 
         JPanel boxPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 20, 0));
 
-        JCheckBox box = new JCheckBox("Show this window at startup");
+        JCheckBox box = new JCheckBox("Show ReadMe at startup");
         box.setMnemonic(KeyEvent.VK_S);
 
         boxPanel.add(box);
@@ -95,11 +101,13 @@ public class Startscreen extends JDialog {
         setLocationRelativeTo(null);
     }
 
-
-    public static void main(String[] args) {
-
+    /**
+     * Noch zu Beschreiben
+     * 
+     * @ToDo
+     */
+    public static void main() {
         SwingUtilities.invokeLater(new Runnable() {
-
             public void run() {
                 Startscreen ex = new Startscreen();
                 ex.setVisible(true);

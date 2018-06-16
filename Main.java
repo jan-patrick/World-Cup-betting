@@ -29,6 +29,7 @@ public class Main
         daten = new Daten();
         mainInterface = new Interface();
         startscreenReadMe = new Startscreen();
+        startscreenReadMe.main();
         //mainInterface.setIconImage(Toolkit.getDefaultToolkit().getImage("img/icon.png"));
     }
     
@@ -64,7 +65,7 @@ public class Main
      * 
      * @ToDo
      */
-    public void setProducts(List<Land> laender) {
+    public void setProducts(ArrayList<Land> laender) {
         spiele.put( "a", new Spiel( 1, 1, "Griechenland", "Südamerika", "Do, 13.13.13"));
     }
     
@@ -75,13 +76,13 @@ public class Main
      */
     public boolean speichereLand(String land, int tore, int punkte)
     {
-        if(gibDatenSpielergebnis(land, tore, punkte) == null){
+        if(getDatenSpielergebnis(land, tore, punkte) == null){
             System.out.println("Das Land " + land + " existiert nicht");
             return false;
         }
         else{
             try{
-                daten.landSpeichern(gibDatenSpielergebnis(land, tore, punkte));
+                daten.landSpeichern(getDatenSpielergebnis(land, tore, punkte));
             }
             catch (Exception e) {
                 e.printStackTrace();
@@ -95,25 +96,10 @@ public class Main
      * 
      * @ToDo
      */
-    private String getDatenSpielergebnis(String land, int tore, int punkte)
+    private String[] getDatenSpielergebnis(String land, int tore, int punkte)
     {
-        boolean check = false;
-        String daten = "";
-
-        for (String key : gruppen.keySet()) {
-            Gruppe gruppe = gruppen.get(key);
-
-            if(gruppe.existiertLand(land) == true){
-                check = true;      
-                daten = gruppe.getUpdatedInfoLand(land, tore, punkte);
-            }
-        }
-
-        if(check == false){
-            return null;
-        }
-
-        return daten;
+        Gruppe gruppe = getGruppeWennLand(land);
+        return gruppe.getUpdatedInfoLand(land, tore, punkte);
     }
     
     /**

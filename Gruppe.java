@@ -69,7 +69,7 @@ public class Gruppe
         laender.put(nameLand, new Land(nameLand, tore, punkte));
         gruppenGroesse += 1;
     }
-    
+       
     /**
      * Noch zu Beschreiben
      * 
@@ -99,10 +99,29 @@ public class Gruppe
      * 
      * @ToDo
      */
-    public String getUpdatedInfoLand(String name, int tore, int punkte)
+    public String[] getUpdatedInfoLand(String name, int tore, int punkte)
     {
         Land land = laender.get(name);
-        return land.getUpdatedLandInfo(tore, punkte);
+        return land.getUpdatedInfo(tore, punkte);
+    }
+    
+    /**
+     * Noch zu Beschreiben
+     * 
+     * @ToDo
+     */
+    public String[] getLaender()
+    {
+        StringBuffer aktuelleDaten = new StringBuffer();
+        for (String key : laender.keySet()) {
+            if (aktuelleDaten.length() != 0) {
+                aktuelleDaten.append("/");
+            }
+            aktuelleDaten.append(key);
+        }
+        String sDaten = aktuelleDaten.toString();
+        String[] datenteile = sDaten.split("/");
+        return datenteile;
     }
     
     /**
