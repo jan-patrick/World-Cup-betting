@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.lang.*;
 import java.io.*;
 import java.util.HashMap;
+import java.util.Set;
 
 /**
  * Beschreiben Sie hier die Klasse Main.
@@ -45,20 +46,38 @@ public class Main
      */
     public void erstelleGruppen()
     {
-        char[] alpha = new char[26];
-        // unicode upper-cased alphabet
-        for(int i = 0; i < 26; i++){
-            alpha[i] = (char)(96 + i);
+        if(gruppenAnzahl != 0)
+        {            
+            mainInterface.nachricht("Fehler", "Es sind bereits Gruppen im System.");
+        }else if(gruppenAnzahl>=MAX_GRUPPEN_ANZAHL)
+        {
+            mainInterface.nachricht("Fehler", "Es sind zu viele Gruppen im System.");
         }
-        
-        gruppen.put("A", new Gruppe("A"));
-        gruppen.put("B", new Gruppe("B"));
-        gruppen.put("C", new Gruppe("C"));
-        gruppen.put("D", new Gruppe("D"));
-        gruppen.put("E", new Gruppe("E"));
-        gruppen.put("F", new Gruppe("F"));
-        gruppen.put("G", new Gruppe("G"));
-        gruppen.put("H", new Gruppe("H"));
+        else
+        {     
+            char[] firstLetter = new char[MAX_GRUPPEN_ANZAHL];
+            // unicode upper-cased alphabet
+            for(int i = 0; i < MAX_GRUPPEN_ANZAHL; i++){
+                firstLetter[i] = (char)(65 + i);
+                gruppen.put(String.valueOf(firstLetter[i]), new Gruppe(String.valueOf(firstLetter[i])));
+                gruppenAnzahl += 1;
+            }
+        }    
+    }
+    
+    /**
+     * Noch zu Beschreiben
+     * 
+     * @ToDo
+     */ 
+    public String getGruppenAsString()
+    {
+        String ergebnis = "Gruppen: ";
+        Set<String> keywords = gruppen.keySet();
+        for(String gruppe : keywords){
+            ergebnis += " " + gruppe;
+        }
+        return ergebnis;
     }
     
     /**
