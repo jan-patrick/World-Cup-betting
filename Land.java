@@ -36,9 +36,10 @@ public class Land
      * 
      * @ToDo
      */
-    public String getDetails()
+    public String[] getDetails()
     {
-        return name + ": " + tore + " Tore,  " + punkte + " Punkte";
+        String[] daten = {name, String.valueOf(tore), String.valueOf(punkte)};
+        return daten;
     }
     
     /**

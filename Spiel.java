@@ -41,13 +41,13 @@ public class Spiel
      * 
      * @ToDo
      */
-    private int[] berechnePunkte(int tore1, int tore2)
+    private int[] berechnePunkte(int torea, int toreb)
     {
         int[] punkte = {0, 0};
 
-        if(tore1 > tore2){punkte[0] = 3;}
-        if(tore1 < tore2){punkte[1] = 3;}
-        if(tore1 == tore2){punkte[0] = 1; punkte[1] = 1;}
+        if(torea > toreb){punkte[0] = 3;}
+        if(torea < toreb){punkte[1] = 3;}
+        if(torea == toreb){punkte[0] = 1; punkte[1] = 1;}
         return punkte;
     }
 

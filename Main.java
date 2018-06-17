@@ -17,6 +17,11 @@ public class Main
     private Daten daten;
     private Interface mainInterface;
     private Startscreen startscreenReadMe;
+    private int gruppenAnzahl = 0;
+    private int laenderAnzahl = 0;
+    private final int MAX_GRUPPEN_ANZAHL = 8;
+    private final int MAX_LAENDER_ANZAHL = 32;
+    
 
     /**
      * Konstruktor für Objekte der Klasse Main
@@ -38,8 +43,14 @@ public class Main
      * 
      * @ToDo
      */
-    public void ladeGruppenTestData()
+    public void erstelleGruppen()
     {
+        char[] alpha = new char[26];
+        // unicode upper-cased alphabet
+        for(int i = 0; i < 26; i++){
+            alpha[i] = (char)(96 + i);
+        }
+        
         gruppen.put("A", new Gruppe("A"));
         gruppen.put("B", new Gruppe("B"));
         gruppen.put("C", new Gruppe("C"));
@@ -107,7 +118,7 @@ public class Main
      * 
      * @ToDo
      */
-    private Gruppe getGruppeWennLand(String land)
+    public Gruppe getGruppeWennLand(String land)
     {
         String daten = "";
 

@@ -68,7 +68,7 @@ public class Daten
      * 
      * @ToDo
      */
-    public  void gruppeSpeichern(String name, String[] teile) throws IOException
+    public void gruppeSpeichern(String name, String[] teile) throws IOException
     {
         String datei = "Gruppen/" + name + ".txt";
         FileWriter fw = new FileWriter(datei);

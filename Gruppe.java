@@ -1,5 +1,5 @@
 import java.util.HashMap;
-import java.math.*;
+import java.util.ArrayList;
 
 /**
  * Beschreiben Sie hier die Klasse Gruppe.
@@ -30,11 +30,28 @@ public class Gruppe
      * 
      * @ToDo
      */
-    public void addLand(String name, int tore, int punkte)
+    public void addLand(String name)
     {
         Land land = new Land(name, 0, 0);
         laender.put(name, land);
         gruppenGroesse += 1;
+        try{
+            daten.landSpeichern(getLandDetails(name));
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        String aktuelledaten = gibDaten("Gruppen", gruppenName);
+        aktuelledaten += name + "/";
+        String[] teile = aktuelledaten.split("/");
+        teile[0] = String.valueOf(gruppenGroesse);
+        try{
+            daten.gruppeSpeichern(gruppenName, teile);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        loadGruppeninfo(gruppenName);
     }
     
     /**
@@ -86,15 +103,82 @@ public class Gruppe
         }
         else{return false;}
     }
+    
+    /**
+     * Noch zu Beschreiben
+     * 
+     * @ToDo
+     */
+    private String gibDaten(String ordner, String datei)
+    {
+        String aktuelledaten = "";
+        try{
+            aktuelledaten = daten.ladeDatei(ordner, datei);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        return aktuelledaten; 
+    }
+    
+    /**
+     * Noch zu Beschreiben
+     * 
+     * @ToDo
+     */
+    public void berechnePaarungen()
+    {
+        ArrayList teile = new ArrayList<String>();
+        String[] laender = getLaender();
+        int größeSpiele = binominalkoeffizient(gruppenGroesse, 2);
+        teile.add(String.valueOf(gruppenGroesse));
+
+        for (int i = 0; i < laender.length; i++) {
+            teile.add(laender[i]);
+        }
+
+        for (int i = 0; i < gruppenGroesse; i++) {
+            for (int x = i+1; x < gruppenGroesse; x++) {
+                teile.add(laender[i] + ":" + laender[x] + "- : ");
+            }
+        }
+
+        String[] aktuelledaten = new String[teile.size()];
+        teile.toArray( aktuelledaten );
+        
+         try{
+            daten.gruppeSpeichern(gruppenName, aktuelledaten);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    /**
+     * Noch zu Beschreiben
+     * 
+     * @ToDo
+     */
+    public int binominalkoeffizient(int n, int k)
+    {        
+        if (k > n) return 0;
+        else {
+            int a = 1;
+            for (int i = n-k+1; i <= n; i++) a *= i;
+            int b = 1;
+            for (int i = 2; i <= k; i++) b *= i;
+            return a / b;
+        }
+    }
        
     /**
      * Noch zu Beschreiben
      * 
      * @ToDo
      */
-    public String getLandDetails(int index)
+    public String[] getLandDetails(String name)
     {
-        Land land = laender.get(index);
+        Land land = laender.get(name);
         return land.getDetails();
     }
     
@@ -126,6 +210,25 @@ public class Gruppe
         String sDaten = aktuelleDaten.toString();
         String[] datenteile = sDaten.split("/");
         return datenteile;
+    }
+    
+    /**
+     * Noch zu Beschreiben
+     * 
+     * @ToDo
+     */
+    public void loadGruppeninfo(String name)
+    {
+        String[] teile = getDatenTeile("Gruppen", name);
+
+        gruppenGroesse = Integer.valueOf(teile[0]);
+        for (int i = 1; i <= gruppenGroesse; i++) {
+            ladeLand(teile[i]);
+        }
+        
+        if(teile.length <= gruppenGroesse + 1){
+            berechnePaarungen();
+        }
     }
     
     /**
