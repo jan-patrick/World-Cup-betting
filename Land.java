@@ -73,8 +73,10 @@ public class Land
      * 
      * @ToDo
      */
-    public String toString() {
-         return name + "/" + String.valueOf(tore) + "/" + String.valueOf(punkte);
+    public String[] getInfo ()
+    {
+        String[] daten = {name, String.valueOf(tore), String.valueOf(punkte)};
+        return daten;
     }
     
     /**

@@ -1,4 +1,5 @@
 import java.util.HashMap;
+import java.math.*;
 
 /**
  * Beschreiben Sie hier die Klasse Gruppe.
@@ -10,15 +11,18 @@ public class Gruppe
 {
     // Instanzvariablen - ersetzen Sie das folgende Beispiel mit Ihren Variablen
     private HashMap<String, Land> laender;
+    private String gruppenName;
     private int gruppenGroesse;
     private Daten daten;
  
     /**
      * Konstruktor der Klasse Gruppe
      */
-    public Gruppe(String name)
+    public Gruppe(String gruppenName)
     {
         laender = new HashMap<>();
+        daten = new Daten();
+        this.gruppenName = gruppenName;
     }
            
     /**
@@ -38,7 +42,7 @@ public class Gruppe
      * 
      * @ToDo
      */
-    public int getLaenderSize()
+    public int getLaenderGroesse()
     {
         return laender.size();
     }
