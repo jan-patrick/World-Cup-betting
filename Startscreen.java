@@ -41,7 +41,7 @@ public class Startscreen extends JDialog {
         add(basic); 
 
         JPanel topPanel = new JPanel(new BorderLayout(0, 0));
-        topPanel.setMaximumSize(new Dimension(450, 0));        
+        topPanel.setMaximumSize(new Dimension(600, 0));        
 
         JSeparator separator = new JSeparator();
         separator.setForeground(Color.gray);
@@ -63,14 +63,16 @@ public class Startscreen extends JDialog {
         textPanel.add(pane);
         basic.add(textPanel);
         
-        JButton linkButton = new JButton("View on GitHub");
+        JButton linkButton = new JButton("Zeige Quellcode auf GitHub");
         basic.add(linkButton);
         linkButton.addActionListener((ActionEvent event) -> {
             String[] daten = {"https://github.com/jan-patrick/World-Cup-betting"};
             openLink(daten);
+            // Fenster schließen nachdem der Link geöffnet wurde
+            System.exit(0);
         });
         
-        JButton quitButton = new JButton("Close");
+        JButton quitButton = new JButton("Fenster schließen");
         basic.add(quitButton);
         quitButton.addActionListener((ActionEvent event) -> {
             System.exit(0);

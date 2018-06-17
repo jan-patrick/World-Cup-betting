@@ -1,7 +1,7 @@
 #BlueJ class context
 comment0.target=Gruppe
 comment0.text=\r\n\ Beschreiben\ Sie\ hier\ die\ Klasse\ Gruppe.\r\n\ \r\n\ @author\ Jan\ Schneider,\ HfG,\ IoT3\r\n\ @version\ 2018.05.28\r\n
-comment1.params=name
+comment1.params=gruppenName
 comment1.target=Gruppe(java.lang.String)
 comment1.text=\r\n\ Konstruktor\ der\ Klasse\ Gruppe\r\n
 comment10.params=ordner\ datei
@@ -11,7 +11,7 @@ comment2.params=name\ tore\ punkte
 comment2.target=void\ addLand(java.lang.String,\ int,\ int)
 comment2.text=\r\n\ Noch\ zu\ Beschreiben\r\n\ \r\n\ @ToDo\r\n
 comment3.params=
-comment3.target=int\ getLaenderSize()
+comment3.target=int\ getLaenderGroesse()
 comment3.text=\r\n\ Noch\ zu\ Beschreiben\r\n\ \r\n\ @ToDo\r\n
 comment4.params=
 comment4.target=int\ getGruppenGroesse()
