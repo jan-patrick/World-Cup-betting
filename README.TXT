@@ -9,7 +9,7 @@ WIE IST DAS PROJEKT ZU STARTEN:
 AUTOR: Jan Schneider, HfG, IoT3
 PROJEKTSPEICHER: https://github.com/jan-patrick/World-Cup-betting
 BENUTZERHINWEISE: 
-PROJEKTZIEL: ausführbares BlueJ-Projekt mit allen Quellen und Dokumentationen
+PROJEKTZIEL: ausführbares BlueJ-Projekt und Dokumentation
 
 PROJEKTBESCHREIBUNG: 
 - diesjährige Fussballweltmeisterschaft 2018 als Anregung

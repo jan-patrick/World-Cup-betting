@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Startscreen
-comment0.text=\r\n\ Beschreiben\ Sie\ hier\ die\ Klasse\ Startscreen.\r\n\ \r\n\ @author\ (Ihr\ Name)\ \r\n\ @version\ (eine\ Versionsnummer\ oder\ ein\ Datum)\r\n
+comment0.text=\r\n\ Beschreiben\ Sie\ hier\ die\ Klasse\ Startscreen.\r\n\ \r\n\ @author\ Jan\ Schneider,\ HfG,\ IoT3\r\n\ @version\ 2018.06.15\r\n
 comment1.params=
 comment1.target=Startscreen()
 comment2.params=

@@ -20,8 +20,8 @@ import java.awt.Desktop;
 /**
  * Beschreiben Sie hier die Klasse Startscreen.
  * 
- * @author (Ihr Name) 
- * @version (eine Versionsnummer oder ein Datum)
+ * @author Jan Schneider, HfG, IoT3
+ * @version 2018.06.15
  */
 public class Startscreen extends JDialog {
 
