@@ -2,11 +2,10 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.event.KeyEvent;
+import java.awt.event.ActionEvent;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JDialog;
@@ -15,7 +14,8 @@ import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.JTextPane;
 import javax.swing.SwingUtilities;
-import java.io.*;
+import java.net.URI;
+import java.awt.Desktop;
 
 /**
  * Beschreiben Sie hier die Klasse Startscreen.
@@ -57,12 +57,24 @@ public class Startscreen extends JDialog {
         pane.setContentType("text/html");
         String text = "<p><b>Fussballweltmeisterschaft 2018 Übersichtsplan</b></p>" +
             "<p>Semesterprojekt Programmieren 2 von Jan Schneider, HfG, IoT3</p>" +
-            "<p>bei Rainer Hönle</p>";
+            "<p>bei Rainer Hönle, HS Aalen im Sommersemester 2018</p>";
         pane.setText(text);
         pane.setEditable(false);
         textPanel.add(pane);
-
         basic.add(textPanel);
+        
+        JButton linkButton = new JButton("View on GitHub");
+        basic.add(linkButton);
+        linkButton.addActionListener((ActionEvent event) -> {
+            String[] daten = {"https://github.com/jan-patrick/World-Cup-betting"};
+            openLink(daten);
+        });
+        
+        JButton quitButton = new JButton("Close");
+        basic.add(quitButton);
+        quitButton.addActionListener((ActionEvent event) -> {
+            System.exit(0);
+        });
 
         JPanel boxPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 20, 0));
 
@@ -87,5 +99,40 @@ public class Startscreen extends JDialog {
                 ex.setVisible(true);
             }
         });
+    }
+    
+    /**
+     * Noch zu Beschreiben
+     * 
+     * @ToDo
+     */
+    public static void openLink(String[] args)
+    {
+        if(!java.awt.Desktop.isDesktopSupported())
+        {
+            System.err.println("Desktop is not supported (fatal)");
+            System.exit(1);
+        }
+        if(args.length==0)
+        {
+            System.out.println( "Usage: OpenURI [URI [URI ... ]]" );
+            System.exit( 0 );
+        }
+        java.awt.Desktop desktop = java.awt.Desktop.getDesktop();
+        if(!desktop.isSupported(java.awt.Desktop.Action.BROWSE))
+        {
+            System.err.println( "Desktop doesn't support the browse action (fatal)" );
+            System.exit( 1 );
+        }
+        for(String arg:args)
+        {
+            try{
+                java.net.URI uri = new java.net.URI(arg);
+                desktop.browse( uri );
+            }
+            catch(Exception e){
+                System.err.println(e.getMessage());
+            }
+        }
     }
 }
