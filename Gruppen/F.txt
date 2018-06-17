@@ -1,0 +1,11 @@
+4
+Mexiko
+Suedkorea
+Deutschland
+Schweden
+Mexiko:Suedkorea- : 
+Mexiko:Deutschland- : 
+Mexiko:Schweden- : 
+Suedkorea:Deutschland- : 
+Suedkorea:Schweden- : 
+Deutschland:Schweden- : 

@@ -1,0 +1,11 @@
+4
+Kolumbien
+Senegal
+Japan
+Polen
+Kolumbien:Senegal- : 
+Kolumbien:Japan- : 
+Kolumbien:Polen- : 
+Senegal:Japan- : 
+Senegal:Polen- : 
+Japan:Polen- : 

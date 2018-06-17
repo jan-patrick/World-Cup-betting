@@ -1,0 +1,11 @@
+4
+Schweiz
+Brasilien
+Serbien
+Costa Rica
+Schweiz:Brasilien- : 
+Schweiz:Serbien- : 
+Schweiz:Costa Rica- : 
+Brasilien:Serbien- : 
+Brasilien:Costa Rica- : 
+Serbien:Costa Rica- : 

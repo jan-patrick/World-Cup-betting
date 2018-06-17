@@ -68,15 +68,53 @@ public class Daten
      * 
      * @ToDo
      */
-    public void gruppeSpeichern(String gruppendateiName, String gruppendaten) throws IOException
-    {              
-        String datei = "Gruppen/" + gruppendateiName + ".txt";
+    public  void gruppeSpeichern(String name, String[] teile) throws IOException
+    {
+        String datei = "Gruppen/" + name + ".txt";
         FileWriter fw = new FileWriter(datei);
         BufferedWriter bw = new BufferedWriter(fw);
 
+        for (int x = 0; x < teile.length; x++) {
+            bw.write(teile[x]);
+            if(x<teile.length-1){bw.newLine();};
+        }
+
+        bw.close();
+    }
+    
+    /**
+     * Noch zu Beschreiben
+     * 
+     * @ToDo
+     */
+    public  void gruppeReseten(String[] teile) throws IOException
+    {
+        String datei = "Gruppen/" + teile[0] + ".txt";
+        FileWriter fw = new FileWriter(datei);
+        BufferedWriter bw = new BufferedWriter(fw);
+
+        for (int x = 1; x < teile.length; x++) {
+            bw.write(teile[x]);
+            if(x<teile.length-1){bw.newLine();};
+        }
+
+        bw.close();
+    }
+    
+    /**
+     * Noch zu Beschreiben
+     * 
+     * @ToDo
+     */
+    public  void gruppeAnhaengen(String dateiName, String daten) throws IOException
+    {
+        String datei = "Gruppen/" + dateiName + ".txt";
+        FileWriter fw = new FileWriter(datei, true);
+        BufferedWriter bw = new BufferedWriter(fw);
+
         bw.newLine();
-        bw.write(gruppendaten);
-        
+        bw.write(daten);
+
         bw.close();
     }
 }

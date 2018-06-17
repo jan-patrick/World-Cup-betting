@@ -1,0 +1,11 @@
+4
+Iran
+Spanien
+Portugal
+Marokko
+Iran:Spanien- : 
+Iran:Portugal- : 
+Iran:Marokko- : 
+Spanien:Portugal- : 
+Spanien:Marokko- : 
+Portugal:Marokko- : 

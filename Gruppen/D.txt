@@ -1,0 +1,11 @@
+4
+Kroatien
+Argentinien
+Nigeria
+Island
+Kroatien:Argentinien- : 
+Kroatien:Nigeria- : 
+Kroatien:Island- : 
+Argentinien:Nigeria- : 
+Argentinien:Island- : 
+Nigeria:Island- : 
