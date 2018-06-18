@@ -46,12 +46,12 @@ public class Main
      */
     public void erstelleGruppen()
     {
-        if(gruppenAnzahl != 0)
+        if(gruppenAnzahl>=MAX_GRUPPEN_ANZAHL)
         {            
-            mainInterface.nachricht("Fehler", "Es sind bereits Gruppen im System.");
-        }else if(gruppenAnzahl>=MAX_GRUPPEN_ANZAHL)
-        {
             mainInterface.nachricht("Fehler", "Es sind zu viele Gruppen im System.");
+        }else if(gruppenAnzahl != 0)
+        {
+            mainInterface.nachricht("Fehler", "Es sind bereits Gruppen im System.");
         }
         else
         {     
