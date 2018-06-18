@@ -9,10 +9,17 @@ import java.util.Set;
  * 
  * @author Jan Schneider, HfG, IoT3
  * @version 2018.05.28
+ * 
+ * - gutes Softwaredesign
+ * - keine Codeduplizierung (denselben Code mehrfach, dann auslagern), 
+ * - Kopplung (je loser, desto bessere Wartbarkeit)
+ * - Datenhaltung (geschlossen, nur über Zugriffsmethoden)
+ * - Kohäsion (eine Klasse oder Methode hat möglichst spezifischen Aufgabenbereich hat, 
+ *   Chance auf Wiederverwertung höher)
+ * - Test (einfaches Testen des Projekts)
  */
 public class Main
 {
-    // Instanzvariablen - ersetzen Sie das folgende Beispiel mit Ihren Variablen
     private HashMap<String, Gruppe> gruppen;
     private HashMap<String, Spiel> spiele;
     private Daten daten;
@@ -20,10 +27,11 @@ public class Main
     private Startscreen startscreenReadMe;
     private int gruppenAnzahl = 0;
     private int laenderAnzahl = 0;
+    private final int MIN_GRUPPEN_ANZAHL = 2;
     private final int MAX_GRUPPEN_ANZAHL = 8;
+    private final int MIN_LAENDER_ANZAHL = 2;
     private final int MAX_LAENDER_ANZAHL = 32;
     
-
     /**
      * Konstruktor für Objekte der Klasse Main
      */
@@ -43,6 +51,7 @@ public class Main
      * Noch zu Beschreiben
      * 
      * @ToDo
+     *
      */
     public void erstelleGruppen()
     {
@@ -84,6 +93,9 @@ public class Main
      * Noch zu Beschreiben
      * 
      * @ToDo
+     * 
+     * @param tora, torb, landa, landb, beschreibung
+     * 
      */  
     public void addSpiel(int tora, int torb, String landa, String landb, String beschreibung)
     {
@@ -94,6 +106,7 @@ public class Main
      * Noch zu Beschreiben
      * 
      * @ToDo
+     * @param laender
      */
     public void setProducts(ArrayList<Land> laender) {
         spiele.put( "a", new Spiel( 1, 1, "Griechenland", "Südamerika", "Do, 13.13.13"));
@@ -103,6 +116,9 @@ public class Main
      * Noch zu Beschreiben
      * 
      * @ToDo
+     * 
+     * @param land, tore, punkte
+     * @return boolean
      */
     public boolean speichereLand(String land, int tore, int punkte)
     {
@@ -125,6 +141,9 @@ public class Main
      * Noch zu Beschreiben
      * 
      * @ToDo
+     * 
+     * @param String land, int tore, int punkte
+     * @return String updated Land Info (name, tore, punkte)
      */
     private String[] getDatenSpielergebnis(String land, int tore, int punkte)
     {

@@ -71,14 +71,8 @@ public class Startscreen extends JDialog {
             // Fenster schließen nachdem der Link geöffnet wurde
             System.exit(0);
         });
-        
-        JButton quitButton = new JButton("Fenster schließen");
-        basic.add(quitButton);
-        quitButton.addActionListener((ActionEvent event) -> {
-            System.exit(0);
-        });
 
-        JPanel boxPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 20, 0));
+        JPanel boxPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 50, 0));
 
         JPanel bottom = new JPanel(new FlowLayout(FlowLayout.RIGHT));
 

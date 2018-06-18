@@ -24,18 +24,18 @@ World-Cup-betting
 -Xdoclint:none
 -link
 http://download.oracle.com/javase/8/docs/api/
+C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Programmieren2\Projekt\World-Cup-betting/MainTest.java
 C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Programmieren2\Projekt\World-Cup-betting/Spiel.java
 C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Programmieren2\Projekt\World-Cup-betting/Startscreen.java
-C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Programmieren2\Projekt\World-Cup-betting/GrafikTest.java
 C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Programmieren2\Projekt\World-Cup-betting/Daten.java
 C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Programmieren2\Projekt\World-Cup-betting/Main.java
 C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Programmieren2\Projekt\World-Cup-betting/Gruppe.java
 C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Programmieren2\Projekt\World-Cup-betting/Interface.java
 C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Programmieren2\Projekt\World-Cup-betting/Land.java
 <---- end of javadoc command ---->
+Loading source file C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Programmieren2\Projekt\World-Cup-betting\MainTest.java...
 Loading source file C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Programmieren2\Projekt\World-Cup-betting\Spiel.java...
 Loading source file C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Programmieren2\Projekt\World-Cup-betting\Startscreen.java...
-Loading source file C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Programmieren2\Projekt\World-Cup-betting\GrafikTest.java...
 Loading source file C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Programmieren2\Projekt\World-Cup-betting\Daten.java...
 Loading source file C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Programmieren2\Projekt\World-Cup-betting\Main.java...
 Loading source file C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Programmieren2\Projekt\World-Cup-betting\Gruppe.java...
@@ -44,24 +44,27 @@ Loading source file C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGesta
 Constructing Javadoc information...
 Standard Doclet version 1.8.0_144
 Building tree for all the packages and classes...
+C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Programmieren2\Projekt\World-Cup-betting\Main.java:20: warning - @author tag has no arguments.
+C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Programmieren2\Projekt\World-Cup-betting\Main.java:20: warning - @version tag has no arguments.
 Generating C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Programmieren2\Projekt\World-Cup-betting\doc\Daten.html...
 C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Programmieren2\Projekt\World-Cup-betting\Daten.java:17: warning - @ToDo is an unknown tag.
+C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Programmieren2\Projekt\World-Cup-betting\Daten.java:109: warning - @ToDo is an unknown tag.
+C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Programmieren2\Projekt\World-Cup-betting\Daten.java:90: warning - @ToDo is an unknown tag.
 C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Programmieren2\Projekt\World-Cup-betting\Daten.java:71: warning - @ToDo is an unknown tag.
 C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Programmieren2\Projekt\World-Cup-betting\Daten.java:27: warning - @ToDo is an unknown tag.
 C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Programmieren2\Projekt\World-Cup-betting\Daten.java:52: warning - @ToDo is an unknown tag.
-Generating C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Programmieren2\Projekt\World-Cup-betting\doc\GrafikTest.html...
-C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Programmieren2\Projekt\World-Cup-betting\GrafikTest.java:39: warning - @ToDo is an unknown tag.
-C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Programmieren2\Projekt\World-Cup-betting\GrafikTest.java:67: warning - @ToDo is an unknown tag.
-C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Programmieren2\Projekt\World-Cup-betting\GrafikTest.java:24: warning - @ToDo is an unknown tag.
 Generating C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Programmieren2\Projekt\World-Cup-betting\doc\Gruppe.html...
 C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Programmieren2\Projekt\World-Cup-betting\Gruppe.java:33: warning - @ToDo is an unknown tag.
+C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Programmieren2\Projekt\World-Cup-betting\Gruppe.java:129: warning - @ToDo is an unknown tag.
+C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Programmieren2\Projekt\World-Cup-betting\Gruppe.java:162: warning - @ToDo is an unknown tag.
+C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Programmieren2\Projekt\World-Cup-betting\Gruppe.java:99: warning - @ToDo is an unknown tag.
+C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Programmieren2\Projekt\World-Cup-betting\Gruppe.java:72: warning - @ToDo is an unknown tag.
+C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Programmieren2\Projekt\World-Cup-betting\Gruppe.java:201: warning - @ToDo is an unknown tag.
+C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Programmieren2\Projekt\World-Cup-betting\Gruppe.java:62: warning - @ToDo is an unknown tag.
+C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Programmieren2\Projekt\World-Cup-betting\Gruppe.java:179: warning - @ToDo is an unknown tag.
+C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Programmieren2\Projekt\World-Cup-betting\Gruppe.java:190: warning - @ToDo is an unknown tag.
 C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Programmieren2\Projekt\World-Cup-betting\Gruppe.java:82: warning - @ToDo is an unknown tag.
-C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Programmieren2\Projekt\World-Cup-betting\Gruppe.java:55: warning - @ToDo is an unknown tag.
-C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Programmieren2\Projekt\World-Cup-betting\Gruppe.java:117: warning - @ToDo is an unknown tag.
-C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Programmieren2\Projekt\World-Cup-betting\Gruppe.java:45: warning - @ToDo is an unknown tag.
-C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Programmieren2\Projekt\World-Cup-betting\Gruppe.java:95: warning - @ToDo is an unknown tag.
-C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Programmieren2\Projekt\World-Cup-betting\Gruppe.java:106: warning - @ToDo is an unknown tag.
-C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Programmieren2\Projekt\World-Cup-betting\Gruppe.java:65: warning - @ToDo is an unknown tag.
+C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Programmieren2\Projekt\World-Cup-betting\Gruppe.java:220: warning - @ToDo is an unknown tag.
 Generating C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Programmieren2\Projekt\World-Cup-betting\doc\Interface.html...
 C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Programmieren2\Projekt\World-Cup-betting\Interface.java:28: warning - @ToDo is an unknown tag.
 C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Programmieren2\Projekt\World-Cup-betting\Interface.java:100: warning - @ToDo is an unknown tag.
@@ -70,21 +73,29 @@ C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Prog
 C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Programmieren2\Projekt\World-Cup-betting\Interface.java:45: warning - @ToDo is an unknown tag.
 Generating C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Programmieren2\Projekt\World-Cup-betting\doc\Land.html...
 C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Programmieren2\Projekt\World-Cup-betting\Land.java:39: warning - @ToDo is an unknown tag.
-C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Programmieren2\Projekt\World-Cup-betting\Land.java:76: warning - @ToDo is an unknown tag.
-C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Programmieren2\Projekt\World-Cup-betting\Land.java:49: warning - @ToDo is an unknown tag.
-C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Programmieren2\Projekt\World-Cup-betting\Land.java:67: warning - @ToDo is an unknown tag.
-C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Programmieren2\Projekt\World-Cup-betting\Land.java:58: warning - @ToDo is an unknown tag.
-C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Programmieren2\Projekt\World-Cup-betting\Land.java:87: warning - @ToDo is an unknown tag.
+C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Programmieren2\Projekt\World-Cup-betting\Land.java:77: warning - @ToDo is an unknown tag.
+C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Programmieren2\Projekt\World-Cup-betting\Land.java:50: warning - @ToDo is an unknown tag.
+C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Programmieren2\Projekt\World-Cup-betting\Land.java:68: warning - @ToDo is an unknown tag.
+C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Programmieren2\Projekt\World-Cup-betting\Land.java:59: warning - @ToDo is an unknown tag.
+C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Programmieren2\Projekt\World-Cup-betting\Land.java:88: warning - @ToDo is an unknown tag.
 Generating C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Programmieren2\Projekt\World-Cup-betting\doc\Main.html...
-C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Programmieren2\Projekt\World-Cup-betting\Main.java:58: warning - @ToDo is an unknown tag.
-C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Programmieren2\Projekt\World-Cup-betting\Main.java:41: warning - @ToDo is an unknown tag.
-C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Programmieren2\Projekt\World-Cup-betting\Main.java:68: warning - @ToDo is an unknown tag.
-C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Programmieren2\Projekt\World-Cup-betting\Main.java:77: warning - @ToDo is an unknown tag.
+C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Programmieren2\Projekt\World-Cup-betting\Main.java:20: warning - Tag @return cannot be used in class documentation.  It can only be used in the following types of documentation: method.
+C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Programmieren2\Projekt\World-Cup-betting\Main.java:20: warning - Tag @exception cannot be used in class documentation.  It can only be used in the following types of documentation: constructor, method.
+C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Programmieren2\Projekt\World-Cup-betting\Main.java:99: warning - @ToDo is an unknown tag.
+C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Programmieren2\Projekt\World-Cup-betting\Main.java:99: warning - @param argument "tora," is not a parameter name.
+C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Programmieren2\Projekt\World-Cup-betting\Main.java:55: warning - @ToDo is an unknown tag.
+C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Programmieren2\Projekt\World-Cup-betting\Main.java:81: warning - @ToDo is an unknown tag.
+C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Programmieren2\Projekt\World-Cup-betting\Main.java:155: warning - @ToDo is an unknown tag.
+C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Programmieren2\Projekt\World-Cup-betting\Main.java:110: warning - @ToDo is an unknown tag.
+C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Programmieren2\Projekt\World-Cup-betting\Main.java:110: warning - @param argument "ArrayList<Land>" is not a parameter name.
+C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Programmieren2\Projekt\World-Cup-betting\Main.java:122: warning - @ToDo is an unknown tag.
+C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Programmieren2\Projekt\World-Cup-betting\Main.java:122: warning - @param argument "land," is not a parameter name.
+Generating C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Programmieren2\Projekt\World-Cup-betting\doc\MainTest.html...
 Generating C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Programmieren2\Projekt\World-Cup-betting\doc\Spiel.html...
 C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Programmieren2\Projekt\World-Cup-betting\Spiel.java:59: warning - @ToDo is an unknown tag.
 Generating C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Programmieren2\Projekt\World-Cup-betting\doc\Startscreen.html...
-C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Programmieren2\Projekt\World-Cup-betting\Startscreen.java:97: warning - @ToDo is an unknown tag.
-C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Programmieren2\Projekt\World-Cup-betting\Startscreen.java:111: warning - @ToDo is an unknown tag.
+C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Programmieren2\Projekt\World-Cup-betting\Startscreen.java:91: warning - @ToDo is an unknown tag.
+C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Programmieren2\Projekt\World-Cup-betting\Startscreen.java:105: warning - @ToDo is an unknown tag.
 Generating C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Programmieren2\Projekt\World-Cup-betting\doc\package-frame.html...
 Generating C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Programmieren2\Projekt\World-Cup-betting\doc\package-summary.html...
 Generating C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Programmieren2\Projekt\World-Cup-betting\doc\package-tree.html...
@@ -98,4 +109,4 @@ Generating C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Sem
 Generating C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Programmieren2\Projekt\World-Cup-betting\doc\allclasses-noframe.html...
 Generating C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Programmieren2\Projekt\World-Cup-betting\doc\index.html...
 Generating C:\Users\jansc\OneDrive\_InternetofThings\HochschulefürGestaltung\Semester3\Programmieren2\Projekt\World-Cup-betting\doc\help-doc.html...
-33 warnings
+44 warnings
