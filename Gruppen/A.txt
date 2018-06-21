@@ -1,11 +1,1 @@
-4
-Aegypten
-Russland
-Uruguay
-SaudiArabien
-Aegypten:Russland- : 
-Aegypten:Uruguay- : 
-Aegypten:SaudiArabien- : 
-Russland:Uruguay- : 
-Russland:SaudiArabien- : 
-Uruguay:SaudiArabien- : 
+1

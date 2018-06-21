@@ -73,7 +73,7 @@ public class Main
      * 
      * @ToDo
      */
-    private void erstelleGruppen()
+    public void erstelleGruppen()
     {
         if(gruppenAnzahl>=MAX_GRUPPEN_ANZAHL)
         {            
@@ -209,5 +209,16 @@ public class Main
         }
 
         mainInterface.erstelleSpielplan(aktuelledaten);
+    }
+    
+    /**
+     * Noch zu Beschreiben
+     * 
+     * @ToDo
+     */
+    private String schreibeGroß(String eingabe)
+    {
+        String ausgabe = eingabe.substring(0, 1).toUpperCase() + eingabe.substring(1);
+        return ausgabe;
     }
 }
