@@ -1,4 +1,4 @@
-#Sun Jun 17 08:38:29 CEST 2018
+#Thu Jun 21 20:30:27 CEST 2018
 bluej.teamsettings.groupname=
 bluej.teamsettings.git.repositoryPrefix=/jan-patrick/World-Cup-betting
 bluej.teamsettings.git.protocol=https
@@ -7,8 +7,8 @@ bluej.teamsettings.git.server=github.com
 bluej.teamsettings.yourEmail=jan.schneider@hfg-gmuend.de
 bluej.teamsettings.vcs=git
 bluej.teamsettings.ignore8=\\.DS_Store
-bluej.teamsettings.ignore7=.*\\\#backup
 bluej.teamsettings.yourName=jan-patrick
+bluej.teamsettings.ignore7=.*\\\#backup
 bluej.teamsettings.ignore6=.*\\\#
 bluej.teamsettings.ignore5=.*\\~
 bluej.teamsettings.ignore4=.*\\.ctxt

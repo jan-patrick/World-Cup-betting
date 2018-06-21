@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Interface
-comment0.text=\r\n\ Beschreiben\ Sie\ hier\ die\ Klasse\ test.\r\n\ \r\n\ @author\ Jan\ Schneider,\ HfG,\ IoT3\r\n\ @version\ 2018.05.28\r\n
+comment0.text=\r\n\ Beschreiben\ Sie\ hier\ die\ Klasse\ Interface.\r\n\ \r\n\ @author\ Jan\ Schneider,\ HfG,\ IoT3\r\n\ @version\ 2018.05.28\r\n
 comment1.params=
 comment1.target=Interface()
 comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Interface\r\n

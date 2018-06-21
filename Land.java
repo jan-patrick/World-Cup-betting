@@ -6,7 +6,6 @@
  */
 public class Land
 {
-    // Instanzvariablen 
     private String name;
     private int tore;
     private int punkte;   
@@ -49,24 +48,6 @@ public class Land
      */
     public String getName() {
         return name;
-    }
-    
-    /**
-     * Noch zu Beschreiben
-     * 
-     * @ToDo
-     */
-    public int getTore() {
-        return tore;
-    }
-    
-    /**
-     * Noch zu Beschreiben
-     * 
-     * @ToDo
-     */
-    public int getPunkte() {
-        return punkte;
     }
     
     /**

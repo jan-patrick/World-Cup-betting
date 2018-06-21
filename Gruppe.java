@@ -188,9 +188,7 @@ public class Gruppe
         if(teile.length >= gruppenGroesse+2){
             for (int i = gruppenGroesse+1; i < teile.length; i++) {
                 String[] aktuelledaten = teile[i].split("-");
-
                 gruppenphaseSpiele.put(aktuelledaten[0], aktuelledaten[1]);
-
             }
         }
     }
@@ -227,10 +225,12 @@ public class Gruppe
         for (int i = 1; i <= gruppenGroesse; i++) {
             ladeLand(teile[i]);
         }
-        
+
         if(teile.length <= gruppenGroesse + 1){
             berechnePaarungen();
         }
+
+        ladeSpiele(teile);
     }
     
     /**
