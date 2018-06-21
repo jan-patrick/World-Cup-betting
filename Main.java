@@ -44,16 +44,36 @@ public class Main
         mainInterface = new Interface();
         startscreenReadMe = new Startscreen();
         startscreenReadMe.main();
-        //mainInterface.setIconImage(Toolkit.getDefaultToolkit().getImage("img/icon.png"));
+        ladeGruppen();
     }
     
     /**
      * Noch zu Beschreiben
      * 
      * @ToDo
-     *
      */
-    public void erstelleGruppen()
+    private void ladeGruppen()
+    {
+        String aktuelledaten = "";
+        String[] teile;
+        try{
+            aktuelledaten = daten.ladeDatei("Gruppen", "Gruppen");
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        teile = aktuelledaten.split("/");
+        for (int i = 0; i < teile.length; i++) {
+            gruppen.put(teile[i], new Gruppe(teile[i]));
+        }
+    }
+    
+    /**
+     * Noch zu Beschreiben
+     * 
+     * @ToDo
+     */
+    private void erstelleGruppen()
     {
         if(gruppenAnzahl>=MAX_GRUPPEN_ANZAHL)
         {            
@@ -169,5 +189,25 @@ public class Main
         }
 
         return null;
+    }
+    
+    /**
+     * Noch zu Beschreiben
+     * 
+     * @ToDo
+     */
+    public void gibAlleSpielergebnise ()
+    {
+        String aktuelledaten = "";
+
+        for (String key : gruppen.keySet()) {
+            Gruppe gruppe = gruppen.get(key);
+            gruppe.loadGruppeninfo(key);
+            aktuelledaten += "Gruppe " + key + "<br>";
+            aktuelledaten += gruppe.getSpielergebnisDaten();
+            aktuelledaten += "!";
+        }
+
+        mainInterface.erstelleSpielplan(aktuelledaten);
     }
 }

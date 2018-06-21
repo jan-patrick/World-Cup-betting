@@ -11,6 +11,7 @@ public class Gruppe
 {
     // Instanzvariablen - ersetzen Sie das folgende Beispiel mit Ihren Variablen
     private HashMap<String, Land> laender;
+    private HashMap<String, String> gruppenphaseSpiele;
     private String gruppenName;
     private int gruppenGroesse;
     private Daten daten;
@@ -130,7 +131,7 @@ public class Gruppe
     {
         ArrayList teile = new ArrayList<String>();
         String[] laender = getLaender();
-        int größeSpiele = binominalkoeffizient(gruppenGroesse, 2);
+        //int größeSpiele = binominalkoeffizient(gruppenGroesse, 2);
         teile.add(String.valueOf(gruppenGroesse));
 
         for (int i = 0; i < laender.length; i++) {
@@ -153,24 +154,7 @@ public class Gruppe
             e.printStackTrace();
         }
     }
-    
-    /**
-     * Noch zu Beschreiben
-     * 
-     * @ToDo
-     */
-    public int binominalkoeffizient(int n, int k)
-    {        
-        if (k > n) return 0;
-        else {
-            int a = 1;
-            for (int i = n-k+1; i <= n; i++) a *= i;
-            int b = 1;
-            for (int i = 2; i <= k; i++) b *= i;
-            return a / b;
-        }
-    }
-       
+          
     /**
      * Noch zu Beschreiben
      * 
@@ -248,5 +232,26 @@ public class Gruppe
 
         String[] teile = aktuelleDaten.split("/");
         return teile;
+    }
+    
+    /**
+     * Noch zu Beschreiben
+     * 
+     * @ToDo
+     */
+    public String getSpielergebnisDaten()
+    {
+        loadGruppeninfo(gruppenName);
+
+        String aktuelledaten = "";
+        for (String key : gruppenphaseSpiele.keySet()) {
+            aktuelledaten += (key + "-" + gruppenphaseSpiele.get(key) + "<br>");
+        }
+
+        if(aktuelledaten.isEmpty() == true){
+            aktuelledaten += "-------------";
+        }
+
+        return aktuelledaten;
     }
 }

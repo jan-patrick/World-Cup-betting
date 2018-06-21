@@ -5,7 +5,7 @@ import javax.swing.JPanel;
 import java.awt.GridLayout;
 
 /**
- * Beschreiben Sie hier die Klasse test.
+ * Beschreiben Sie hier die Klasse Interface.
  * 
  * @author Jan Schneider, HfG, IoT3
  * @version 2018.05.28
