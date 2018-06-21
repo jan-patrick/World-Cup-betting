@@ -1,5 +1,6 @@
 import java.io.*;
 import java.lang.*;
+import java.nio.file.*;
 
 /**
  * Beschreiben Sie hier die Klasse Nationen.
@@ -116,5 +117,16 @@ public class Daten
         bw.write(daten);
 
         bw.close();
+    }
+    
+    /**
+     * Noch zu Beschreiben
+     * 
+     * @ToDo
+     */
+    public  void löscheDatei(String ordner, String name) throws IOException
+    {
+        String datei = ordner + "/" + name + ".txt";
+        Files.deleteIfExists(Paths.get(datei));
     }
 }
