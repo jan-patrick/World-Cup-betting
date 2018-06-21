@@ -24,6 +24,7 @@ public class Gruppe
         laender = new HashMap<>();
         daten = new Daten();
         this.gruppenName = gruppenName;
+        loadGruppeninfo(gruppenName);
     }
            
     /**
@@ -175,6 +176,23 @@ public class Gruppe
     {
         Land land = laender.get(name);
         return land.getUpdatedInfo(tore, punkte);
+    }
+    
+    /**
+     * Noch zu Beschreiben
+     * 
+     * @ToDo
+     */
+    public void ladeSpiele(String[] teile)
+    {
+        if(teile.length >= gruppenGroesse+2){
+            for (int i = gruppenGroesse+1; i < teile.length; i++) {
+                String[] aktuelledaten = teile[i].split("-");
+
+                gruppenphaseSpiele.put(aktuelledaten[0], aktuelledaten[1]);
+
+            }
+        }
     }
     
     /**

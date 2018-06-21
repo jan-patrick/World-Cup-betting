@@ -21,7 +21,6 @@ import java.util.Set;
 public class Main
 {
     private HashMap<String, Gruppe> gruppen;
-    private HashMap<String, Spiel> spiele;
     private Daten daten;
     private Interface mainInterface;
     private Startscreen startscreenReadMe;
@@ -39,7 +38,6 @@ public class Main
     {
         // Instanzvariable initialisieren
         gruppen = new HashMap<>();
-        spiele = new HashMap<>();
         daten = new Daten();
         mainInterface = new Interface();
         startscreenReadMe = new Startscreen();
@@ -107,29 +105,6 @@ public class Main
             ergebnis += " " + gruppe;
         }
         return ergebnis;
-    }
-    
-    /**
-     * Noch zu Beschreiben
-     * 
-     * @ToDo
-     * 
-     * @param tora, torb, landa, landb, beschreibung
-     * 
-     */  
-    public void addSpiel(int tora, int torb, String landa, String landb, String beschreibung)
-    {
-        spiele.put( "0", new Spiel( tora, torb, landa, landb, beschreibung));
-    }
-    
-    /**
-     * Noch zu Beschreiben
-     * 
-     * @ToDo
-     * @param laender
-     */
-    public void setProducts(ArrayList<Land> laender) {
-        spiele.put( "a", new Spiel( 1, 1, "Griechenland", "Südamerika", "Do, 13.13.13"));
     }
     
     /**
