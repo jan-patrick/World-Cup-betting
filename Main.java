@@ -169,6 +169,7 @@ public class Main
     /**
      * Noch zu Beschreiben
      * 
+     * @see     alle Gruppenphasespiele, sortiert nach Gruppe
      * @ToDo
      */
     public void gibAlleSpielergebnise ()

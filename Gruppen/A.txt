@@ -8,4 +8,4 @@ Aegypten:Uruguay- :
 Aegypten:SaudiArabien- : 
 Russland:Uruguay- : 
 Russland:SaudiArabien- : 
-Uruguay:SaudiArabien- :
+Uruguay:SaudiArabien- : 

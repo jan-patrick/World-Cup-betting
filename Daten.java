@@ -3,7 +3,7 @@ import java.lang.*;
 import java.nio.file.*;
 
 /**
- * Beschreiben Sie hier die Klasse Nationen.
+ * Beschreiben Sie hier die Klasse Daten.
  * 
  * @author Jan Schneider, HfG, IoT3
  * @version 2018.06.11
@@ -23,6 +23,8 @@ public class Daten
     /**
      * Noch zu Beschreiben
      * 
+     * @param ordnername, dateiname
+     * @return daten
      * @ToDo
      */
     public String ladeDatei(String ordnername, String dateiname) throws IOException
@@ -30,24 +32,21 @@ public class Daten
         String datei = ordnername + "/" + dateiname + ".txt";
         FileReader fr = new FileReader(datei);
         BufferedReader br = new BufferedReader(fr);
-
         String daten = "";
         String zeile = "";
-
         while( (zeile = br.readLine()) != null )
         {
             daten += zeile;
-            daten += ",";
+            daten += "/";
         }
-
         br.close();
-
         return daten;
     }
 
     /**
      * Noch zu Beschreiben
      * 
+     * @param landteile
      * @ToDo
      */
     public void landSpeichern(String[] landteile) throws IOException
@@ -67,28 +66,28 @@ public class Daten
     /**
      * Noch zu Beschreiben
      * 
+     * @param gruppenName, gruppenteile
      * @ToDo
      */
-    public void gruppeSpeichern(String name, String[] teile) throws IOException
+    public void gruppeSpeichern(String gruppenName, String[] gruppenteile) throws IOException
     {
-        String datei = "Gruppen/" + name + ".txt";
+        String datei = "Gruppen/" + gruppenName + ".txt";
         FileWriter fw = new FileWriter(datei);
         BufferedWriter bw = new BufferedWriter(fw);
-
-        for (int x = 0; x < teile.length; x++) {
-            bw.write(teile[x]);
-            if(x<teile.length-1){bw.newLine();};
+        for (int x = 0; x < gruppenteile.length; x++) {
+            bw.write(gruppenteile[x]);
+            if(x<gruppenteile.length-1){bw.newLine();};
         }
-
         bw.close();
     }
     
     /**
      * Noch zu Beschreiben
      * 
+     * @param teile
      * @ToDo
      */
-    public  void gruppeReseten(String[] teile) throws IOException
+    public void gruppeReseten(String[] teile) throws IOException
     {
         String datei = "Gruppen/" + teile[0] + ".txt";
         FileWriter fw = new FileWriter(datei);
@@ -105,26 +104,25 @@ public class Daten
     /**
      * Noch zu Beschreiben
      * 
+     * @param daten
      * @ToDo
      */
-    public  void gruppeAnhaengen(String dateiName, String daten) throws IOException
+    public  void gruppeAnhaengen(String daten) throws IOException
     {
-        String datei = "Gruppen/" + dateiName + ".txt";
-        FileWriter fw = new FileWriter(datei, true);
+        FileWriter fw = new FileWriter("Gruppen/Gruppen.txt", true);
         BufferedWriter bw = new BufferedWriter(fw);
-
         bw.newLine();
-        bw.write(daten);
-
+        bw.write(daten);        
         bw.close();
     }
     
     /**
      * Noch zu Beschreiben
      * 
+     * @param ordner, name
      * @ToDo
      */
-    public  void löscheDatei(String ordner, String name) throws IOException
+    public  void deleteDatei(String ordner, String name) throws IOException
     {
         String datei = ordner + "/" + name + ".txt";
         Files.deleteIfExists(Paths.get(datei));

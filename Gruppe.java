@@ -25,6 +25,7 @@ public class Gruppe
     public Gruppe(String gruppenName)
     {
         laender = new HashMap<>();
+        gruppenphaseSpiele = new HashMap<>();
         daten = new Daten();
         this.gruppenName = gruppenName;
         loadGruppeninfo(gruppenName);
