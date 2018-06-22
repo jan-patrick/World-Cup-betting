@@ -279,11 +279,18 @@ public class Gruppe
     {
         loadGruppeninfo(gruppenName);
         String aktuelledaten = "";
+        int laengstesLand = 0;
+        ArrayList landEins = new ArrayList<String>();
+        ArrayList landZwei = new ArrayList<String>();
+        ArrayList tore = new ArrayList<String>();
         for (String key : gruppenphaseSpiele.keySet()) {
             String usedkey = key.replaceAll("\\s","");
-            String landEins = usedkey.split(":")[0];
-            String landZwei = usedkey.split(":")[1];
-            aktuelledaten += (landEins + " " + gruppenphaseSpiele.get(key) + " " + landZwei +"<br>");
+            landEins.add(usedkey.split(":")[0]);
+            landZwei.add(usedkey.split(":")[1]);
+            tore.add(gruppenphaseSpiele.get(key));
+        }
+        for(int i = 0; i < landEins.size(); i++){
+            aktuelledaten += (landEins.get(i) + " " + tore.get(i) + " " + landZwei.get(i) +" <br>");
         }
         if(aktuelledaten.isEmpty() == true){
             aktuelledaten += "-------------";
