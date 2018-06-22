@@ -1,5 +1,7 @@
 /**
- * Beschreiben Sie hier die Klasse Land.
+ * Die Klasse Land beinhaltet alle Informationen, die ein Land identifizieren und zugehörig sind.
+ * Objekte der Klasse Land werden in der HashMap Laender in der Klasse Gruppe gespeichert.
+ * Der Name des Landes wird neben dessen Tore und Punkte gespeichert.
  * 
  * @author Jan Schneider, HfG, IoT3
  * @version 2018.05.28
@@ -11,7 +13,13 @@ public class Land
     private int punkte;   
 
     /**
-     * Konstruktor für Objekte der Klasse Land
+     * Wird ein Objekt der Klasse Land erzeugt, muss der Name, Tore und Punkte übergeben werden.
+     * Wichtig ist, dass auch die Tore und Punkte übergeben werden können, um bei Neustart oder
+     * Zurücksetzen des Programms direkt aus den gespeicherten oder neuen Daten der Klasse Daten
+     * alle Länder mit aktuellen Werten erzeugt bzw wieder eingeleden werden können, auch wenn 
+     * diese dann beispielsweise schon Tore und Punkte besitzen.
+     * 
+     * @param name, tore, punkte
      */
     public Land(String name, int tore, int punkte)
     {
@@ -19,9 +27,9 @@ public class Land
     }
     
     /**
-     * Noch zu Beschreiben
+     * Setzt die Werte der Klasse den übergebenen Werten der Methode gleich. 
      * 
-     * @ToDo
+     * @param name, tore, punkte
      */
     private void setDetails(String name, int tore, int punkte)
     {
@@ -31,46 +39,37 @@ public class Land
     }
 
     /**
-     * Noch zu Beschreiben
+     * Gibt alle Werte (Name, Tore, Punkte) dieser Klasse als String Array zurück.
      * 
-     * @ToDo
+     * @return aktuelledaten
      */
     public String[] getDetails()
     {
-        String[] daten = {name, String.valueOf(tore), String.valueOf(punkte)};
-        return daten;
+        String[] aktuelledaten = {name, String.valueOf(tore), String.valueOf(punkte)};
+        return aktuelledaten;
     }
     
     /**
-     * Noch zu Beschreiben
+     * Gibt den Namen des Landes zurück.
      * 
-     * @ToDo
+     * @return name
      */
     public String getName() {
         return name;
     }
     
     /**
-     * Noch zu Beschreiben
+     * Aktualisiert erst die Tore und Punkte und gibt anschließend alle Werte (Name, Tore, 
+     * Punkte)als Array zurück.
      * 
-     * @ToDo
-     */
-    public String[] getInfo ()
-    {
-        String[] daten = {name, String.valueOf(tore), String.valueOf(punkte)};
-        return daten;
-    }
-    
-    /**
-     * Noch zu Beschreiben
-     * 
-     * @ToDo
+     * @param tore, punkte
+     * @return aktuelledaten
      */
     public String[] getUpdatedInfo (int tore, int punkte)
     {
         this.tore += tore;
         this.punkte += punkte;
-        String[] daten = {name, String.valueOf(this.tore), String.valueOf(this.punkte)};
-        return daten;
+        String[] aktuelledaten = getDetails();
+        return aktuelledaten;
     }
 }
