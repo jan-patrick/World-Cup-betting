@@ -272,6 +272,7 @@ public class Gruppe
     
     /**
      * Noch zu Beschreiben
+     * Löscht zur Sicherheit alle Leerzeichen aus den ausgelesenen Ländern
      * 
      * @ToDo
      */
@@ -279,20 +280,53 @@ public class Gruppe
     {
         loadGruppeninfo(gruppenName);
         String aktuelledaten = "";
-        int laengstesLand = 0;
+        int kuerzestesLand = 0;
         ArrayList landEins = new ArrayList<String>();
         ArrayList landZwei = new ArrayList<String>();
-        ArrayList tore = new ArrayList<String>();
+        ArrayList torEins = new ArrayList<String>();
+        ArrayList torZwei = new ArrayList<String>();
         for (String key : gruppenphaseSpiele.keySet()) {
             String usedkey = key.replaceAll("\\s","");
-            landEins.add(usedkey.split(":")[0]);
+            String usedvalue = gruppenphaseSpiele.get(key).replaceAll("\\s","");
+            String landeinsName = usedkey.split(":")[0];
+            if(landEins.size()<=0){
+                kuerzestesLand = landeinsName.length();
+            }
+            else if(landeinsName.length()<kuerzestesLand){
+                kuerzestesLand = landeinsName.length();
+            }
+            landEins.add(landeinsName);
             landZwei.add(usedkey.split(":")[1]);
-            tore.add(gruppenphaseSpiele.get(key));
+            String usedValueString = usedvalue.toString();
+            System.out.println(usedValueString);
+            if(usedValueString==":")
+            {
+                if(usedvalue.split(":")[0]==null || usedvalue.split(":")[0]==""){
+                    torEins.add("-");
+                }
+                else
+                {
+                    torEins.add(usedvalue.split(":")[0]);
+                }
+                if(usedvalue.split(":")[1]==null || usedvalue.split(":")[1]==""){
+                    torZwei.add("-");
+                }
+                else
+                {
+                    torZwei.add(usedvalue.split(":")[1]);
+                }
+            }
+            else
+            {
+                torEins.add("-");
+                torZwei.add("-");
+            }
         }
         for(int i = 0; i < landEins.size(); i++){
-            aktuelledaten += (landEins.get(i) + " " + tore.get(i) + " " + landZwei.get(i) +" <br>");
+            String outputLandEins = landEins.get(i).toString();
+            aktuelledaten += (outputLandEins + " " + torEins.get(i) + ":" +torZwei.get(i) + " " + landZwei.get(i) +" <br>");
         }
-        if(aktuelledaten.isEmpty() == true){
+        if(aktuelledaten.isEmpty()){
             aktuelledaten += "-------------";
         }
         return aktuelledaten;
