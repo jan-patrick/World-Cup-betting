@@ -31,13 +31,18 @@ public class Main
     private final int MAX_GRUPPEN_ANZAHL = 8;
     private final int MIN_LAENDER_ANZAHL = 8;
     private final int MAX_LAENDER_ANZAHL = 32;
+    private String turnierName;
     
     /**
      * Konstruktor für Objekte der Klasse Main
      */
     public Main()
     {
-        // Instanzvariable initialisieren
+        if (turnierName==null){
+            this.turnierName = "WM 2018";
+        }else{
+            this.turnierName = turnierName;
+        }
         gruppen = new HashMap<>();
         daten = new Daten();
         mainInterface = new Interface();
@@ -185,7 +190,7 @@ public class Main
             aktuelledaten += "!";
         }
 
-        mainInterface.erstelleSpielplan(aktuelledaten);
+        mainInterface.createSpielplan(aktuelledaten);
     }
     
     /**

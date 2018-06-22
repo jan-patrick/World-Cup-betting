@@ -79,7 +79,7 @@ public class Interface
      * 
      * @ToDo
      */
-    public void erstelleSpielplan(String daten)
+    public void createSpielplan(String daten)
     {
         String [] teile = daten.split("!");
    
@@ -89,7 +89,7 @@ public class Interface
         }     
 
         JOptionPane pane = new JOptionPane( panel);
-        pane.createDialog(null, "Spielergebnis").setVisible(true);
+        pane.createDialog(null, "Spielergebnisse").setVisible(true);
     }
 
     /**
