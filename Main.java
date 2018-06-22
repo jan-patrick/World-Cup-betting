@@ -79,6 +79,23 @@ public class Main
      * 
      * @ToDo
      */
+    public void loadTurnierName()
+    {
+        try
+        {    
+            turnierName = daten.ladeDatei("allgemein", "turnierName").replaceAll("\\W","");;
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+    
+    /**
+     * Noch zu Beschreiben
+     * 
+     * @ToDo
+     */
     public void ladeVorlage()
     {
         String aktuelledaten = "";
@@ -267,15 +284,29 @@ public class Main
             String name = key;
             Gruppe gruppe = gruppen.get(key);
             String[] teile = gruppe.getLaender();
+            
+            ArrayList where = new ArrayList<String>();
+            where.add(key);
+            where.add(String.valueOf(gruppe.getGruppenGroesse()));
 
             for (int i = 0; i < teile.length; i++) {
                 String[] datenLand = {teile[i], "0", "0"};
+                where.add(teile[i]);
                 try{
                     daten.landSpeichern(datenLand);
                 }
                 catch (Exception e) {
                     e.printStackTrace();
                 }
+            }
+            String[] datenGruppe = new String[where.size()];
+            where.toArray( datenGruppe );
+
+            try{
+                daten.gruppeReseten(datenGruppe);
+            }
+            catch (Exception e) {
+                e.printStackTrace();
             }
             gruppe.deleteSpiele();
         }
