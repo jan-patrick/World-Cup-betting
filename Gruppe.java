@@ -298,11 +298,10 @@ public class Gruppe
             }    
             landEins.add(landeinsName);
             landZwei.add(usedkey.split(":")[1]);
-            String usedValueString = usedvalue.toString();
-            if(usedvalue.length() < 3){
-                usedvalue = " : ";
-            }
-            System.out.println(usedvalue.length() + "" + usedvalue);
+            usedvalue = usedvalue.replaceAll("\\s","");
+            if(usedvalue.length()<3){
+                usedvalue = "-:-";
+            }    
             if(usedvalue.split(":")[0].length() > 0 && usedvalue.split(":")[0] != null){
                 if(isInteger(usedvalue.split(":")[0])){
                 torEins.add(usedvalue.split(":")[0]);
