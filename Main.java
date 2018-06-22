@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.lang.*;
 import java.io.*;
 import java.util.HashMap;
@@ -28,7 +29,7 @@ public class Main
     private int laenderAnzahl = 0;
     private final int MIN_GRUPPEN_ANZAHL = 2;
     private final int MAX_GRUPPEN_ANZAHL = 8;
-    private final int MIN_LAENDER_ANZAHL = 2;
+    private final int MIN_LAENDER_ANZAHL = 8;
     private final int MAX_LAENDER_ANZAHL = 32;
     
     /**

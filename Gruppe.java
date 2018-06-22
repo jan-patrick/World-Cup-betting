@@ -1,5 +1,6 @@
 import java.util.HashMap;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Beschreiben Sie hier die Klasse Gruppe.
@@ -105,7 +106,6 @@ public class Gruppe
         int punkte = Integer.valueOf(datenteile[2]);
 
         laender.put(nameLand, new Land(nameLand, tore, punkte));
-        //gruppenGroesse += 1;
     }
        
     /**
@@ -206,6 +206,7 @@ public class Gruppe
         if(teile.length >= gruppenGroesse+2){
             for (int i = gruppenGroesse+1; i < teile.length; i++) {
                 String[] aktuelledaten = teile[i].split("-");
+                System.out.println(aktuelledaten[0] + " " + aktuelledaten[1]);
                 gruppenphaseSpiele.put(aktuelledaten[0], aktuelledaten[1]);
             }
         }
@@ -266,7 +267,6 @@ public class Gruppe
         catch (Exception e) {
             e.printStackTrace();
         }
-
         String[] teile = aktuelleDaten.split("/");
         return teile;
     }
