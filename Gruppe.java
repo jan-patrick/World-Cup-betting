@@ -17,7 +17,10 @@ public class Gruppe
     private Daten daten;
  
     /**
-     * Konstruktor der Klasse Gruppe
+     * Noch zu Beschreiben
+     * 
+     * @param gruppenName
+     * @ToDo
      */
     public Gruppe(String gruppenName)
     {
@@ -30,6 +33,7 @@ public class Gruppe
     /**
      * Noch zu Beschreiben
      * 
+     * @param name
      * @ToDo
      */
     public void addLand(String name)
@@ -43,7 +47,7 @@ public class Gruppe
         catch (Exception e) {
             e.printStackTrace();
         }
-        String aktuelledaten = gibDaten("Gruppen", gruppenName);
+        String aktuelledaten = getDaten("Gruppen", gruppenName);
         aktuelledaten += name + "/";
         String[] teile = aktuelledaten.split("/");
         teile[0] = String.valueOf(gruppenGroesse);
@@ -57,9 +61,9 @@ public class Gruppe
     }
     
     /**
-     * Noch zu Beschreiben
+     * Gibt die Anzahl der tatsächlich in der Gruppe gespeicherten Länder zurück.
      * 
-     * @ToDo
+     * @return laender.size()
      */
     public int getLaenderGroesse()
     {
@@ -67,13 +71,23 @@ public class Gruppe
     }
     
     /**
-     * Noch zu Beschreiben
+     * Gibt die Gruppengröße zurück.
      * 
-     * @ToDo
+     * @return gruppenGroesse
      */
     public int getGruppenGroesse()
     {
         return gruppenGroesse;
+    }
+    
+    /**
+     * Gibt den Gruppennamen zurück.
+     * 
+     * @return gruppenName
+     */
+    public String getGruppenName()
+    {
+        return gruppenName;
     }
     
     /**
@@ -90,7 +104,7 @@ public class Gruppe
         int punkte = Integer.valueOf(datenteile[2]);
 
         laender.put(nameLand, new Land(nameLand, tore, punkte));
-        gruppenGroesse += 1;
+        //gruppenGroesse += 1;
     }
        
     /**
@@ -109,9 +123,11 @@ public class Gruppe
     /**
      * Noch zu Beschreiben
      * 
+     * @param ordner, datei
+     * @return aktuelledaten
      * @ToDo
      */
-    private String gibDaten(String ordner, String datei)
+    private String getDaten(String ordner, String datei)
     {
         String aktuelledaten = "";
         try{
@@ -132,7 +148,6 @@ public class Gruppe
     {
         ArrayList teile = new ArrayList<String>();
         String[] laender = getLaender();
-        //int größeSpiele = binominalkoeffizient(gruppenGroesse, 2);
         teile.add(String.valueOf(gruppenGroesse));
 
         for (int i = 0; i < laender.length; i++) {
@@ -170,6 +185,7 @@ public class Gruppe
     /**
      * Noch zu Beschreiben
      * 
+     * @param name, tore, punkte
      * @ToDo
      */
     public String[] getUpdatedInfoLand(String name, int tore, int punkte)
@@ -181,9 +197,10 @@ public class Gruppe
     /**
      * Noch zu Beschreiben
      * 
+     * @param teile
      * @ToDo
      */
-    public void ladeSpiele(String[] teile)
+    public void loadSpiele(String[] teile)
     {
         if(teile.length >= gruppenGroesse+2){
             for (int i = gruppenGroesse+1; i < teile.length; i++) {
@@ -228,9 +245,10 @@ public class Gruppe
 
         if(teile.length <= gruppenGroesse + 1){
             berechnePaarungen();
+            teile = getDatenTeile("Gruppen", name);
         }
 
-        ladeSpiele(teile);
+        loadSpiele(teile);
     }
     
     /**
@@ -260,16 +278,13 @@ public class Gruppe
     public String getSpielergebnisDaten()
     {
         loadGruppeninfo(gruppenName);
-
         String aktuelledaten = "";
         for (String key : gruppenphaseSpiele.keySet()) {
             aktuelledaten += (key + "-" + gruppenphaseSpiele.get(key) + "<br>");
         }
-
         if(aktuelledaten.isEmpty() == true){
             aktuelledaten += "-------------";
         }
-
         return aktuelledaten;
     }
 }
