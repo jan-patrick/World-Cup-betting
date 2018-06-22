@@ -25,6 +25,26 @@ public class Interface
      * 
      * @ToDo
      */
+    public String eingabeAufforderungTurniername(String bisherigerTurniername)
+    {
+        JTextField turniername = new JTextField();
+        Object[] message = {"neuer Turniername (bestehend aus Buchstaben und Zahlen)", turniername, 
+                "Ansonsten heißt das Turnier weiterhin:", bisherigerTurniername,};
+
+        JOptionPane pane = new JOptionPane( message, 
+                JOptionPane.PLAIN_MESSAGE, 
+                JOptionPane.OK_CANCEL_OPTION);
+        pane.createDialog(null, "Turniername ändern").setVisible(true);
+
+        String daten = turniername.getText();
+        return daten;
+    }
+    
+    /**
+     * Noch zu Beschreiben
+     * 
+     * @ToDo
+     */
     public boolean bestaetigen(String kopfzeile, String nachricht)
     {
         int eingabe = JOptionPane.showConfirmDialog(null,
@@ -79,7 +99,7 @@ public class Interface
      * 
      * @ToDo
      */
-    public void createSpielplan(String daten)
+    public void createSpielplan(String turniername, String daten)
     {
         String [] teile = daten.split("!");
    
@@ -89,7 +109,7 @@ public class Interface
         }     
 
         JOptionPane pane = new JOptionPane( panel);
-        pane.createDialog(null, "Spielergebnisse").setVisible(true);
+        pane.createDialog(null, "Spielergebnisse " + turniername).setVisible(true);
     }
 
     /**
@@ -97,7 +117,7 @@ public class Interface
      * 
      * @ToDo
      */
-    public String[] eingabeAufforderungNeuesLand()
+    public String[] eingabeAufforderungNeuesLand(String turniername)
     {
         JTextField gruppe = new JTextField();
         JTextField name = new JTextField();
@@ -109,7 +129,7 @@ public class Interface
         JOptionPane pane = new JOptionPane( message, 
                 JOptionPane.PLAIN_MESSAGE, 
                 JOptionPane.OK_CANCEL_OPTION);
-        pane.createDialog(null, "Neues Land").setVisible(true);
+        pane.createDialog(null, "Neues Land in " + turniername).setVisible(true);
 
         String[] daten = {gruppe.getText(), name.getText()};
         return daten;

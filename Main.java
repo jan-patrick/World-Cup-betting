@@ -31,24 +31,47 @@ public class Main
     private final int MAX_GRUPPEN_ANZAHL = 8;
     private final int MIN_LAENDER_ANZAHL = 8;
     private final int MAX_LAENDER_ANZAHL = 32;
-    private String turnierName;
+    private final String STANDARD_TURNIERNAME = "WM 2018";
+    private String turnierName = STANDARD_TURNIERNAME;
     
     /**
      * Konstruktor für Objekte der Klasse Main
      */
     public Main()
     {
-        if (turnierName==null){
-            this.turnierName = "WM 2018";
-        }else{
-            this.turnierName = turnierName;
-        }
         gruppen = new HashMap<>();
         daten = new Daten();
         mainInterface = new Interface();
         startscreenReadMe = new Startscreen();
         startscreenReadMe.main();
         ladeGruppen();
+    }
+    
+    /**
+     * Ändert die Turnierbezeichnung. Lässt nur Eingaben zu, die in den Kontext passen 
+     * (EM oder WM + Jahreszahl), was durch die Länge der Eingabe grob geprüft wird.<br>
+     * Geprüft wird aber nur auf Länge, sodass ein anderer Name auch möglich ist, nur auch um
+     * Ausgabefehler zu vermeiden ist die Länge eben eingeschränkt. Außerdem wird die Eingabe auf
+     * Buchstaben und Zahlen reduziert, um "   " als Turnier zu vermeiden und andere eventuell
+     * anfällige Eingaben direkt auszuschließen
+     */
+    public void setTurnierName()
+    {
+        String neuerName = mainInterface.eingabeAufforderungTurniername(turnierName);
+        neuerName = neuerName.replaceAll("\\W","");
+        if (neuerName!=null || neuerName!= "" || neuerName!= " "){
+            if( neuerName.length()<=4){
+                mainInterface.nachricht("Fehler", "Der neue Name ist zu kurz.");
+            }
+            else if(neuerName.length() >=10) { 
+                mainInterface.nachricht("Fehler", "Der neue Name ist zu lang.");
+            }else{
+                turnierName = neuerName;
+            }
+        }
+        if(turnierName == null || turnierName.length()<=4 || turnierName.length() >=8){
+            turnierName = STANDARD_TURNIERNAME;
+        }    
     }
     
     /**
@@ -190,7 +213,7 @@ public class Main
             aktuelledaten += "!";
         }
 
-        mainInterface.createSpielplan(aktuelledaten);
+        mainInterface.createSpielplan(turnierName, aktuelledaten);
     }
     
     /**
