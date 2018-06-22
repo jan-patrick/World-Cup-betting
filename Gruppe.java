@@ -301,32 +301,25 @@ public class Gruppe
             usedvalue = usedvalue.replaceAll("\\s","");
             if(usedvalue.length()<3){
                 usedvalue = "-:-";
-            }    
-            if(usedvalue.split(":")[0].length() > 0 && usedvalue.split(":")[0] != null){
-                if(isInteger(usedvalue.split(":")[0])){
-                torEins.add(usedvalue.split(":")[0]);
+            }  
+            for(int k = 0; k < 2; k++){
+                if(usedvalue.split(":")[k].length() > 0 && usedvalue.split(":")[k] != null
+                   && isInteger(usedvalue.split(":")[k]))
+                {
+                    if(k==0){
+                        torEins.add(usedvalue.split(":")[k]);
+                    }else{
+                        torZwei.add(usedvalue.split(":")[k]);
+                    }
                 }
                 else
                 {
-                    torEins.add("-");
+                    if(k==0){
+                        torEins.add("-");
+                    }else{
+                        torZwei.add("-");
+                    }
                 }
-            }
-            else
-            {
-                torEins.add("-");
-            }
-            if(usedvalue.split(":")[1].length() > 0 && usedvalue.split(":")[1] != null){
-                if(isInteger(usedvalue.split(":")[0])){
-                torZwei.add(usedvalue.split(":")[0]);
-                }
-                else
-                {
-                    torZwei.add("-");
-                }
-            }
-            else
-            {
-                torZwei.add("-");
             }
         }
         //for(int m = 0; m < landEins.size(); m++){
