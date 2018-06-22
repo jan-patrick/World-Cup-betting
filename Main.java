@@ -92,7 +92,7 @@ public class Main
     {
         try
         {    
-            turnierName = daten.ladeDatei("allgemein", "turnierName").replaceAll("\\W","");;
+            turnierName = daten.ladeDatei("allgemein", "turnierName").replaceAll("\\W","");
         }
         catch (Exception e)
         {
@@ -115,7 +115,7 @@ public class Main
             for(int i = 0; i < 8; i++){
                     firstLetter[i] = (char)(65 + i);
                 try{    
-                    aktuelledaten = daten.ladeVorlage(String.valueOf(firstLetter[i]));
+                    aktuelledaten = daten.ladeVorlage(1,String.valueOf(firstLetter[i]));
                 }
                 catch (Exception e) {
                     e.printStackTrace();
@@ -125,6 +125,13 @@ public class Main
                  //   gruppen.put(teile[r], new Gruppe(teile[r]));
                 //}
                 System.out.println(aktuelledaten);
+            }
+            try{    
+                daten.turniernameSpeichern(daten.ladeVorlage(2,"turnierName").replaceAll("\\W",""));
+                System.out.println(daten.ladeVorlage(2,"turnierName").replaceAll("\\W",""));
+            }
+            catch (Exception e) {
+                e.printStackTrace();
             }
         }    
     }

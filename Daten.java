@@ -28,22 +28,40 @@ public class Daten
      * @return daten
      * @ToDo
      */
-    public String ladeVorlage(String dateiname) throws IOException
+    public String ladeVorlage(int u, String dateiname) throws IOException
     {
-        URL oracle = new URL
-        ("https://raw.githubusercontent.com/jan-patrick/World-Cup-betting/master/Gruppen/"+ dateiname +".txt");
-        BufferedReader in = new BufferedReader(
-        new InputStreamReader(oracle.openStream()));
-        
         String aktuelledaten = "";
         String zeile = "";
-        while( (zeile = in.readLine()) != null )
-        {
-            aktuelledaten += zeile;
-            aktuelledaten += "/";
-        }    
-    in.close();
-    return aktuelledaten;
+        switch(u){
+        case 1:
+            URL group = new URL
+            ("https://raw.githubusercontent.com/jan-patrick/World-Cup-betting/master/Gruppen/"+ dateiname +".txt");
+            BufferedReader no = new BufferedReader(
+            new InputStreamReader(group.openStream()));
+            while( (zeile = no.readLine()) != null )
+            {
+                aktuelledaten += zeile;
+                aktuelledaten += "/";
+            }    
+            no.close();
+            break;
+        case 2:
+            URL turnier = new URL
+            ("https://raw.githubusercontent.com/jan-patrick/World-Cup-betting/master/Allgemein/"+ dateiname +".txt");
+            BufferedReader nu = new BufferedReader(
+            new InputStreamReader(turnier.openStream()));
+            while( (zeile = nu.readLine()) != null )
+            {
+                aktuelledaten += zeile;
+                aktuelledaten += "/";
+            }    
+            nu.close();
+            break;
+        default:
+            aktuelledaten = "Fehler";
+            break;
+        }
+        return aktuelledaten;
     }
 
     /**
