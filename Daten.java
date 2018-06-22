@@ -28,17 +28,22 @@ public class Daten
      * @return daten
      * @ToDo
      */
-    public void ladeVorlage(String dateiname) throws IOException
+    public String ladeVorlage(String dateiname) throws IOException
     {
         URL oracle = new URL
         ("https://raw.githubusercontent.com/jan-patrick/World-Cup-betting/master/Gruppen/"+ dateiname +".txt");
-    BufferedReader in = new BufferedReader(
-    new InputStreamReader(oracle.openStream()));
-
-    String inputLine;
-    while ((inputLine = in.readLine()) != null)
-        System.out.println(inputLine);
+        BufferedReader in = new BufferedReader(
+        new InputStreamReader(oracle.openStream()));
+        
+        String aktuelledaten = "";
+        String zeile = "";
+        while( (zeile = in.readLine()) != null )
+        {
+            aktuelledaten += zeile;
+            aktuelledaten += "/";
+        }    
     in.close();
+    return aktuelledaten;
     }
 
     /**

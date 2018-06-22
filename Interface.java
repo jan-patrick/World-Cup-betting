@@ -4,8 +4,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import java.awt.GridLayout;
 import java.awt.Font;
-import java.awt.*;
-import java.io.*;
 
 /**
  * Beschreiben Sie hier die Klasse Interface.

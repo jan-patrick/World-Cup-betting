@@ -82,7 +82,7 @@ public class Main
     public void ladeVorlage()
     {
         try{
-            daten.ladeVorlage("A");
+            System.out.println(daten.ladeVorlage("A"));
         }
         catch (Exception e) {
             e.printStackTrace();
