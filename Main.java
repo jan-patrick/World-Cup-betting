@@ -49,7 +49,7 @@ public class Main
     
     /**
      * Ändert die Turnierbezeichnung. Lässt nur Eingaben zu, die in den Kontext passen 
-     * (EM oder WM + Jahreszahl), was durch die Länge der Eingabe grob geprüft wird.<br>
+     * (angedacht EM oder WM + Jahreszahl), was durch die Länge der Eingabe grob geprüft wird.
      * Geprüft wird aber nur auf Länge, sodass ein anderer Name auch möglich ist, nur auch um
      * Ausgabefehler zu vermeiden ist die Länge eben eingeschränkt. Außerdem wird die Eingabe auf
      * Buchstaben und Zahlen reduziert, um "   " als Turnier zu vermeiden und andere eventuell
@@ -223,7 +223,8 @@ public class Main
      */
     private String schreibeGroß(String eingabe)
     {
-        String ausgabe = eingabe.substring(0, 1).toUpperCase() + eingabe.substring(1);
+        String ausgabe = eingabe.replaceAll("\\W","");
+        ausgabe = ausgabe.substring(0, 1).toUpperCase() + ausgabe.substring(1);
         return ausgabe;
     }
 }

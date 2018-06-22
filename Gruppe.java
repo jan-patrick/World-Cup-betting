@@ -280,7 +280,10 @@ public class Gruppe
         loadGruppeninfo(gruppenName);
         String aktuelledaten = "";
         for (String key : gruppenphaseSpiele.keySet()) {
-            aktuelledaten += (key + "-" + gruppenphaseSpiele.get(key) + "<br>");
+            String usedkey = key.replaceAll("\\s","");
+            String landEins = usedkey.split(":")[0];
+            String landZwei = usedkey.split(":")[1];
+            aktuelledaten += (landEins + " " + gruppenphaseSpiele.get(key) + " " + landZwei +"<br>");
         }
         if(aktuelledaten.isEmpty() == true){
             aktuelledaten += "-------------";
