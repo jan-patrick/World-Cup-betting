@@ -280,55 +280,90 @@ public class Gruppe
     {
         loadGruppeninfo(gruppenName);
         String aktuelledaten = "";
-        int kuerzestesLand = 0;
+        int laengstesLand = 0;
         ArrayList landEins = new ArrayList<String>();
         ArrayList landZwei = new ArrayList<String>();
         ArrayList torEins = new ArrayList<String>();
         ArrayList torZwei = new ArrayList<String>();
         for (String key : gruppenphaseSpiele.keySet()) {
             String usedkey = key.replaceAll("\\s","");
-            String usedvalue = gruppenphaseSpiele.get(key).replaceAll("\\s","");
+            String usedvalue = gruppenphaseSpiele.get(key);
             String landeinsName = usedkey.split(":")[0];
             if(landEins.size()<=0){
-                kuerzestesLand = landeinsName.length();
+                laengstesLand = landeinsName.length();
             }
-            else if(landeinsName.length()<kuerzestesLand){
-                kuerzestesLand = landeinsName.length();
-            }
+            else if(landeinsName.length()>laengstesLand)
+            {
+                laengstesLand = landeinsName.length();
+            }    
             landEins.add(landeinsName);
             landZwei.add(usedkey.split(":")[1]);
             String usedValueString = usedvalue.toString();
-            System.out.println(usedValueString);
-            if(usedValueString==":")
-            {
-                if(usedvalue.split(":")[0]==null || usedvalue.split(":")[0]==""){
+            if(usedvalue.length() < 3){
+                usedvalue = " : ";
+            }
+            System.out.println(usedvalue.length() + "" + usedvalue);
+            if(usedvalue.split(":")[0].length() > 0 && usedvalue.split(":")[0] != null){
+                if(isInteger(usedvalue.split(":")[0])){
+                torEins.add(usedvalue.split(":")[0]);
+                }
+                else
+                {
                     torEins.add("-");
-                }
-                else
-                {
-                    torEins.add(usedvalue.split(":")[0]);
-                }
-                if(usedvalue.split(":")[1]==null || usedvalue.split(":")[1]==""){
-                    torZwei.add("-");
-                }
-                else
-                {
-                    torZwei.add(usedvalue.split(":")[1]);
                 }
             }
             else
             {
                 torEins.add("-");
+            }
+            if(usedvalue.split(":")[1].length() > 0 && usedvalue.split(":")[1] != null){
+                if(isInteger(usedvalue.split(":")[0])){
+                torZwei.add(usedvalue.split(":")[0]);
+                }
+                else
+                {
+                    torZwei.add("-");
+                }
+            }
+            else
+            {
                 torZwei.add("-");
             }
         }
+        //for(int m = 0; m < landEins.size(); m++){
+        //    String outputLandEins = landEins.get(m).toString();
+        //    while(outputLandEins.length()<laengstesLand){
+        //        outputLandEins = " " + outputLandEins;
+        //        landEins.add(m, outputLandEins);
+        //    }    
+        //}
         for(int i = 0; i < landEins.size(); i++){
-            String outputLandEins = landEins.get(i).toString();
-            aktuelledaten += (outputLandEins + " " + torEins.get(i) + ":" +torZwei.get(i) + " " + landZwei.get(i) +" <br>");
+            aktuelledaten += (landEins.get(i) + " " + torEins.get(i) + ":" +torZwei.get(i) + " " + landZwei.get(i) +" <br>");
         }
         if(aktuelledaten.isEmpty()){
             aktuelledaten += "-------------";
         }
         return aktuelledaten;
+    }
+    
+    /**
+     * Noch zu Beschreiben
+     * Löscht zur Sicherheit alle Leerzeichen aus den ausgelesenen Ländern
+     * 
+     * @ToDo
+     */
+    public static boolean isInteger(String s) {
+      boolean isValidInteger = false;
+      try
+      {
+         Integer.parseInt(s);
+          // s is a valid integer
+          isValidInteger = true;
+      }
+      catch (NumberFormatException ex)
+      {
+         // s is not an integer
+      }
+      return isValidInteger;
     }
 }
