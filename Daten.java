@@ -1,6 +1,7 @@
 import java.io.*;
 import java.lang.*;
 import java.nio.file.*;
+import java.net.*;
 
 /**
  * Beschreiben Sie hier die Klasse Daten.
@@ -18,6 +19,26 @@ public class Daten
     public Daten()
     {
         // keine Instanzvariablen
+    }
+    
+    /**
+     * Noch zu Beschreiben
+     * 
+     * @param dateiname
+     * @return daten
+     * @ToDo
+     */
+    public void ladeVorlage(String dateiname) throws IOException
+    {
+        URL oracle = new URL
+        ("https://raw.githubusercontent.com/jan-patrick/World-Cup-betting/master/Gruppen/"+ dateiname +".txt");
+    BufferedReader in = new BufferedReader(
+    new InputStreamReader(oracle.openStream()));
+
+    String inputLine;
+    while ((inputLine = in.readLine()) != null)
+        System.out.println(inputLine);
+    in.close();
     }
 
     /**

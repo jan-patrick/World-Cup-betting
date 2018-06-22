@@ -79,6 +79,21 @@ public class Main
      * 
      * @ToDo
      */
+    public void ladeVorlage()
+    {
+        try{
+            daten.ladeVorlage("A");
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    /**
+     * Noch zu Beschreiben
+     * 
+     * @ToDo
+     */
     private void ladeGruppen()
     {
         String aktuelledaten = "";
