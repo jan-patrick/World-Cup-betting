@@ -322,15 +322,18 @@ public class Gruppe
                 }
             }
         }
-        //for(int m = 0; m < landEins.size(); m++){
-        //    String outputLandEins = landEins.get(m).toString();
-        //    while(outputLandEins.length()<laengstesLand){
-        //        outputLandEins = " " + outputLandEins;
-        //        landEins.add(m, outputLandEins);
-        //    }    
-        //}
-        for(int i = 0; i < landEins.size(); i++){
-            aktuelledaten += (landEins.get(i) + " " + torEins.get(i) + ":" +torZwei.get(i) + " " + landZwei.get(i) +" <br>");
+        for(int m = 0; m < landEins.size(); m++){
+            String outputLandEins = landEins.get(m).toString();
+            if(outputLandEins.length()<laengstesLand){
+                System.out.println("landArray "+landEins.size());
+                int h = laengstesLand-outputLandEins.length();
+                while(h > 0){
+                    outputLandEins = " " + outputLandEins;
+                    h--;
+                }  
+            } 
+            aktuelledaten += (outputLandEins + " " + torEins.get(m) + ":" +torZwei.get(m) 
+                             + " " + landZwei.get(m) +" <br>");
         }
         if(aktuelledaten.isEmpty()){
             aktuelledaten += "-------------";
