@@ -206,7 +206,6 @@ public class Gruppe
         if(teile.length >= gruppenGroesse+2){
             for (int i = gruppenGroesse+1; i < teile.length; i++) {
                 String[] aktuelledaten = teile[i].split("-");
-                System.out.println(aktuelledaten[0] + " " + aktuelledaten[1]);
                 gruppenphaseSpiele.put(aktuelledaten[0], aktuelledaten[1]);
             }
         }

@@ -72,7 +72,7 @@ public class Main
      * 
      * @ToDo
      */
-    public void erstelleGruppen()
+    public void createGruppen()
     {
         if(gruppenAnzahl>=MAX_GRUPPEN_ANZAHL)
         {            
@@ -116,7 +116,7 @@ public class Main
      * @param land, tore, punkte
      * @return boolean
      */
-    public boolean speichereLand(String land, int tore, int punkte)
+    public boolean saveLand(String land, int tore, int punkte)
     {
         if(getDatenSpielergebnis(land, tore, punkte) == null){
             System.out.println("Das Land " + land + " existiert nicht");
@@ -173,7 +173,7 @@ public class Main
      * @see     alle Gruppenphasespiele, sortiert nach Gruppe
      * @ToDo
      */
-    public void gibAlleSpielergebnise ()
+    public void getAlleSpielergebnise ()
     {
         String aktuelledaten = "";
 
