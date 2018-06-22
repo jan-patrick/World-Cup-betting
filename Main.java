@@ -81,12 +81,26 @@ public class Main
      */
     public void ladeVorlage()
     {
-        try{
-            System.out.println(daten.ladeVorlage("A"));
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
+        String aktuelledaten = "";
+        String[] teile;
+        char[] firstLetter = new char[MAX_GRUPPEN_ANZAHL];
+        if(mainInterface.bestaetigen("Vorlage laden?",
+           "Wenn Sie die Vorlage laden werden alle lokal gespeicherten Daten überschrieben!")){
+            for(int i = 0; i < 8; i++){
+                    firstLetter[i] = (char)(65 + i);
+                try{    
+                    aktuelledaten = daten.ladeVorlage(String.valueOf(firstLetter[i]));
+                }
+                catch (Exception e) {
+                    e.printStackTrace();
+                }
+                teile = aktuelledaten.split("/");
+                //for (int r = 0; r < teile.length; r++) {
+                 //   gruppen.put(teile[r], new Gruppe(teile[r]));
+                //}
+                System.out.println(aktuelledaten);
+            }
+        }    
     }
     
     /**
@@ -235,7 +249,7 @@ public class Main
      * 
      * @ToDo
      */
-    private String schreibeGroß(String eingabe)
+    private String createValideEingabe(String eingabe)
     {
         String ausgabe = eingabe.replaceAll("\\W","");
         ausgabe = ausgabe.substring(0, 1).toUpperCase() + ausgabe.substring(1);
