@@ -255,4 +255,29 @@ public class Main
         ausgabe = ausgabe.substring(0, 1).toUpperCase() + ausgabe.substring(1);
         return ausgabe;
     }
+    
+    /**
+     * Noch zu Beschreiben
+     * 
+     * @ToDo
+     */
+    private void deleteAlleDaten()
+    {
+        for (String key : gruppen.keySet()) {
+            String name = key;
+            Gruppe gruppe = gruppen.get(key);
+            String[] teile = gruppe.getLaender();
+
+            for (int i = 0; i < teile.length; i++) {
+                String[] datenLand = {teile[i], "0", "0"};
+                try{
+                    daten.landSpeichern(datenLand);
+                }
+                catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+            gruppe.deleteSpiele();
+        }
+    }
 }

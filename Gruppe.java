@@ -372,4 +372,20 @@ public class Gruppe
         ausgabe.append(str);           
         return ausgabe.toString();         
     }
+    
+    /**
+     * Löscht sämtlichen Inhalt der Gruppenphase-Spiele-HashMap
+     */
+    public void deleteSpiele()
+    {
+        gruppenphaseSpiele.clear();
+    }
+
+    /**
+     * Löscht sämtlichen Inhalt der Länder-HashMap
+     */
+    public void deleteLänder()
+    {
+        laender.clear();
+    }
 }
