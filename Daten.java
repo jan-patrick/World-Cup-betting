@@ -68,6 +68,21 @@ public class Daten
         br.close();
         return daten;
     }
+    
+    /**
+     * Noch zu Beschreiben
+     * 
+     * @param landteile
+     * @ToDo
+     */
+    public void turniernameSpeichern(String turniername) throws IOException
+    {        
+        String datei = "Allgemein/turnierName.txt";
+        FileWriter fw = new FileWriter(datei);
+        BufferedWriter bw = new BufferedWriter(fw);
+        bw.write(turniername);
+        bw.close();
+    }
 
     /**
      * Noch zu Beschreiben

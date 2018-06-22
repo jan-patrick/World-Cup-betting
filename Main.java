@@ -31,7 +31,7 @@ public class Main
     private final int MAX_GRUPPEN_ANZAHL = 8;
     private final int MIN_LAENDER_ANZAHL = 8;
     private final int MAX_LAENDER_ANZAHL = 32;
-    private final String STANDARD_TURNIERNAME = "WM 2018";
+    private final String STANDARD_TURNIERNAME = "WM2018";
     private String turnierName = STANDARD_TURNIERNAME;
     
     /**
@@ -45,6 +45,7 @@ public class Main
         startscreenReadMe = new Startscreen();
         startscreenReadMe.main();
         ladeGruppen();
+        loadTurnierName();
     }
     
     /**
@@ -63,13 +64,21 @@ public class Main
             if( neuerName.length()<=4){
                 mainInterface.nachricht("Fehler", "Der neue Name ist zu kurz.");
             }
-            else if(neuerName.length() >=10) { 
+            else if(neuerName.length() >=7) { 
                 mainInterface.nachricht("Fehler", "Der neue Name ist zu lang.");
             }else{
+                try
+                {    
+                    daten.turniernameSpeichern(neuerName);
+                }
+                catch (Exception e)
+                {
+                    e.printStackTrace();
+                }
                 turnierName = neuerName;
             }
         }
-        if(turnierName == null || turnierName.length()<=4 || turnierName.length() >=8){
+        if(turnierName == null || turnierName.length()<=4 || turnierName.length() >=7){
             turnierName = STANDARD_TURNIERNAME;
         }    
     }
