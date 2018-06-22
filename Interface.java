@@ -3,6 +3,9 @@ import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import java.awt.GridLayout;
+import java.awt.Font;
+import java.awt.*;
+import java.io.*;
 
 /**
  * Beschreiben Sie hier die Klasse Interface.
@@ -11,13 +14,13 @@ import java.awt.GridLayout;
  * @version 2018.05.28
  */
 public class Interface
-{
+{   
     /**
      * Constructor for objects of class Interface
      */
     public Interface()
     {
-        // nichts
+        
     }
 
     /**
@@ -100,10 +103,12 @@ public class Interface
      * @ToDo
      */
     public void createSpielplan(String turniername, String daten)
-    {
-        String [] teile = daten.split("!");
+    { 
+        String [] teile = daten.split(",");     
    
         JPanel panel = new JPanel( new GridLayout(1, teile.length) );
+        Font font = new Font("Monospace", Font.PLAIN, 12);
+        panel.setFont(font);
         for (int i = 0; i < teile.length; i++) {
             panel.add( new JLabel("<html>" + teile[i] + "</html>") );
         }     

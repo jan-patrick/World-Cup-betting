@@ -210,9 +210,8 @@ public class Main
             gruppe.loadGruppeninfo(key);
             aktuelledaten += "Gruppe " + key + "<br>";
             aktuelledaten += gruppe.getSpielergebnisDaten();
-            aktuelledaten += "!";
+            aktuelledaten += ",";
         }
-
         mainInterface.createSpielplan(turnierName, aktuelledaten);
     }
     

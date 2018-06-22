@@ -325,12 +325,8 @@ public class Gruppe
         for(int m = 0; m < landEins.size(); m++){
             String outputLandEins = landEins.get(m).toString();
             if(outputLandEins.length()<laengstesLand){
-                System.out.println("landArray "+landEins.size());
                 int h = laengstesLand-outputLandEins.length();
-                while(h > 0){
-                    outputLandEins = " " + outputLandEins;
-                    h--;
-                }  
+                addspace(h,outputLandEins);               
             } 
             aktuelledaten += (outputLandEins + " " + torEins.get(m) + ":" +torZwei.get(m) 
                              + " " + landZwei.get(m) +" <br>");
@@ -343,7 +339,6 @@ public class Gruppe
     
     /**
      * Noch zu Beschreiben
-     * Löscht zur Sicherheit alle Leerzeichen aus den ausgelesenen Ländern
      * 
      * @ToDo
      */
@@ -360,5 +355,21 @@ public class Gruppe
          // s is not an integer
       }
       return isValidInteger;
+    }
+    
+    /**
+     * Noch zu Beschreiben
+     * 
+     * @ToDo
+     */
+    String addspace(int i, String str)
+    {       
+        StringBuilder ausgabe = new StringBuilder();
+        for(int j=0;j<i;j++)
+        {
+            ausgabe.append(" ");
+        }
+        ausgabe.append(str);           
+        return ausgabe.toString();         
     }
 }
