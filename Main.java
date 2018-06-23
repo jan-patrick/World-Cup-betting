@@ -123,11 +123,21 @@ public class Main
     public void ladeVorlage()
     {
         String[] aktuelledatenAusgabee = {"no","input"};
+        int anzahlGruppen = 0;
         char[] firstLetter = new char[MAX_GRUPPEN_ANZAHL];
         if(mainInterface.bestaetigen("Vorlage laden?",
            "Wenn Sie die Vorlage laden werden alle lokal gespeicherten Daten überschrieben! Eine Internetverbindung wird benötigt."))
         {
-            for(int i = 0; i < 8; i++)
+            try
+            {
+                anzahlGruppen = daten.ladeVorlage("gruppen","Gruppen").replaceAll("\\W","").length();
+                System.out.println(anzahlGruppen);
+            }
+            catch (Exception e)
+            {
+                e.printStackTrace();
+            }
+            for(int i = 0; i < anzahlGruppen; i++)
             {
                 firstLetter[i] = (char)(65 + i);
                 try
