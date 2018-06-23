@@ -2,6 +2,7 @@ import java.io.*;
 import java.lang.*;
 import java.nio.file.*;
 import java.net.*;
+import java.awt.Desktop;
 
 /**
  * Beschreiben Sie hier die Klasse Daten.
@@ -189,7 +190,40 @@ public class Daten
     {
         String datei = ordner + "/" + name + ".txt";
         Files.deleteIfExists(Paths.get(datei));
+    }  
+        
+    /**
+     * Noch zu Beschreiben
+     * 
+     * @ToDo
+     */
+    public void openLink(String[] args)
+    {
+        if(!java.awt.Desktop.isDesktopSupported())
+        {
+            System.err.println("Desktop is not supported (fatal)");
+            System.exit(1);
+        }
+        if(args.length==0)
+        {
+            System.out.println( "Usage: OpenURI [URI [URI ... ]]" );
+            System.exit( 0 );
+        }
+        java.awt.Desktop desktop = java.awt.Desktop.getDesktop();
+        if(!desktop.isSupported(java.awt.Desktop.Action.BROWSE))
+        {
+            System.err.println( "Desktop doesn't support the browse action (fatal)" );
+            System.exit( 1 );
+        }
+        for(String arg:args)
+        {
+            try{
+                java.net.URI uri = new java.net.URI(arg);
+                desktop.browse( uri );
+            }
+            catch(Exception e){
+                System.err.println(e.getMessage());
+            }
+        }
     }
-    
-    
 }
