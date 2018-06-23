@@ -4,8 +4,8 @@ Senegal
 Japan
 Polen
 Kolumbien:Senegal- : 
-Kolumbien:Japan- : 
+Kolumbien:Japan- 1:2 
 Kolumbien:Polen- : 
 Senegal:Japan- : 
-Senegal:Polen- : 
+Senegal:Polen- 1:2 
 Japan:Polen- :

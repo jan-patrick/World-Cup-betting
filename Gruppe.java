@@ -362,6 +362,71 @@ public class Gruppe
      * 
      * @ToDo
      */
+    public void löscheTorePunkteSpielergebnis (String land1, String land2)
+    {
+        String spielVor = land1 + ":" + land2;
+        String spielRück = land2 + ":" + land1;
+        String spiel = "";
+        String daten = "";
+        String landEINS = land1;        
+        String landZWEI = land2;
+
+        if(gruppenphaseSpiele.containsKey(spielVor) == true){
+            spiel = spielVor;
+        }
+        if(gruppenphaseSpiele.containsKey(spielRück) == true){
+            spiel = spielRück;
+            landEINS = land2;
+            landZWEI = land1;
+        }
+
+        Land landEins = laender.get(landEINS);
+        Land landZwei = laender.get(landZWEI);
+
+        daten = gruppenphaseSpiele.get(spiel);
+        String[] teile = daten.split(":");
+        int tore1 = Integer.valueOf(teile[0]);
+        int tore2 = Integer.valueOf(teile[1]);
+        System.out.println("Tore1: " + tore1 + "  Tore2: " + tore2);
+        if(tore1 == tore2){
+            landEins.zieheWerteAb(tore1, 1);
+            landZwei.zieheWerteAb(tore2, 1);
+        }
+        if(tore1 < tore2){
+            landEins.zieheWerteAb(tore1, 0);
+            landZwei.zieheWerteAb(tore2, 3);
+        }
+        if(tore1 > tore2){
+            landEins.zieheWerteAb(tore1, 3);
+            landZwei.zieheWerteAb(tore2, 0);
+        }
+
+    }
+    
+    /**
+     * Noch zu Beschreiben
+     * 
+     * @ToDo
+     */
+    public boolean pruefeExistenzSpielergebnis (String land1, String land2)
+    {
+        String spiel = land1 + ":" + land2;
+        String spielRück = land2 + ":" + land1;
+        String empty = " : ";
+
+        if(empty.equals(gruppenphaseSpiele.get(spiel)) == true || 
+           empty.equals(gruppenphaseSpiele.get(spielRück)) == true){
+            return true;
+        }
+        else return false;
+
+    }
+    
+    /**
+     * Noch zu Beschreiben
+     * 
+     * @ToDo
+     */
     String addspace(int i, String str)
     {       
         StringBuilder ausgabe = new StringBuilder();

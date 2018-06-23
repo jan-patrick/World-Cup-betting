@@ -135,5 +135,33 @@ public class Interface
         String[] daten = {gruppe.getText(), name.getText()};
         return daten;
     }
+    
+    /**
+     * Noch zu Beschreiben
+     * 
+     * @ToDo
+     */
+    public String eingabeAufforderungEinFeld(String kopfzeile, String nachricht, String textfeld)
+    {
+        JTextField gruppe = new JTextField();
+        JTextField name = new JTextField();
+
+        Object[] message = {nachricht, " ", 
+                textfeld, name};
+
+        JOptionPane pane = new JOptionPane( message, 
+                JOptionPane.PLAIN_MESSAGE, 
+                JOptionPane.OK_CANCEL_OPTION);
+        pane.createDialog(null, kopfzeile).setVisible(true);
+
+        if(pane.getValue()!= null){
+            int value = ((Integer)pane.getValue()).intValue();
+            String daten = name.getText();
+            if(daten.isEmpty() == false){return daten;}
+            if(value == JOptionPane.CANCEL_OPTION){return null;}
+            else {nachricht("Eingabefehler", "Sie müssen alle Felder ausfüllen!"); return eingabeAufforderungEinFeld(kopfzeile, nachricht, textfeld);}
+        }
+        else return null;
+    } 
 }
 

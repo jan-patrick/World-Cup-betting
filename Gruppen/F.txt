@@ -4,8 +4,8 @@ Suedkorea
 Deutschland
 Schweden
 Mexiko:Suedkorea- : 
-Mexiko:Deutschland- : 
+Mexiko:Deutschland- 1:0
 Mexiko:Schweden- : 
 Suedkorea:Deutschland- : 
-Suedkorea:Schweden- : 
-Deutschland:Schweden- : 
+Suedkorea:Schweden- 0:1 
+Deutschland:Schweden- :

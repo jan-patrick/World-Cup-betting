@@ -45,15 +45,16 @@ public class Main
         mainInterface = new Interface();
         ladeGruppen();
         loadTurnierName();
-        zeigeStartscreen();
     }
     
-    private void zeigeStartscreen(){
+    /**
+     * Öffnet das GitHub Repository im Standardbrowser
+     */
+    public void openGitHubLink(){
         if(mainInterface.bestaetigen("Projekt von Jan Schneider","Quellcode auf Github anzeigen?"))
         {
             String[] daten = {"https://github.com/jan-patrick/World-Cup-betting"};
             openLink(daten);
-            System.out.println("Fick");
         }    
     }
     
@@ -69,13 +70,18 @@ public class Main
     {
         String neuerName = mainInterface.eingabeAufforderungTurniername(turnierName);
         neuerName = neuerName.replaceAll("\\W","");
-        if (neuerName!=null || neuerName!= "" || neuerName!= " "){
-            if( neuerName.length()<=4){
+        if (neuerName!=null || neuerName!= "" || neuerName!= " ")
+        {
+            if( neuerName.length()<=4)
+            {
                 mainInterface.nachricht("Fehler", "Der neue Name ist zu kurz.");
             }
-            else if(neuerName.length() >=7) { 
+            else if(neuerName.length() >=7)
+            { 
                 mainInterface.nachricht("Fehler", "Der neue Name ist zu lang.");
-            }else{
+            }
+            else
+            {
                 try
                 {    
                     daten.turniernameSpeichern(neuerName);
@@ -87,7 +93,8 @@ public class Main
                 turnierName = neuerName;
             }
         }
-        if(turnierName == null || turnierName.length()<=4 || turnierName.length() >=7){
+        else
+        {
             turnierName = STANDARD_TURNIERNAME;
         }    
     }
@@ -120,26 +127,31 @@ public class Main
         String[] teile;
         char[] firstLetter = new char[MAX_GRUPPEN_ANZAHL];
         if(mainInterface.bestaetigen("Vorlage laden?",
-           "Wenn Sie die Vorlage laden werden alle lokal gespeicherten Daten überschrieben!")){
-            for(int i = 0; i < 8; i++){
-                    firstLetter[i] = (char)(65 + i);
-                try{    
+           "Wenn Sie die Vorlage laden werden alle lokal gespeicherten Daten überschrieben!"))
+        {
+            for(int i = 0; i < 8; i++)
+            {
+                firstLetter[i] = (char)(65 + i);
+                try
+                {    
                     aktuelledaten = daten.ladeVorlage(1,String.valueOf(firstLetter[i]));
                 }
-                catch (Exception e) {
+                catch (Exception e)
+                {
                     e.printStackTrace();
                 }
                 teile = aktuelledaten.split("/");
-                //for (int r = 0; r < teile.length; r++) {
-                 //   gruppen.put(teile[r], new Gruppe(teile[r]));
-                //}
+                //gruppen speichern in datei
+                //ladeGruppen();
                 System.out.println(aktuelledaten);
             }
-            try{    
+            try
+            {    
                 daten.turniernameSpeichern(daten.ladeVorlage(2,"turnierName").replaceAll("\\W",""));
                 System.out.println(daten.ladeVorlage(2,"turnierName").replaceAll("\\W",""));
             }
-            catch (Exception e) {
+            catch (Exception e)
+            {
                 e.printStackTrace();
             }
         }    
@@ -213,13 +225,11 @@ public class Main
      * @ToDo
      * 
      * @param land, tore, punkte
-     * @return boolean
      */
-    public boolean saveLand(String land, int tore, int punkte)
+    private void saveLand(String land, int tore, int punkte)
     {
         if(getDatenSpielergebnis(land, tore, punkte) == null){
             System.out.println("Das Land " + land + " existiert nicht");
-            return false;
         }
         else{
             try{
@@ -228,7 +238,21 @@ public class Main
             catch (Exception e) {
                 e.printStackTrace();
             }
-            return true;
+        }
+    }
+    
+    /**
+     * Noch zu Beschreiben
+     * 
+     * @ToDo
+     */
+    private void speichereGruppe(String name, String[] teile)
+    {
+        try{
+            daten.gruppeSpeichern(name, teile);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
         }
     }
     
@@ -254,7 +278,6 @@ public class Main
     public Gruppe getGruppeWennLand(String land)
     {
         String daten = "";
-
         for (String key : gruppen.keySet()) {
             Gruppe gruppe = gruppen.get(key);
 
@@ -262,7 +285,6 @@ public class Main
                 return gruppe;
             }
         }
-
         return null;
     }
     
@@ -296,6 +318,19 @@ public class Main
         String ausgabe = eingabe.replaceAll("\\W","");
         ausgabe = ausgabe.substring(0, 1).toUpperCase() + ausgabe.substring(1);
         return ausgabe;
+    }
+    
+    /**
+     * Noch zu Beschreiben
+     * 
+     * @ToDo
+     */
+    public void alleDatenloeschen()
+    {
+        if(mainInterface.bestaetigen("Achtung!", "Wollen Sie wirklich alle Daten löschen?"))
+        {
+            deleteAlleDaten();
+        }
     }
     
     /**
@@ -337,6 +372,54 @@ public class Main
         }
     }
     
+    /**
+     * Noch zu Beschreiben
+     * 
+     * @ToDo
+     */
+    private String sindLaenderInGruppe(String land1, String land2)
+    {
+        String gruppe1 = "";
+        String gruppe2 = "";
+
+        for (String key : gruppen.keySet()) {
+            Gruppe gruppe = gruppen.get(key);
+
+            if(gruppe.existiertLand(land1) == true){
+                gruppe1 = key;
+            }
+            if(gruppe.existiertLand(land2) == true){
+                gruppe2 = key;
+            }
+        }
+
+        if(gruppe1 == gruppe2){
+            return gruppe1;
+        }
+        else{return null;}
+
+    }
+    
+    /**
+     * Noch zu Beschreiben
+     * 
+     * @ToDo
+     */
+    private int[] berechnePunkte(int tore1, int tore2)
+    {
+        int[] punkte = {0, 0};
+
+        if(tore1 > tore2){punkte[0] = 3;}
+        if(tore1 < tore2){punkte[1] = 3;}
+        if(tore1 == tore2){punkte[0] = 1; punkte[1] = 1;}
+        return punkte;
+    }
+    
+    /**
+     * Noch zu Beschreiben
+     * 
+     * @ToDo
+     */
     public void openLink(String[] args)
     {
         if(!java.awt.Desktop.isDesktopSupported())
@@ -365,5 +448,24 @@ public class Main
                 System.err.println(e.getMessage());
             }
         }
+    }
+    
+    /**
+     * Noch zu Beschreiben
+     * 
+     * @ToDo
+     */
+    public void showLandDetails()
+    {
+        String daten = mainInterface.eingabeAufforderungEinFeld("Zeige Land", "", "Name des Landes");
+        if(daten != null){
+            String nameLand = createValideEingabe(daten);
+            Gruppe gruppe = getGruppeWennLand(nameLand);
+            if(gruppe != null){
+                String[] torePunkte = gruppe.getLandDetails(nameLand);
+                mainInterface.nachricht("Information", "Das Land " + nameLand + " hat " + torePunkte[1] + " Tore geschossen und derzeit " + torePunkte[2] + " Punkte.");
+            }
+            else mainInterface.nachricht("Fehler", "Das Land " + nameLand + " existiert nicht.");
+        }      
     }
 }

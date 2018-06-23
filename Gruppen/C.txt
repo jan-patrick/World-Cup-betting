@@ -3,9 +3,9 @@ Daenemark
 Australien
 Frankreich
 Peru
-Daenemark:Australien- : 
+Daenemark:Australien- 1:1 
 Daenemark:Frankreich- : 
-Daenemark:Peru- : 
-Australien:Frankreich- : 
+Daenemark:Peru- 1:0
+Australien:Frankreich- 1:2
 Australien:Peru- : 
-Frankreich:Peru-0:10
+Frankreich:Peru- 1:0

@@ -77,4 +77,16 @@ public class Land
         String[] aktuelledaten = getDetails();
         return aktuelledaten;
     }
+    
+    /**
+     * Zieht den Toren und Punkten des Landes den gegebenen Wert ab
+     * 
+     * @param   tore            Die neue Toranzahl des Landes
+     * @param   punkte          Die neue Punktzahl des Landes
+     */
+    public void zieheWerteAb (int tore, int punkte)
+    {
+        this.tore -= tore;
+        this.punkte -= punkte;
+    }
 }

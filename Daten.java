@@ -40,8 +40,7 @@ public class Daten
             new InputStreamReader(group.openStream()));
             while( (zeile = no.readLine()) != null )
             {
-                aktuelledaten += zeile;
-                aktuelledaten += "/";
+                aktuelledaten += zeile + "/";
             }    
             no.close();
             break;
@@ -52,8 +51,7 @@ public class Daten
             new InputStreamReader(turnier.openStream()));
             while( (zeile = nu.readLine()) != null )
             {
-                aktuelledaten += zeile;
-                aktuelledaten += "/";
+                aktuelledaten += zeile + "/";
             }    
             nu.close();
             break;
@@ -80,8 +78,7 @@ public class Daten
         String zeile = "";
         while( (zeile = br.readLine()) != null )
         {
-            daten += zeile;
-            daten += "/";
+            daten += zeile + "/";
         }
         br.close();
         return daten;
