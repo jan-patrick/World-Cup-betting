@@ -106,7 +106,7 @@ public class Interface
    
         JPanel panel = new JPanel( new GridLayout(1, teile.length) );
         for (int i = 0; i < teile.length; i++) {
-            panel.add( new JLabel("<html>" + teile[i] + "</html>") );
+            panel.add( new JLabel("<html><div style='text-align: center;'>" + teile[i] + "</div></html>") );
         }     
 
         JOptionPane pane = new JOptionPane( panel);
