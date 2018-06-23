@@ -2,10 +2,10 @@
 Schweiz
 Brasilien
 Serbien
-Costa Rica
+CostaRica
 Schweiz:Brasilien- 1:1 
 Schweiz:Serbien- 2:1 
-Schweiz:Costa Rica- : 
+Schweiz:CostaRica- : 
 Brasilien:Serbien- : 
-Brasilien:Costa Rica- 2:0 
-Serbien:Costa Rica- 1:0
+Brasilien:CostaRica- 2:0 
+Serbien:CostaRica- 1:0

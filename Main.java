@@ -170,7 +170,8 @@ public class Main
                 {
                     try
                     {   
-                        String[] aktuelledatenl = {daten.ladeVorlage("laender",vorlagelaender[z]).replaceAll("\\W","").toString()};
+                        String aktuelledatenla = daten.ladeVorlage("laender",vorlagelaender[z]).replaceAll("\\W","").toString();
+                        String[] aktuelledatenl = aktuelledatenla.split("/");
                         daten.speichereDatei("laender", vorlagelaender[z], aktuelledatenl);
                     }
                     catch (Exception e)
