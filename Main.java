@@ -41,8 +41,22 @@ public class Main
         gruppen = new HashMap<>();
         daten = new Daten();
         mainInterface = new Interface();
-        ladeGruppen();
-        loadTurnierName();
+        loadInitalData();
+    }
+    
+    /**
+     * Noch zu Beschreiben
+     * 
+     * @ToDo
+     */
+    private void loadInitalData(){
+        try{
+            ladeGruppen();
+            loadTurnierName();
+        }
+        catch (Exception e) {
+            nochRetten();
+        }
     }
     
     /**
@@ -112,6 +126,7 @@ public class Main
         catch (Exception e)
         {
             e.printStackTrace();
+            nochRetten();
         }
     }
     
@@ -120,74 +135,95 @@ public class Main
      * 
      * @ToDo
      */
-    public void ladeVorlage()
+    public void ladeDatenDerAktuellenWM()
     {
-        int anzahlGruppen = 0;
-        char[] firstLetter = new char[MAX_GRUPPEN_ANZAHL];
         if(mainInterface.bestaetigen("Vorlage laden?",
            "Wenn Sie die Vorlage laden werden alle lokal gespeicherten Daten überschrieben! Eine Internetverbindung wird benötigt."))
         {
-            // lade GRUPPEN
+            ladeVorlage();
+        }    
+    }    
+    
+    /**
+     * Noch zu Beschreiben
+     * 
+     * @ToDo
+     */
+    private void ladeVorlage()
+    {
+        int anzahlGruppen = 0;
+        char[] firstLetter = new char[MAX_GRUPPEN_ANZAHL];
+        // lade GRUPPEN
+        try
+        {
+            anzahlGruppen = daten.ladeVorlage("gruppen","Gruppen").replaceAll("\\W","").length();
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        for(int i = 0; i < anzahlGruppen; i++)
+        {
+            firstLetter[i] = (char)(65 + i);
             try
-            {
-                anzahlGruppen = daten.ladeVorlage("gruppen","Gruppen").replaceAll("\\W","").length();
+            {    
+                String aktuelledatengr = daten.ladeVorlage("gruppen",String.valueOf(firstLetter[i]));
+                String[] aktuelledateng = aktuelledatengr.split("/");
+                daten.speichereDatei("gruppen", String.valueOf(firstLetter[i]), aktuelledateng);
             }
             catch (Exception e)
             {
                 e.printStackTrace();
             }
-            for(int i = 0; i < anzahlGruppen; i++)
+        }
+        // lade TURNIERNAME
+        try
+        {   
+            String[] aktuelledatenn = {daten.ladeVorlage("turniername","turnierName").replaceAll("\\W","").toString()};
+            daten.speichereDatei("turniername", "turnierName", aktuelledatenn);
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        // lade LÄNDER
+        for (String key : gruppen.keySet())
+        {
+            String name = key;
+            Gruppe gruppe = gruppen.get(key);
+            String[] vorlagelaender = gruppe.getLaender();
+            for(int z = 0; z < vorlagelaender.length; z++)
             {
-                firstLetter[i] = (char)(65 + i);
                 try
-                {    
-                    String aktuelledatengr = daten.ladeVorlage("gruppen",String.valueOf(firstLetter[i]));
-                    String[] aktuelledateng = aktuelledatengr.split("/");
-                    daten.speichereDatei("gruppen", String.valueOf(firstLetter[i]), aktuelledateng);
+                {   
+                    String aktuelledatenla = daten.ladeVorlage("laender",vorlagelaender[z]).replaceAll("\\s","").toString();
+                    String[] aktuelledatenl = aktuelledatenla.split("/");
+                    daten.speichereDatei("laender", vorlagelaender[z], aktuelledatenl);
                 }
                 catch (Exception e)
                 {
                     e.printStackTrace();
                 }
             }
-            // lade TURNIERNAME
-            try
-            {   
-                String[] aktuelledatenn = {daten.ladeVorlage("turniername","turnierName").replaceAll("\\W","").toString()};
-                daten.speichereDatei("turniername", "turnierName", aktuelledatenn);
-            }
-            catch (Exception e)
-            {
-                e.printStackTrace();
-            }
-            // lade LÄNDER
-            for (String key : gruppen.keySet())
-            {
-                String name = key;
-                Gruppe gruppe = gruppen.get(key);
-                String[] vorlagelaender = gruppe.getLaender();
-                for(int z = 0; z < vorlagelaender.length; z++)
-                {
-                    try
-                    {   
-                        String aktuelledatenla = daten.ladeVorlage("laender",vorlagelaender[z]).replaceAll("\\s","").toString();
-                        String[] aktuelledatenl = aktuelledatenla.split("/");
-                        //for(int p = 0; p < aktuelledatenl.length; p++){
-                        //    System.out.println("p: "+aktuelledatenl[p]);
-                        //}
-                        daten.speichereDatei("laender", vorlagelaender[z], aktuelledatenl);
-                    }
-                    catch (Exception e)
-                    {
-                        e.printStackTrace();
-                    }
-                }
-            }
-            // lade Programmvariablen neu
-            ladeGruppen();
-            loadTurnierName();
-        }    
+        }
+        // lade Programmvariablen neu
+        ladeGruppen();
+        loadTurnierName();  
     }
+    
+    /**
+     * Noch zu Beschreiben
+     * 
+     * @ToDo
+     */
+    private void nochRetten()
+    {
+        if(mainInterface.bestaetigen("beschädigte Daten überschreiben",
+           "Die lokalen Daten scheinen beschädigt zu sein. Sollen Standarddaten der "+STANDARD_TURNIERNAME+" geladen werden? Eine Internetverbindung wird benötigt."))
+        {
+            ladeVorlage();
+        }    
+    }    
     
     /**
      * Noch zu Beschreiben
@@ -203,6 +239,7 @@ public class Main
         }
         catch (Exception e) {
             e.printStackTrace();
+            nochRetten();
         }
         teile = aktuelledaten.split("/");
         for(int k = 0; k < teile.length; k++)
