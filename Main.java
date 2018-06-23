@@ -45,9 +45,8 @@ public class Main
     }
     
     /**
-     * Noch zu Beschreiben
-     * 
-     * @ToDo
+     * Lädt bei Programmstart alle Daten aus den lokalen Textdateien. Sollte dabei ein Fehler auftreten 
+     * wird der Nutzer darüber informiert und die Funktion nochRetten() gestartet.
      */
     private void loadInitalData(){
         try{
@@ -55,12 +54,13 @@ public class Main
             loadTurnierName();
         }
         catch (Exception e) {
+            e.printStackTrace();
             nochRetten();
         }
     }
     
     /**
-     * Öffnet das GitHub Repository dieses Programms im Standardbrowser
+     * Öffnet das GitHub Repository dieses Programms im Standardbrowser nachdem der Nutzer dies bestätigte.
      */
     public void openGitHubLink(){
         if(mainInterface.bestaetigen("Projekt von Jan Schneider","Quellcode auf Github anzeigen?"))
@@ -113,9 +113,8 @@ public class Main
     }
     
     /**
-     * Noch zu Beschreiben
-     * 
-     * @ToDo
+     * Lädt den Turniernamen aus der lokalen Textdatei und übergibt den Wert dem zugehörigen Java String.
+     * Sollte dabei etwas schief laufen gehen wird die Funktion nochRetten() aufgerufen.
      */
     private void loadTurnierName()
     {
@@ -131,9 +130,7 @@ public class Main
     }
     
     /**
-     * Noch zu Beschreiben
-     * 
-     * @ToDo
+     * Lädt nach Bestätigung manuell die Vorlagendaten aus dem Projekt Repository und überschreibt Lokales.
      */
     public void ladeDatenDerAktuellenWM()
     {
@@ -145,9 +142,7 @@ public class Main
     }    
     
     /**
-     * Noch zu Beschreiben
-     * 
-     * @ToDo
+     * Lädt Gruppen, Turniernamen und Länder aus dem Girhub Repository und überschreibt alle lokalen Daten.
      */
     private void ladeVorlage()
     {
@@ -212,9 +207,8 @@ public class Main
     }
     
     /**
-     * Noch zu Beschreiben
-     * 
-     * @ToDo
+     * Wird dann aufgerufen, wenn eine Methode lokale Daten nicht korrekt auslesen kann.
+     * Dies ist praktisch ein eine Art Reset, wenn etwas nicht mehr funktioniert.
      */
     private void nochRetten()
     {
