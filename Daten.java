@@ -43,6 +43,10 @@ public class Daten
             link = new URL ("https://raw.githubusercontent.com/jan-patrick/World-Cup-betting/master/Allgemein/"
             + dateiname +".txt");
             break;
+        case "laender":
+            link = new URL ("https://raw.githubusercontent.com/jan-patrick/World-Cup-betting/master/Laender/"
+            + dateiname +".txt");
+            break;
         default:
             aktuelledaten = "Fehler";
             return aktuelledaten;
@@ -53,7 +57,7 @@ public class Daten
         {
             aktuelledaten += zeile + "/";
         }    
-            bu.close();
+        bu.close();
         return aktuelledaten;
     }
 
@@ -95,8 +99,8 @@ public class Daten
         case "gruppen":
             datei = "Gruppen/" + name + ".txt";
             break;    
-        case "land":
-            datei = "Allgemein/turnierName.txt";
+        case "laender":
+            datei = "Laender/" + name + ".txt";
             break;    
         default:
             break;

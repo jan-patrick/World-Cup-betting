@@ -103,7 +103,7 @@ public class Main
      * 
      * @ToDo
      */
-    public void loadTurnierName()
+    private void loadTurnierName()
     {
         try
         {    
@@ -122,16 +122,15 @@ public class Main
      */
     public void ladeVorlage()
     {
-        String[] aktuelledatenAusgabee = {"no","input"};
         int anzahlGruppen = 0;
         char[] firstLetter = new char[MAX_GRUPPEN_ANZAHL];
         if(mainInterface.bestaetigen("Vorlage laden?",
            "Wenn Sie die Vorlage laden werden alle lokal gespeicherten Daten überschrieben! Eine Internetverbindung wird benötigt."))
         {
+            // lade GRUPPEN
             try
             {
                 anzahlGruppen = daten.ladeVorlage("gruppen","Gruppen").replaceAll("\\W","").length();
-                System.out.println(anzahlGruppen);
             }
             catch (Exception e)
             {
@@ -145,26 +144,44 @@ public class Main
                     String aktuelledatengr = daten.ladeVorlage("gruppen",String.valueOf(firstLetter[i]));
                     String[] aktuelledateng = aktuelledatengr.split("/");
                     daten.speichereDatei("gruppen", String.valueOf(firstLetter[i]), aktuelledateng);
-                    System.out.println(aktuelledateng);
                 }
                 catch (Exception e)
                 {
                     e.printStackTrace();
                 }
-                //gruppen speichern in datei
-                //ladeGruppen();
-                //System.out.println(aktuelledateng[0]);
             }
+            // lade TURNIERNAME
             try
             {   
                 String[] aktuelledatenn = {daten.ladeVorlage("turniername","turnierName").replaceAll("\\W","").toString()};
                 daten.speichereDatei("turniername", "turnierName", aktuelledatenn);
-                System.out.println(aktuelledatenn[0]);
             }
             catch (Exception e)
             {
                 e.printStackTrace();
             }
+            // lade LÄNDER
+            for (String key : gruppen.keySet())
+            {
+                String name = key;
+                Gruppe gruppe = gruppen.get(key);
+                String[] vorlagelaender = gruppe.getLaender();
+                for(int z = 0; z < vorlagelaender.length; z++)
+                {
+                    try
+                    {   
+                        String[] aktuelledatenl = {daten.ladeVorlage("laender",vorlagelaender[z]).replaceAll("\\W","").toString()};
+                        daten.speichereDatei("laender", vorlagelaender[z], aktuelledatenl);
+                    }
+                    catch (Exception e)
+                    {
+                        e.printStackTrace();
+                    }
+                }
+            }
+            // lade Programmvariablen neu
+            ladeGruppen();
+            loadTurnierName();
         }    
     }
     
