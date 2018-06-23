@@ -3,7 +3,7 @@ import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import java.awt.GridLayout;
-import java.awt.Font;
+
 
 /**
  * Beschreiben Sie hier die Klasse Interface.
@@ -20,7 +20,7 @@ public class Interface
     {
         
     }
-
+    
     /**
      * Noch zu Beschreiben
      * 
@@ -51,7 +51,7 @@ public class Interface
         int eingabe = JOptionPane.showConfirmDialog(null,
                 nachricht,
                 kopfzeile,
-                JOptionPane.YES_NO_CANCEL_OPTION);
+                JOptionPane.YES_NO_OPTION);
         if(eingabe == 0){
             return true;
         }
@@ -105,8 +105,6 @@ public class Interface
         String [] teile = daten.split(",");     
    
         JPanel panel = new JPanel( new GridLayout(1, teile.length) );
-        Font font = new Font("Monospace", Font.PLAIN, 12);
-        panel.setFont(font);
         for (int i = 0; i < teile.length; i++) {
             panel.add( new JLabel("<html>" + teile[i] + "</html>") );
         }     

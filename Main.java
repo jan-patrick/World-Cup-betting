@@ -4,6 +4,8 @@ import java.lang.*;
 import java.io.*;
 import java.util.HashMap;
 import java.util.Set;
+import java.net.URI;
+import java.awt.Desktop;
 
 /**
  * Beschreiben Sie hier die Klasse Main.
@@ -24,7 +26,6 @@ public class Main
     private HashMap<String, Gruppe> gruppen;
     private Daten daten;
     private Interface mainInterface;
-    private Startscreen startscreenReadMe;
     private int gruppenAnzahl = 0;
     private int laenderAnzahl = 0;
     private final int MIN_GRUPPEN_ANZAHL = 2;
@@ -42,10 +43,18 @@ public class Main
         gruppen = new HashMap<>();
         daten = new Daten();
         mainInterface = new Interface();
-        startscreenReadMe = new Startscreen();
-        startscreenReadMe.main();
         ladeGruppen();
         loadTurnierName();
+        zeigeStartscreen();
+    }
+    
+    private void zeigeStartscreen(){
+        if(mainInterface.bestaetigen("Projekt von Jan Schneider","Quellcode auf Github anzeigen?"))
+        {
+            String[] daten = {"https://github.com/jan-patrick/World-Cup-betting"};
+            openLink(daten);
+            System.out.println("Fick");
+        }    
     }
     
     /**
@@ -325,6 +334,36 @@ public class Main
                 e.printStackTrace();
             }
             gruppe.deleteSpiele();
+        }
+    }
+    
+    public void openLink(String[] args)
+    {
+        if(!java.awt.Desktop.isDesktopSupported())
+        {
+            System.err.println("Desktop is not supported (fatal)");
+            System.exit(1);
+        }
+        if(args.length==0)
+        {
+            System.out.println( "Usage: OpenURI [URI [URI ... ]]" );
+            System.exit( 0 );
+        }
+        java.awt.Desktop desktop = java.awt.Desktop.getDesktop();
+        if(!desktop.isSupported(java.awt.Desktop.Action.BROWSE))
+        {
+            System.err.println( "Desktop doesn't support the browse action (fatal)" );
+            System.exit( 1 );
+        }
+        for(String arg:args)
+        {
+            try{
+                java.net.URI uri = new java.net.URI(arg);
+                desktop.browse( uri );
+            }
+            catch(Exception e){
+                System.err.println(e.getMessage());
+            }
         }
     }
 }
