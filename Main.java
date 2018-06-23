@@ -84,7 +84,8 @@ public class Main
             {
                 try
                 {    
-                    daten.turniernameSpeichern(neuerName);
+                    String[] aktuelledaten = {neuerName};
+                    daten.speichereDatei("turniername", "turnierName", aktuelledaten);
                 }
                 catch (Exception e)
                 {
@@ -134,7 +135,7 @@ public class Main
                 firstLetter[i] = (char)(65 + i);
                 try
                 {    
-                    aktuelledaten = daten.ladeVorlage(1,String.valueOf(firstLetter[i]));
+                    aktuelledaten = daten.ladeVorlage("gruppen",String.valueOf(firstLetter[i]));
                 }
                 catch (Exception e)
                 {
@@ -146,9 +147,10 @@ public class Main
                 System.out.println(aktuelledaten);
             }
             try
-            {    
-                daten.turniernameSpeichern(daten.ladeVorlage(2,"turnierName").replaceAll("\\W",""));
-                System.out.println(daten.ladeVorlage(2,"turnierName").replaceAll("\\W",""));
+            {   
+                String[] aktuelledatenAusgabe = {daten.ladeVorlage("turniername","turnierName").replaceAll("\\W","").toString()};
+                daten.speichereDatei("turniername", "turnierName", aktuelledatenAusgabe);
+                System.out.println(aktuelledatenAusgabe[0]);
             }
             catch (Exception e)
             {

@@ -28,37 +28,31 @@ public class Daten
      * @return daten
      * @ToDo
      */
-    public String ladeVorlage(int u, String dateiname) throws IOException
+    public String ladeVorlage(String art, String dateiname) throws IOException
     {
         String aktuelledaten = "";
         String zeile = "";
-        switch(u){
-        case 1:
-            URL group = new URL
-            ("https://raw.githubusercontent.com/jan-patrick/World-Cup-betting/master/Gruppen/"+ dateiname +".txt");
-            BufferedReader no = new BufferedReader(
-            new InputStreamReader(group.openStream()));
-            while( (zeile = no.readLine()) != null )
-            {
-                aktuelledaten += zeile + "/";
-            }    
-            no.close();
+        URL link = new URL ("https://jan-patrick.de");
+        switch(art){
+        case "gruppen":
+            link = new URL ("https://raw.githubusercontent.com/jan-patrick/World-Cup-betting/master/Gruppen/"
+            + dateiname +".txt");
             break;
-        case 2:
-            URL turnier = new URL
-            ("https://raw.githubusercontent.com/jan-patrick/World-Cup-betting/master/Allgemein/"+ dateiname +".txt");
-            BufferedReader nu = new BufferedReader(
-            new InputStreamReader(turnier.openStream()));
-            while( (zeile = nu.readLine()) != null )
-            {
-                aktuelledaten += zeile + "/";
-            }    
-            nu.close();
+        case "turniername":
+            link = new URL ("https://raw.githubusercontent.com/jan-patrick/World-Cup-betting/master/Allgemein/"
+            + dateiname +".txt");
             break;
         default:
             aktuelledaten = "Fehler";
-            break;
+            return aktuelledaten;
         }
+        BufferedReader bu = new BufferedReader(
+        new InputStreamReader(link.openStream()));
+        while( (zeile = bu.readLine()) != null )
+        {
+            aktuelledaten += zeile + "/";
+        }    
+            bu.close();
         return aktuelledaten;
     }
 
@@ -90,12 +84,25 @@ public class Daten
      * @param landteile
      * @ToDo
      */
-    public void turniernameSpeichern(String turniername) throws IOException
+    public void speichereDatei(String art, String name, String[] daten) throws IOException
     {        
-        String datei = "Allgemein/turnierName.txt";
+        String datei = "Error.txt";
+        switch(art){
+        case "turniername":
+            datei = "Allgemein/"+ name +".txt";
+            break;
+        case "land":
+            datei = "Allgemein/turnierName.txt";
+            break;    
+        default:
+            break;
+        }
         FileWriter fw = new FileWriter(datei);
         BufferedWriter bw = new BufferedWriter(fw);
-        bw.write(turniername);
+        for (int x = 0; x < daten.length; x++) {
+            bw.write(daten[x]);
+            if(x<daten.length){bw.newLine();};
+        }
         bw.close();
     }
 

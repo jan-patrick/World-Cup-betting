@@ -362,7 +362,7 @@ public class Gruppe
      * 
      * @ToDo
      */
-    public void löscheTorePunkteSpielergebnis (String land1, String land2)
+    public void deleteTorePunkteSpielergebnis (String land1, String land2)
     {
         String spielVor = land1 + ":" + land2;
         String spielRück = land2 + ":" + land1;
