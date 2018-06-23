@@ -46,7 +46,7 @@ public class Main
     }
     
     /**
-     * Öffnet das GitHub Repository im Standardbrowser
+     * Öffnet das GitHub Repository dieses Programms im Standardbrowser
      */
     public void openGitHubLink(){
         if(mainInterface.bestaetigen("Projekt von Jan Schneider","Quellcode auf Github anzeigen?"))
@@ -122,8 +122,7 @@ public class Main
      */
     public void ladeVorlage()
     {
-        String aktuelledaten = "";
-        String[] teile;
+        String[] aktuelledatenAusgabee = {"no","input"};
         char[] firstLetter = new char[MAX_GRUPPEN_ANZAHL];
         if(mainInterface.bestaetigen("Vorlage laden?",
            "Wenn Sie die Vorlage laden werden alle lokal gespeicherten Daten überschrieben! Eine Internetverbindung wird benötigt."))
@@ -133,22 +132,24 @@ public class Main
                 firstLetter[i] = (char)(65 + i);
                 try
                 {    
-                    aktuelledaten = daten.ladeVorlage("gruppen",String.valueOf(firstLetter[i]));
+                    String aktuelledatengr = daten.ladeVorlage("gruppen",String.valueOf(firstLetter[i]));
+                    String[] aktuelledateng = aktuelledatengr.split("/");
+                    daten.speichereDatei("gruppen", String.valueOf(firstLetter[i]), aktuelledateng);
+                    System.out.println(aktuelledateng);
                 }
                 catch (Exception e)
                 {
                     e.printStackTrace();
                 }
-                teile = aktuelledaten.split("/");
                 //gruppen speichern in datei
                 //ladeGruppen();
-                System.out.println(aktuelledaten);
+                //System.out.println(aktuelledateng[0]);
             }
             try
             {   
-                String[] aktuelledatenAusgabe = {daten.ladeVorlage("turniername","turnierName").replaceAll("\\W","").toString()};
-                daten.speichereDatei("turniername", "turnierName", aktuelledatenAusgabe);
-                System.out.println(aktuelledatenAusgabe[0]);
+                String[] aktuelledatenn = {daten.ladeVorlage("turniername","turnierName").replaceAll("\\W","").toString()};
+                daten.speichereDatei("turniername", "turnierName", aktuelledatenn);
+                System.out.println(aktuelledatenn[0]);
             }
             catch (Exception e)
             {

@@ -92,6 +92,9 @@ public class Daten
         case "turniername":
             datei = "Allgemein/"+ name +".txt";
             break;
+        case "gruppen":
+            datei = "Gruppen/" + name + ".txt";
+            break;    
         case "land":
             datei = "Allgemein/turnierName.txt";
             break;    
