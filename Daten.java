@@ -56,7 +56,8 @@ public class Daten
         while( (zeile = bu.readLine()) != null )
         {
             aktuelledaten += zeile + "/";
-        }    
+        }  
+
         bu.close();
         return aktuelledaten;
     }

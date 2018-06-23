@@ -101,7 +101,7 @@ public class Gruppe
     {
         String[] datenteile = getDatenTeile("Laender", name);
 
-        String nameLand = datenteile[0];
+        String nameLand = datenteile[0].replaceAll("\\W","");
         int tore = Integer.valueOf(datenteile[1]);
         int punkte = Integer.valueOf(datenteile[2]);
 

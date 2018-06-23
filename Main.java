@@ -170,8 +170,11 @@ public class Main
                 {
                     try
                     {   
-                        String aktuelledatenla = daten.ladeVorlage("laender",vorlagelaender[z]).replaceAll("\\W","").toString();
+                        String aktuelledatenla = daten.ladeVorlage("laender",vorlagelaender[z]).replaceAll("\\s","").toString();
                         String[] aktuelledatenl = aktuelledatenla.split("/");
+                        //for(int p = 0; p < aktuelledatenl.length; p++){
+                        //    System.out.println("p: "+aktuelledatenl[p]);
+                        //}
                         daten.speichereDatei("laender", vorlagelaender[z], aktuelledatenl);
                     }
                     catch (Exception e)
@@ -202,6 +205,10 @@ public class Main
             e.printStackTrace();
         }
         teile = aktuelledaten.split("/");
+        for(int k = 0; k < teile.length; k++)
+        {
+            teile[k] = createValideEingabe(teile[k]);
+        }    
         for (int i = 0; i < teile.length; i++) {
             gruppen.put(teile[i], new Gruppe(teile[i]));
         }
