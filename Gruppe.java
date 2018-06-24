@@ -467,7 +467,7 @@ public class Gruppe
     /**
      * Löscht sämtlichen Inhalt der Länder-HashMap
      */
-    public void deleteLänder()
+    public void deleteLaender()
     {
         laender.clear();
     }

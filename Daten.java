@@ -3,7 +3,6 @@ import java.lang.*;
 import java.nio.file.*;
 import java.net.*;
 import java.awt.Desktop;
-import java.io.File;
 
 /**
  * Beschreiben Sie hier die Klasse Daten.
@@ -243,18 +242,25 @@ public class Daten
      * 
      * @ToDo
      */
-    public void deleteAlleDaten()
+    public void deleteAlleDaten(String art, String dateiname) throws IOException
     {
-        try
+        String datei = "Allgemein/turnierName.txt";
+        switch(art)
         {
-            String datei = "Allgemein/turnierName.txt";
-            FileWriter fw = new FileWriter(datei);
-            fw.flush();
-            fw.close(); // actually free any underlying file handles.
+        case "gruppen":
+            datei = "Gruppen/" + dateiname +".txt";
+            break;
+        case "turniername":
+            datei = "Allgemein/" + dateiname +".txt";
+            break;
+        case "laender":
+            datei = "Laender/" + dateiname +".txt";
+            break;
+        default:
+            break;
         }
-            catch(Exception e)
-            {
-                System.err.println(e.getMessage());
-            }    
+        FileWriter fw = new FileWriter(datei);
+        fw.flush();
+        fw.close();
     }    
 }

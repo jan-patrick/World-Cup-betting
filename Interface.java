@@ -91,7 +91,8 @@ public class Interface
                 JOptionPane.OK_CANCEL_OPTION);
         pane.createDialog(null, "Spielergebnis").setVisible(true);
 
-        String[] daten = {mannschaft1.getText(), tore1.getText(), mannschaft2.getText(), tore2.getText()};
+        String[] daten = {mannschaft1.getText().replaceAll("\\W",""), tore1.getText().replaceAll("\\W",""),
+                          mannschaft2.getText().replaceAll("\\W",""), tore2.getText().replaceAll("\\W","")};
         return daten;
     }
 

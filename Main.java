@@ -169,6 +169,7 @@ public class Main
                 e.printStackTrace();
             }
         }
+        ladeGruppen();
         // lade TURNIERNAME
         try
         {   
@@ -179,6 +180,7 @@ public class Main
         {
             e.printStackTrace();
         }
+        loadTurnierName();
         // lade LÄNDER
         for (String key : gruppen.keySet())
         {
@@ -198,10 +200,7 @@ public class Main
                     e.printStackTrace();
                 }
             }
-        }
-        // lade Programmvariablen neu
-        ladeGruppen();
-        loadTurnierName();  
+        } 
     }
     
     /**
@@ -248,7 +247,7 @@ public class Main
      * 
      * @ToDo
      */
-    public void createGruppen()
+    private void createGruppen()
     {
         if(gruppenAnzahl>=MAX_GRUPPEN_ANZAHL)
         {            
@@ -274,12 +273,12 @@ public class Main
      * 
      * @ToDo
      */ 
-    public String getGruppenAsString()
+    private String getGruppenAsString()
     {
-        String ergebnis = "Gruppen: ";
+        String ergebnis = "";
         Set<String> keywords = gruppen.keySet();
         for(String gruppe : keywords){
-            ergebnis += " " + gruppe;
+            ergebnis += "/" + gruppe;
         }
         return ergebnis;
     }
@@ -347,7 +346,8 @@ public class Main
     {
         aktualisiereGruppeninfo();
         String[] datenEingabe = mainInterface.eingabeAufforderungSpielergebnis();
-        if(datenEingabe != null){ 
+        if(datenEingabe != null && datenEingabe[1].replaceAll("\\W","") != null && 
+           datenEingabe[1].replaceAll("\\W","") != ""){ 
             int tore1 = Integer.valueOf(datenEingabe[1].replaceAll("\\W",""));
             int tore2 = Integer.valueOf(datenEingabe[3].replaceAll("\\W",""));
             String land1 = createValideEingabe(datenEingabe[0]);
@@ -466,22 +466,27 @@ public class Main
         String gruppe1 = "";
         String gruppe2 = "";
 
-        for (String key : gruppen.keySet()) {
+        for (String key : gruppen.keySet())
+        {
             Gruppe gruppe = gruppen.get(key);
-
-            if(gruppe.existiertLand(land1) == true){
+            if(gruppe.existiertLand(land1))
+            {
                 gruppe1 = key;
             }
-            if(gruppe.existiertLand(land2) == true){
+            if(gruppe.existiertLand(land2))
+            {
                 gruppe2 = key;
             }
         }
 
-        if(gruppe1 == gruppe2){
+        if(gruppe1 == gruppe2)
+        {
             return gruppe1;
         }
-        else{return null;}
-
+        else
+        {
+            return null;
+        }
     }
     
     /**
@@ -492,10 +497,12 @@ public class Main
     public Gruppe getGruppeWennLand(String land)
     {
         String daten = "";
-        for (String key : gruppen.keySet()) {
+        for (String key : gruppen.keySet())
+        {
             Gruppe gruppe = gruppen.get(key);
 
-            if(gruppe.existiertLand(land) == true){
+            if(gruppe.existiertLand(land))
+            {
                 return gruppe;
             }
         }
@@ -558,7 +565,32 @@ public class Main
         if(mainInterface.bestaetigen("Achtung!", 
            "Wollen Sie wirklich alle lokal gespeicherten Daten löschen?"))
         {
-            daten.deleteAlleDaten();
+            int anzahlGruppen = 0;
+            char[] firstLetter = new char[MAX_GRUPPEN_ANZAHL];
+            try
+            {
+                anzahlGruppen = daten.ladeVorlage("gruppen","Gruppen").replaceAll("\\W","").length();
+            }
+            catch (Exception e)
+            {
+                e.printStackTrace();
+            }
+            try
+            {
+                daten.deleteAlleDaten("turniername", "turnierName");
+                daten.deleteAlleDaten("gruppen", "Gruppen");
+                for(int i = 0; i < anzahlGruppen; i++)
+                {
+                    firstLetter[i] = (char)(65 + i);
+                    daten.deleteAlleDaten("gruppen", String.valueOf(firstLetter[i]));
+                }
+            }
+            catch(Exception e)
+            {
+                System.err.println(e.getMessage());
+            }
+            String[] javaGruppen = getGruppenAsString().split("/");
+            
         }
     }
     
