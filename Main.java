@@ -182,25 +182,28 @@ public class Main
         }
         loadTurnierName();
         // lade LÄNDER
-        for (String key : gruppen.keySet())
+        String[] vorlagelaender = {};
+        try
         {
-            String name = key;
-            Gruppe gruppe = gruppen.get(key);
-            String[] vorlagelaender = gruppe.getLaender();
-            for(int z = 0; z < vorlagelaender.length; z++)
-            {
-                try
-                {   
-                    String aktuelledatenla = daten.ladeVorlage("laender",vorlagelaender[z]).replaceAll("\\s","").toString();
-                    String[] aktuelledatenl = aktuelledatenla.split("/");
-                    daten.speichereDatei("laender", vorlagelaender[z], aktuelledatenl);
-                }
-                catch (Exception e)
-                {
-                    e.printStackTrace();
-                }
+            vorlagelaender = daten.ladeVorlage("laender","Laender").split("/");
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        for(int z = 0; z < vorlagelaender.length; z++)
+        {
+            try
+            {   
+                String aktuelledatenla = daten.ladeVorlage("laender",vorlagelaender[z].replaceAll("\\W",""));
+                String[] aktuelledatenl = aktuelledatenla.split("/");
+                daten.speichereDatei("laender", vorlagelaender[z], aktuelledatenl);
             }
-        } 
+            catch (Exception e)
+            {
+                e.printStackTrace();
+            }
+            }
     }
     
     /**
@@ -290,7 +293,7 @@ public class Main
      * 
      * @param land, tore, punkte
      */
-    private void saveLand(String land, int tore, int punkte)
+    public void addLand(String land, int tore, int punkte)
     {
         if(getDatenSpielergebnis(land, tore, punkte) == null){
             System.out.println("Das Land " + land + " existiert nicht");
@@ -366,15 +369,15 @@ public class Main
                     else gruppe.deleteTorePunkteSpielergebnis(land1, land2);
                 }
                 if(gruppe.existiertSpielergebnis(land1, land2)&& check){              
-                    saveLand(land1, tore1, punkte[0]); 
-                    saveLand(land2, tore2, punkte[1]);
+                    addLand(land1, tore1, punkte[0]); 
+                    addLand(land2, tore2, punkte[1]);
                     String daten = land1 + ":" + land2 + "-" + tore1 + ":" + tore2;
                     saveGruppe(nameGruppe, updateGruppeSpielinfo(nameGruppe, land1, land2, daten));
                     gruppe.loadGruppeninfo(nameGruppe);
                 }
                 else if(gruppe.existiertSpielergebnis(land2, land1)&& check){
-                    saveLand(land1, tore1, punkte[0]); 
-                    saveLand(land2, tore2, punkte[1]);
+                    addLand(land1, tore1, punkte[0]); 
+                    addLand(land2, tore2, punkte[1]);
                     String daten = land2 + ":" + land1 + "-" + tore2 + ":" + tore1;
                     saveGruppe(nameGruppe, updateGruppeSpielinfo(nameGruppe, land2, land1, daten));
                     gruppe.loadGruppeninfo(nameGruppe);
