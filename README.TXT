@@ -1,37 +1,28 @@
-------------------------------------------------------------------------
-WORLD CUP BETTING by Jan Schneider
-------------------------------------------------------------------------
+--------------------------------------------------------------------------
+WORLD CUP BETTING von Jan Schneider
+--------------------------------------------------------------------------
 
-PROJEKTBEZEICHNUNG: Fussballweltmeisterschaft Tippspiel 2018
-PROJEKTZWECK: Semesterprojekt Programmieren 2 bei Rainer Hönle
-VERSION oder DATUM: 2018.05.28
-WIE IST DAS PROJEKT ZU STARTEN:
-AUTOR: Jan Schneider, HfG, IoT3
-PROJEKTSPEICHER: https://github.com/jan-patrick/World-Cup-betting
-BENUTZERHINWEISE: 
-PROJEKTZIEL: ausführbares BlueJ-Projekt und Dokumentation
+PROJEKTBEZEICHNUNG:     Fußballturnierübersicht
 
-PROJEKTBESCHREIBUNG: 
-- diesjährige Fussballweltmeisterschaft 2018 als Anregung
-- "Spielplan" als ein Projektziel
-- Richtlinie für guten Programmentwurf (keine Codeduplizierung, Kopplung, 
-  Kohäsion, Wartbarkeit, Erweiterbarkeit, Vorausschauen, Testfunktionen, 
-  Klassen-, Projekt- und Methodendokumentation, ...) berücksichtigen 
-- wenn mehrere Lösungsmöglichkeiten vorhanden sind, die Vor- und Nachteile 
-  der einzelnen Lösungen dokumentieren und warum dieser Weg
-- gegeben sind 8 Gruppen mit jeweils 4 Nationen
-- berechnen Sie alle möglichen Spielpaarungen
-- Berücksichtigen, dass es auch eine andere Anzahl von Gruppen geben könnte
-- Was sind die Anforderungen an die Gruppenanzahl, damit die WM gemäß
-  dem aktuellen Schema ausgeführt werden kann?
-- es könnte auch eine andere Anzahl von Nationen in einer Gruppe geben
-- Was sind die Anforderungen an die Nationenanzahl pro Gruppe, damit die WM 
-  gemäß dem aktuellen Schema ausgeführt werden kann?
-- Lassen Sie die Ergebnisse der Spiele eingeben und merken Sie sich diese
-- bei Programmstart die bereits vorhandenen Ergebnisse einlesen
-- ausgeben der Paarungen und die bereits erzielten Ergebnisse
-- Wie verwalten Sie die einzelnen Gruppen und Nationen? 
-- Wie bauen Sie die Bedienung auf? Warum so? 
-- Wie gehen Sie mit Falscheingaben (Eingabefehlern) um? 
-- Wann lassen Sie eine Korrektur zu? 
-- Wie testen Sie Ihr Programm? Welche Funktionen sind dazu notwendig?
+PROJEKTZWECK:           Semesterprojekt in Programmieren 2 an der Hs Aalen
+                        und HfG Schwäbisch Gmünd bei Rainer Hönle
+
+DATUM:                  2018.06.24
+
+AUTOR:                  Jan Schneider, HfG, IoT3
+
+PROJEKTSPEICHER:        https://github.com/jan-patrick/World-Cup-betting
+
+PROJEKTZIEL:            BlueJ-Projekt und Dokumentation zur WM 2018
+
+BENUTZERHINWEISE:       Um das Programm zu starten ist eine neue Instanz
+                        der Klasse "Main" zu erstellen. Dort können alle
+                        zur Bedienung wichtigen Methoden aufgerufen 
+                        werden. Die Benutzung ist durch ein User Interface
+                        gestaltet.
+                        Sollten im Betrieb Änderungen vorgenommen werden,
+                        die rückgängig gemacht werden sollen oder sind die
+                        Text-Dateien, die als Speicher dienen beschädigt
+                        oder nicht vorhanden, besteht die Möglichkeit aus 
+                        dem Github Projektspeicher die Vorlage zu laden.
+                        Hierfür wird eine Internetverbindung benötigt.
