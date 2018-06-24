@@ -1,6 +1,7 @@
 -----------------------------------------------------------------------------------------------------------
 WORLD CUP BETTING von Jan Schneider
 -----------------------------------------------------------------------------------------------------------
+
 PROJEKTBEZEICHNUNG:     Fußballturnierübersicht 
 
 PROJEKTZWECK:           Semesterprojekt in Programmieren 2 an der Hs Aalen und HfG Schwäbisch Gmünd 

@@ -148,18 +148,18 @@ public class Main
      */
     private void ladeVorlage()
     {
-        int anzahlGruppen = 0;
+        gruppenAnzahl = 0;
         char[] firstLetter = new char[MAX_GRUPPEN_ANZAHL];
         // lade GRUPPEN
         try
         {
-            anzahlGruppen = daten.ladeVorlage("gruppen","Gruppen").replaceAll("\\W","").length();
+            gruppenAnzahl = daten.ladeVorlage("gruppen","Gruppen").replaceAll("\\W","").length();
         }
         catch (Exception e)
         {
             e.printStackTrace();
         }
-        for(int i = 0; i < anzahlGruppen; i++)
+        for(int i = 0; i < gruppenAnzahl; i++)
         {
             firstLetter[i] = (char)(65 + i);
             try
@@ -311,9 +311,11 @@ public class Main
         }
         else
         {
+            Gruppe gruppe = getGruppeWennLand(land);
             try
             {
                 daten.speichereDatei("laender", land, getDatenSpielergebnis(land, tore, punkte));
+                gruppe.getUpdatedInfoLand(land, tore, punkte);
             }
             catch (Exception e)
             {
@@ -384,23 +386,20 @@ public class Main
                     {
                         check = false;
                     }
-                    else gruppe.deleteTorePunkteSpielergebnis(land1, land2);
+                    else 
+                    {
+                        gruppe.deleteTorePunkteSpielergebnis(land1, land2);
+                    }
                 }
                 if(gruppe.existiertSpielergebnis(land1, land2)&& check)
                 {              
-                    addLand(land1, tore1, punkte[0]); 
-                    addLand(land2, tore2, punkte[1]);
-                    String daten = land1 + ":" + land2 + "-" + tore1 + ":" + tore2;
-                    saveGruppe(nameGruppe, updateGruppeSpielinfo(nameGruppe, land1, land2, daten));
-                    gruppe.loadGruppeninfo(nameGruppe);
+                    String aktuelledaten = land1 + ":" + land2 + "-" + tore1 + ":" + tore2;
+                    saveGruppe(nameGruppe, updateGruppeSpielinfo(nameGruppe, land1, land2, aktuelledaten));
                 }
                 else if(gruppe.existiertSpielergebnis(land2, land1)&& check)
                 {
-                    addLand(land1, tore1, punkte[0]); 
-                    addLand(land2, tore2, punkte[1]);
-                    String daten = land2 + ":" + land1 + "-" + tore2 + ":" + tore1;
-                    saveGruppe(nameGruppe, updateGruppeSpielinfo(nameGruppe, land2, land1, daten));
-                    gruppe.loadGruppeninfo(nameGruppe);
+                    String aktuelledaten = land2 + ":" + land1 + "-" + tore2 + ":" + tore1;
+                    saveGruppe(nameGruppe, updateGruppeSpielinfo(nameGruppe, land2, land1, aktuelledaten));;
                 }
             }
             else
@@ -408,6 +407,7 @@ public class Main
                 mainInterface.nachricht("Fehler", "Die Länder existieren nicht oder sind nicht in einer Gruppe.");
             }
             ladeGruppen();
+            ladeSpieleErgebnisse();
         }
     } 
     

@@ -230,6 +230,21 @@ public class Gruppe
     /**
      * Noch zu Beschreiben
      * 
+     * @param name
+     * @param tore
+     * @param punkte
+     * 
+     * @ToDo
+     */
+    public void landSetTorePunkte(String name, int tore, int punkte)
+    {
+        Land land = laender.get(name);
+        land.setTorePunkte(tore, punkte);
+    }
+    
+    /**
+     * Noch zu Beschreiben
+     * 
      * @param teile
      * @ToDo
      */

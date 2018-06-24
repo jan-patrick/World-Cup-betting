@@ -63,8 +63,7 @@ public class Land
     }
     
     /**
-     * Aktualisiert erst die Tore und Punkte und gibt anschließend alle Werte (Name, Tore, 
-     * Punkte)als Array zurück.
+     * Aktualisiert erst die Tore und Punkte und gibt anschließend alle Werte (Name, Tore, Punkte) als Array zurück.
      * 
      * @param   tore            Die neue Toranzahl des Landes
      * @param   punkte          Die neue Punktzahl des Landes
@@ -72,10 +71,21 @@ public class Land
      */
     public String[] getUpdatedInfo (int tore, int punkte)
     {
-        this.tore += tore;
-        this.punkte += punkte;
+        setTorePunkte(tore, punkte);
         String[] aktuelledaten = getDetails();
         return aktuelledaten;
+    }
+    
+    /**
+     * Setzt die Tore und Punkte des Landes gleich den neu übergebenen Werten.
+     * 
+     * @param   tore            Die neue Toranzahl des Landes
+     * @param   punkte          Die neue Punktzahl des Landes
+     */
+    public void setTorePunkte (int tore, int punkte)
+    {
+        this.tore += tore;
+        this.punkte += punkte;
     }
     
     /**
