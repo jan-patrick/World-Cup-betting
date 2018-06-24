@@ -303,7 +303,7 @@ public class Main
      * 
      * @param land, tore, punkte
      */
-    public void addLand(String land, int tore, int punkte)
+    private void addLand(String land, int tore, int punkte)
     {
         if(getDatenSpielergebnis(land, tore, punkte) == null)
         {
@@ -527,7 +527,28 @@ public class Main
      * 
      * @ToDo
      */
-    public Gruppe getGruppeWennLand(String land)
+    public void findeGruppevonLand()
+    {
+        String aktuellesLand = mainInterface.eingabeAufforderungEinFeld("Gruppe finden", "", "Name des Landes");
+        String nameLand = createValideEingabe(aktuellesLand);
+        Gruppe gruppe = getGruppeWennLand(nameLand);
+        if(gruppe == null)
+        {
+            mainInterface.nachricht("Fehler", "Das Land " + nameLand + " existiert nicht.");
+        }
+        else
+        {
+            mainInterface.nachricht("Gruppenanzeige", "Die Gruppe von " + nameLand + 
+                                    " ist " + gruppe.getGruppenName() + ".");
+        }
+    }
+
+    /**
+     * Noch zu Beschreiben
+     * 
+     * @ToDo
+     */
+    private Gruppe getGruppeWennLand(String land)
     {
         String daten = "";
         for (String key : gruppen.keySet())
@@ -728,10 +749,10 @@ public class Main
      */
     public void showLandDetails()
     {
-        String daten = mainInterface.eingabeAufforderungEinFeld("Landdetails", "", "Name des Landes");
+        String aktuelledaten = mainInterface.eingabeAufforderungEinFeld("Landdetails", "", "Name des Landes");
         if(daten != null)
         {
-            String nameLand = createValideEingabe(daten);
+            String nameLand = createValideEingabe(aktuelledaten);
             Gruppe gruppe = getGruppeWennLand(nameLand);
             if(gruppe != null)
             {
