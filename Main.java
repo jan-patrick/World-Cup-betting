@@ -588,9 +588,7 @@ public class Main
             catch(Exception e)
             {
                 System.err.println(e.getMessage());
-            }
-            String[] javaGruppen = getGruppenAsString().split("/");
-            
+            }            
         }
     }
     
