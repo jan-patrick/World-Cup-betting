@@ -257,6 +257,123 @@ public class Main
      * 
      * @ToDo
      */
+    private void ladeLaender()
+    {
+        String[] aktuelledaten = {};
+        try
+        {
+            aktuelledaten = daten.ladeDatei("Laender", "Laender").split("/");
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+            nochRetten();
+        }
+        for(int k = 0; k < aktuelledaten.length; k++)
+        {
+            aktuelledaten[k] = createValideEingabe(aktuelledaten[k]);
+        }    
+        for(int z = 0; z < aktuelledaten.length; z++)
+        {
+            try
+            {   
+                String aktuelledatenla = daten.ladeVorlage("laender",aktuelledaten[z].replaceAll("\\W",""));
+                String[] aktuelledatenl = aktuelledatenla.split("/");
+                daten.speichereDatei("laender", aktuelledaten[z], aktuelledatenl);
+                Gruppe gruppe = getGruppeWennLand(aktuelledaten[z]);
+                gruppe.landSetTorePunkte(aktuelledaten[z], Integer.valueOf(aktuelledatenl[1]), 
+                                                       Integer.valueOf(aktuelledatenl[2]));
+            }
+            catch (Exception e)
+            {
+                e.printStackTrace();
+                nochRetten();
+            }
+        }
+        //Gruppe gruppe = getGruppeWennLand(nameLand);
+        //gruppen().landSetTorePunkte(String name, int tore, int punkte);
+    }
+    
+    /**
+     * Noch zu Beschreiben
+     * 
+     * @ToDo
+     */
+    public void ladeSpieleErgebnisse()
+    {
+        char[] firstLetter = new char[MAX_GRUPPEN_ANZAHL];
+        String[] aktuelledaten = {};
+        for(int i = 0; i < gruppenAnzahl; i++)
+        {
+            firstLetter[i] = (char)(65 + i);
+            try
+            {    
+                String aktuelledatengruppe = daten.ladeVorlage("gruppen",String.valueOf(firstLetter[i]));
+                aktuelledaten = aktuelledatengruppe.split("/");
+                System.out.println(aktuelledaten[0] +" "+ 
+                                   aktuelledaten[Integer.valueOf(aktuelledaten[0])]);
+            }
+            catch (Exception e)
+            {
+                e.printStackTrace();
+            }
+        }
+        
+        // TO DO
+        // TODO
+        if(0==1)
+        {
+            int tore1 = Integer.valueOf(aktuelledaten[1].replaceAll("\\W",""));
+            int tore2 = Integer.valueOf(aktuelledaten[3].replaceAll("\\W",""));
+            String land1 = createValideEingabe(aktuelledaten[0]);
+            String land2 = createValideEingabe(aktuelledaten[2]);
+            boolean check = true;
+            int[] punkte = berechnePunkte(tore1, tore2);
+            String nameGruppe = LaenderInGruppe(land1, land2);
+            if(nameGruppe != null)
+            {
+                Gruppe gruppe = gruppen.get(nameGruppe);
+                if (!gruppe.existiertSpielergebnis(land1, land2))
+                {
+                    if(!mainInterface.bestaetigen("Fehler", "Das Ergebnis wurde bereits eingegeben. Möchten Sie die alte Eingabe überschreiben?"))
+                    {
+                        check = false;
+                    }
+                    else gruppe.deleteTorePunkteSpielergebnis(land1, land2);
+                }
+                if(gruppe.existiertSpielergebnis(land1, land2)&& check)
+                {              
+                    addLand(land1, tore1, punkte[0]); 
+                    addLand(land2, tore2, punkte[1]);
+                    String daten = land1 + ":" + land2 + "-" + tore1 + ":" + tore2;
+                    saveGruppe(nameGruppe, updateGruppeSpielinfo(nameGruppe, land1, land2, daten));
+                    gruppe.loadGruppeninfo(nameGruppe);
+                }
+                else if(gruppe.existiertSpielergebnis(land2, land1)&& check)
+                {
+                    addLand(land1, tore1, punkte[0]); 
+                    addLand(land2, tore2, punkte[1]);
+                    String daten = land2 + ":" + land1 + "-" + tore2 + ":" + tore1;
+                    saveGruppe(nameGruppe, updateGruppeSpielinfo(nameGruppe, land2, land1, daten));
+                    gruppe.loadGruppeninfo(nameGruppe);
+                }
+            }
+            else
+            {
+                mainInterface.nachricht("Fehler", "Die Länder existieren nicht oder sind nicht in einer Gruppe.");
+            }
+        }
+        
+        
+        
+        
+    }
+    
+    /**
+     * Noch zu Beschreiben
+     * 
+     * @ToDo
+     */
     private void createGruppen()
     {
         if(gruppenAnzahl>=MAX_GRUPPEN_ANZAHL)
