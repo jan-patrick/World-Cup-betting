@@ -26,7 +26,7 @@ public class Daten
      * Noch zu Beschreiben
      * 
      * @param dateiname
-     * @return daten
+     * @return aktuelledaten
      * @ToDo
      */
     public String ladeVorlage(String art, String dateiname) throws IOException
@@ -131,25 +131,6 @@ public class Daten
         {
             bw.write(landteile[x]);
             if(x<landteile.length){bw.newLine();};
-        }
-        bw.close();
-    }
-    
-    /**
-     * Noch zu Beschreiben
-     * 
-     * @param gruppenName, gruppenteile
-     * @ToDo
-     */
-    public void gruppeSpeichern(String gruppenName, String[] gruppenteile) throws IOException
-    {
-        String datei = "Gruppen/" + gruppenName + ".txt";
-        FileWriter fw = new FileWriter(datei);
-        BufferedWriter bw = new BufferedWriter(fw);
-        for (int x = 0; x < gruppenteile.length; x++)
-        {
-            bw.write(gruppenteile[x]);
-            if(x<gruppenteile.length-1){bw.newLine();};
         }
         bw.close();
     }

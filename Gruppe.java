@@ -57,7 +57,8 @@ public class Gruppe
         teile[0] = String.valueOf(gruppenGroesse);
         try
         {
-            daten.gruppeSpeichern(gruppenName, teile);
+            daten.speichereDatei("gruppen", gruppenName, teile);
+            
         }
         catch (Exception e)
         {
@@ -192,7 +193,7 @@ public class Gruppe
         teile.toArray( aktuelledaten );
         try
         {
-            daten.gruppeSpeichern(gruppenName, aktuelledaten);
+            daten.speichereDatei("gruppen", gruppenName, aktuelledaten);
         }
         catch (Exception e)
         {

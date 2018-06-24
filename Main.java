@@ -331,7 +331,7 @@ public class Main
     {
         try
         {
-            daten.gruppeSpeichern(name, teile);
+            daten.speichereDatei("gruppen", name, teile);
         }
         catch (Exception e)
         {
