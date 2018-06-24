@@ -4,7 +4,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import java.awt.GridLayout;
 
-
 /**
  * Beschreiben Sie hier die Klasse Interface.
  * 
@@ -29,14 +28,14 @@ public class Interface
     public String eingabeAufforderungTurniername(String bisherigerTurniername)
     {
         JTextField turniername = new JTextField();
-        Object[] message = {"neuer Turniername (bestehend aus Buchstaben und Zahlen)", turniername, 
-                "Ansonsten heißt das Turnier weiterhin:", bisherigerTurniername,};
-
+        Object[] message = {"neuer Turniername (bestehend aus Buchstaben und Zahlen)",
+                            turniername, 
+                            "Ansonsten heißt das Turnier weiterhin:", 
+                            bisherigerTurniername,};
         JOptionPane pane = new JOptionPane( message, 
                 JOptionPane.PLAIN_MESSAGE, 
                 JOptionPane.OK_CANCEL_OPTION);
         pane.createDialog(null, "Turniername ändern").setVisible(true);
-
         String daten = turniername.getText();
         return daten;
     }
@@ -52,7 +51,8 @@ public class Interface
                 nachricht,
                 kopfzeile,
                 JOptionPane.YES_NO_OPTION);
-        if(eingabe == 0){
+        if(eingabe == 0)
+        {
             return true;
         }
         else return false;
@@ -85,12 +85,10 @@ public class Interface
         Object[] message = {"Mannschaft", mannschaft1, 
                 "Tore", tore1, "Mannschaft", mannschaft2, 
                 "Tore", tore2};
-
         JOptionPane pane = new JOptionPane( message, 
                 JOptionPane.PLAIN_MESSAGE, 
                 JOptionPane.OK_CANCEL_OPTION);
         pane.createDialog(null, "Spielergebnis").setVisible(true);
-
         String[] daten = {mannschaft1.getText().replaceAll("\\W",""), tore1.getText().replaceAll("\\W",""),
                           mannschaft2.getText().replaceAll("\\W",""), tore2.getText().replaceAll("\\W","")};
         return daten;
@@ -104,12 +102,11 @@ public class Interface
     public void createSpielplan(String turniername, String daten)
     { 
         String [] teile = daten.split(",");     
-   
         JPanel panel = new JPanel( new GridLayout(1, teile.length) );
-        for (int i = 0; i < teile.length; i++) {
+        for (int i = 0; i < teile.length; i++)
+        {
             panel.add( new JLabel("<html><div style='text-align: center;'>" + teile[i] + "</div></html>") );
         }     
-
         JOptionPane pane = new JOptionPane( panel);
         pane.createDialog(null, "Spielergebnisse " + turniername).setVisible(true);
     }
@@ -123,22 +120,26 @@ public class Interface
     {
         JTextField gruppe = new JTextField();
         JTextField name = new JTextField();
-
-        Object[] message = {"Bei Hinzufügen eines neuen Landes werden alle Daten resetted.", " ", 
-                            "Gruppe des neuen Landes", gruppe, "Name des Landes", name};
-
+        Object[] message = {"Bei Hinzufügen eines neuen Landes werden alle bisher eingespeicherten Spieldaten resetted.",
+                            " ", "Gruppe des neuen Landes", gruppe, "Name des Landes", name};
         JOptionPane pane = new JOptionPane( message, 
                 JOptionPane.PLAIN_MESSAGE, 
                 JOptionPane.OK_CANCEL_OPTION);
         pane.createDialog(null, "Neues Land").setVisible(true);
-
-        if(pane.getValue()!= null){
+        if(pane.getValue()!= null)
+        {
             int value = ((Integer)pane.getValue()).intValue();
             if(value == JOptionPane.CANCEL_OPTION){return null;}
-            if(gruppe.getText().isEmpty() == false && name.getText().isEmpty() == false){
+            if(!gruppe.getText().isEmpty() && !name.getText().isEmpty())
+            {
                 String[] daten = {gruppe.getText(), name.getText()};
-                return daten;}
-            else {nachricht("Eingabefehler", "Sie müssen alle Felder ausfüllen!");  return eingabeAufforderungNeuesLand();}
+                return daten;
+            }
+            else
+            {
+                nachricht("Eingabefehler", "Sie müssen alle Felder ausfüllen!");  
+                return eingabeAufforderungNeuesLand();
+            }
         }
         else return null;
     }
@@ -152,21 +153,28 @@ public class Interface
     {
         JTextField gruppe = new JTextField();
         JTextField name = new JTextField();
-
-        Object[] message = {nachricht, " ", 
-                textfeld, name};
-
+        Object[] message = {nachricht, " ", textfeld, name};
         JOptionPane pane = new JOptionPane( message, 
                 JOptionPane.PLAIN_MESSAGE, 
                 JOptionPane.OK_CANCEL_OPTION);
         pane.createDialog(null, kopfzeile).setVisible(true);
-
-        if(pane.getValue()!= null){
+        if(pane.getValue()!= null)
+        {
             int value = ((Integer)pane.getValue()).intValue();
             String daten = name.getText();
-            if(daten.isEmpty() == false){return daten;}
-            if(value == JOptionPane.CANCEL_OPTION){return null;}
-            else {nachricht("Eingabefehler", "Sie müssen alle Felder ausfüllen!"); return eingabeAufforderungEinFeld(kopfzeile, nachricht, textfeld);}
+            if(!daten.isEmpty())
+            {
+                return daten;
+            }
+            if(value == JOptionPane.CANCEL_OPTION)
+            {
+                return null;
+            }
+            else 
+            {
+                nachricht("Eingabefehler", "Sie müssen alle Felder ausfüllen!"); 
+                return eingabeAufforderungEinFeld(kopfzeile, nachricht, textfeld);
+            }
         }
         else return null;
     } 

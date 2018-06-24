@@ -46,12 +46,15 @@ public class Main
      * Lädt bei Programmstart alle Daten aus den lokalen Textdateien. Sollte dabei ein Fehler auftreten 
      * wird der Nutzer darüber informiert und die Funktion nochRetten() gestartet.
      */
-    private void loadInitalData(){
-        try{
+    private void loadInitalData()
+    {
+        try
+        {
             ladeGruppen();
             loadTurnierName();
         }
-        catch (Exception e) {
+        catch (Exception e)
+        {
             e.printStackTrace();
             nochRetten();
         }
@@ -60,7 +63,8 @@ public class Main
     /**
      * Öffnet das GitHub Repository dieses Programms im Standardbrowser nachdem der Nutzer dies bestätigte.
      */
-    public void openGithubLink(){
+    public void openGithubLink()
+    {
         if(mainInterface.bestaetigen("Projekt von Jan Schneider","Quellcode auf Github anzeigen?"))
         {
             String[] aktuelledaten = {"https://github.com/jan-patrick/World-Cup-betting"};
@@ -213,7 +217,7 @@ public class Main
     private void nochRetten()
     {
         if(mainInterface.bestaetigen("beschädigte Daten überschreiben",
-           "Die lokalen Daten scheinen beschädigt zu sein. Sollen Standarddaten der "+STANDARD_TURNIERNAME+" geladen werden? Eine Internetverbindung wird benötigt."))
+           "Die lokalen Daten scheinen beschädigt zu sein. Sollen Standarddaten der " + STANDARD_TURNIERNAME + " geladen werden? Eine Internetverbindung wird benötigt."))
         {
             ladeVorlage();
         }    
@@ -228,10 +232,12 @@ public class Main
     {
         String aktuelledaten = "";
         String[] teile;
-        try{
+        try
+        {
             aktuelledaten = daten.ladeDatei("Gruppen", "Gruppen");
         }
-        catch (Exception e) {
+        catch (Exception e)
+        {
             e.printStackTrace();
             nochRetten();
         }
@@ -240,7 +246,8 @@ public class Main
         {
             teile[k] = createValideEingabe(teile[k]);
         }    
-        for (int i = 0; i < teile.length; i++) {
+        for (int i = 0; i < teile.length; i++)
+        {
             gruppen.put(teile[i], new Gruppe(teile[i]));
         }
     }
@@ -255,7 +262,8 @@ public class Main
         if(gruppenAnzahl>=MAX_GRUPPEN_ANZAHL)
         {            
             mainInterface.nachricht("Fehler", "Es sind zu viele Gruppen im System.");
-        }else if(gruppenAnzahl != 0)
+        }
+        else if(gruppenAnzahl != 0)
         {
             mainInterface.nachricht("Fehler", "Es sind bereits Gruppen im System.");
         }
@@ -263,7 +271,8 @@ public class Main
         {     
             char[] firstLetter = new char[MAX_GRUPPEN_ANZAHL];
             // unicode upper-cased alphabet
-            for(int i = 0; i < MAX_GRUPPEN_ANZAHL; i++){
+            for(int i = 0; i < MAX_GRUPPEN_ANZAHL; i++)
+            {
                 firstLetter[i] = (char)(65 + i);
                 gruppen.put(String.valueOf(firstLetter[i]), new Gruppe(String.valueOf(firstLetter[i])));
                 gruppenAnzahl += 1;
@@ -280,7 +289,8 @@ public class Main
     {
         String ergebnis = "";
         Set<String> keywords = gruppen.keySet();
-        for(String gruppe : keywords){
+        for(String gruppe : keywords)
+        {
             ergebnis += "/" + gruppe;
         }
         return ergebnis;
@@ -295,14 +305,18 @@ public class Main
      */
     public void addLand(String land, int tore, int punkte)
     {
-        if(getDatenSpielergebnis(land, tore, punkte) == null){
+        if(getDatenSpielergebnis(land, tore, punkte) == null)
+        {
             System.out.println("Das Land " + land + " existiert nicht");
         }
-        else{
-            try{
+        else
+        {
+            try
+            {
                 daten.landSpeichern(getDatenSpielergebnis(land, tore, punkte));
             }
-            catch (Exception e) {
+            catch (Exception e)
+            {
                 e.printStackTrace();
             }
         }
@@ -315,10 +329,12 @@ public class Main
      */
     private void saveGruppe(String name, String[] teile)
     {
-        try{
+        try
+        {
             daten.gruppeSpeichern(name, teile);
         }
-        catch (Exception e) {
+        catch (Exception e)
+        {
             e.printStackTrace();
         }
     }
@@ -350,32 +366,36 @@ public class Main
         aktualisiereGruppeninfo();
         String[] datenEingabe = mainInterface.eingabeAufforderungSpielergebnis();
         if(datenEingabe != null && datenEingabe[1].replaceAll("\\W","") != null && 
-           datenEingabe[1].replaceAll("\\W","") != ""){ 
+           datenEingabe[1].replaceAll("\\W","") != "")
+        { 
             int tore1 = Integer.valueOf(datenEingabe[1].replaceAll("\\W",""));
             int tore2 = Integer.valueOf(datenEingabe[3].replaceAll("\\W",""));
             String land1 = createValideEingabe(datenEingabe[0]);
             String land2 = createValideEingabe(datenEingabe[2]);
             boolean check = true;
             int[] punkte = berechnePunkte(tore1, tore2);
-
             String nameGruppe = LaenderInGruppe(land1, land2);
-            if(nameGruppe != null){
+            if(nameGruppe != null)
+            {
                 Gruppe gruppe = gruppen.get(nameGruppe);
-
-                if (!gruppe.existiertSpielergebnis(land1, land2)){
-                    if(mainInterface.bestaetigen("Fehler", "Das Ergebnis wurde bereits eingegeben. Möchten Sie die alte Eingabe überschreiben?") == false){
+                if (!gruppe.existiertSpielergebnis(land1, land2))
+                {
+                    if(!mainInterface.bestaetigen("Fehler", "Das Ergebnis wurde bereits eingegeben. Möchten Sie die alte Eingabe überschreiben?"))
+                    {
                         check = false;
                     }
                     else gruppe.deleteTorePunkteSpielergebnis(land1, land2);
                 }
-                if(gruppe.existiertSpielergebnis(land1, land2)&& check){              
+                if(gruppe.existiertSpielergebnis(land1, land2)&& check)
+                {              
                     addLand(land1, tore1, punkte[0]); 
                     addLand(land2, tore2, punkte[1]);
                     String daten = land1 + ":" + land2 + "-" + tore1 + ":" + tore2;
                     saveGruppe(nameGruppe, updateGruppeSpielinfo(nameGruppe, land1, land2, daten));
                     gruppe.loadGruppeninfo(nameGruppe);
                 }
-                else if(gruppe.existiertSpielergebnis(land2, land1)&& check){
+                else if(gruppe.existiertSpielergebnis(land2, land1)&& check)
+                {
                     addLand(land1, tore1, punkte[0]); 
                     addLand(land2, tore2, punkte[1]);
                     String daten = land2 + ":" + land1 + "-" + tore2 + ":" + tore1;
@@ -383,7 +403,10 @@ public class Main
                     gruppe.loadGruppeninfo(nameGruppe);
                 }
             }
-            else{mainInterface.nachricht("Fehler", "Die Länder existieren nicht oder sind nicht in einer Gruppe.");}
+            else
+            {
+                mainInterface.nachricht("Fehler", "Die Länder existieren nicht oder sind nicht in einer Gruppe.");
+            }
         }
     } 
     
@@ -394,7 +417,8 @@ public class Main
      */
     private void aktualisiereGruppeninfo()
     {
-        for (String key : gruppen.keySet()) {
+        for (String key : gruppen.keySet())
+        {
             Gruppe gruppe = gruppen.get(key);
             gruppe.loadGruppeninfo(key);
         }
@@ -408,14 +432,20 @@ public class Main
     public void neuesLand()
     {
         String[] aktuelledaten = mainInterface.eingabeAufforderungNeuesLand();
-        if(aktuelledaten != null){
-            if(mainInterface.bestaetigen("Achtung", "Wollen sie wirklich alle Einträge löschen?")){
+        if(aktuelledaten != null)
+        {
+            if(mainInterface.bestaetigen("Achtung", "Wollen sie wirklich alle Einträge löschen?"))
+            {
                 String gruppe = aktuelledaten[0];
-                if(gruppen.containsKey(gruppe) == true){
+                if(gruppen.containsKey(gruppe))
+                {
                     String name = createValideEingabe(aktuelledaten[1]);
                     addneuesLand(gruppe, name);
                 }
-                else mainInterface.nachricht("Fehler", "Die Gruppe " + gruppe + " existiert nicht.");
+                else 
+                {
+                    mainInterface.nachricht("Fehler", "Die Gruppe " + gruppe + " existiert nicht.");
+                }    
             }
         }
     } 
@@ -441,21 +471,23 @@ public class Main
     {        
         Gruppe gruppe = gruppen.get(nameGruppe);
         String gruppenDatenAlt = "";
-        try{
+        try
+        {
             gruppenDatenAlt = daten.ladeDatei("Gruppen", nameGruppe);
         }
-        catch (Exception e) {
+        catch (Exception e)
+        {
             e.printStackTrace();
         }
-
         String[] teileGruppenDatenAlt = gruppenDatenAlt.split("/");
-        for (int i = 0; i < teileGruppenDatenAlt.length; i++) {
+        for (int i = 0; i < teileGruppenDatenAlt.length; i++)
+        {
             String check = teileGruppenDatenAlt[i];
-            if(check.contains(land1 + ":" + land2) == true){
+            if(check.contains(land1 + ":" + land2))
+            {
                 teileGruppenDatenAlt[i] = aktuelledaten;
             }
         }
-
         return teileGruppenDatenAlt;
     }
     
@@ -468,7 +500,6 @@ public class Main
     {
         String gruppe1 = "";
         String gruppe2 = "";
-
         for (String key : gruppen.keySet())
         {
             Gruppe gruppe = gruppen.get(key);
@@ -481,7 +512,6 @@ public class Main
                 gruppe2 = key;
             }
         }
-
         if(gruppe1 == gruppe2)
         {
             return gruppe1;
@@ -503,7 +533,6 @@ public class Main
         for (String key : gruppen.keySet())
         {
             Gruppe gruppe = gruppen.get(key);
-
             if(gruppe.existiertLand(land))
             {
                 return gruppe;
@@ -521,8 +550,8 @@ public class Main
     public void getAlleSpielergebnise ()
     {
         String aktuelledaten = "";
-
-        for (String key : gruppen.keySet()) {
+        for (String key : gruppen.keySet())
+        {
             Gruppe gruppe = gruppen.get(key);
             gruppe.loadGruppeninfo(key);
             aktuelledaten += "Gruppe " + key + "<br>";
@@ -563,7 +592,7 @@ public class Main
      * 
      * @ToDo
      */
-    public void deleteAlleDaten()
+    private void deleteAlleDaten()
     {
         if(mainInterface.bestaetigen("Achtung!", 
            "Wollen Sie wirklich alle lokal gespeicherten Daten löschen?"))
@@ -602,32 +631,35 @@ public class Main
      */
     private void deleteAktuelleTurnierDaten()
     {
-        for (String key : gruppen.keySet()) {
+        for (String key : gruppen.keySet())
+        {
             String name = key;
             Gruppe gruppe = gruppen.get(key);
-            String[] teile = gruppe.getLaender();
-            
+            String[] teile = gruppe.getLaender();  
             ArrayList where = new ArrayList<String>();
             where.add(key);
             where.add(String.valueOf(gruppe.getGruppenGroesse()));
-
-            for (int i = 0; i < teile.length; i++) {
+            for (int i = 0; i < teile.length; i++)
+            {
                 String[] datenLand = {teile[i], "0", "0"};
                 where.add(teile[i]);
-                try{
+                try
+                {
                     daten.landSpeichern(datenLand);
                 }
-                catch (Exception e) {
+                catch (Exception e)
+                {
                     e.printStackTrace();
                 }
             }
             String[] datenGruppe = new String[where.size()];
             where.toArray( datenGruppe );
-
-            try{
+            try
+            {
                 daten.gruppeReseten(datenGruppe);
             }
-            catch (Exception e) {
+            catch (Exception e)
+            {
                 e.printStackTrace();
             }
             gruppe.deleteSpiele();
@@ -643,23 +675,26 @@ public class Main
     {
         String gruppe1 = "";
         String gruppe2 = "";
-
-        for (String key : gruppen.keySet()) {
+        for (String key : gruppen.keySet())
+        {
             Gruppe gruppe = gruppen.get(key);
-
-            if(gruppe.existiertLand(land1) == true){
+            if(gruppe.existiertLand(land1))
+            {
                 gruppe1 = key;
             }
-            if(gruppe.existiertLand(land2) == true){
+            if(gruppe.existiertLand(land2))
+            {
                 gruppe2 = key;
             }
         }
-
-        if(gruppe1 == gruppe2){
+        if(gruppe1 == gruppe2)
+        {
             return gruppe1;
         }
-        else{return null;}
-
+        else
+        {
+            return null;
+        }
     }
     
     /**
@@ -670,10 +705,19 @@ public class Main
     private int[] berechnePunkte(int tore1, int tore2)
     {
         int[] punkte = {0, 0};
-
-        if(tore1 > tore2){punkte[0] = 3;}
-        if(tore1 < tore2){punkte[1] = 3;}
-        if(tore1 == tore2){punkte[0] = 1; punkte[1] = 1;}
+        if(tore1 > tore2)
+        {
+            punkte[0] = 3;
+        }
+        if(tore1 < tore2)
+        {
+            punkte[1] = 3;
+        }
+        if(tore1 == tore2)
+        {
+            punkte[0] = 1; 
+            punkte[1] = 1;
+        }
         return punkte;
     }
     
@@ -685,14 +729,19 @@ public class Main
     public void showLandDetails()
     {
         String daten = mainInterface.eingabeAufforderungEinFeld("Landdetails", "", "Name des Landes");
-        if(daten != null){
+        if(daten != null)
+        {
             String nameLand = createValideEingabe(daten);
             Gruppe gruppe = getGruppeWennLand(nameLand);
-            if(gruppe != null){
+            if(gruppe != null)
+            {
                 String[] torePunkte = gruppe.getLandDetails(nameLand);
-                mainInterface.nachricht("Landdetails", "Das Land " + nameLand + " hat bisher " + torePunkte[1] + " Tore geschossen und damit " + torePunkte[2] + " Punkte erspielt.");
+                mainInterface.nachricht("Landdetails", "Das Land " + nameLand + " hat bisher " 
+                                        + torePunkte[1] + " Tore geschossen und damit " + torePunkte[2] + " Punkte erspielt.");
             }
-            else mainInterface.nachricht("Fehler", "Das Land " + nameLand + " existiert nicht.");
+            else {
+                mainInterface.nachricht("Fehler", "Das Land " + nameLand + " existiert nicht.");
+            }
         }      
     }
 }

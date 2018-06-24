@@ -34,7 +34,8 @@ public class Daten
         String aktuelledaten = "";
         String zeile = "";
         URL link = new URL ("https://jan-patrick.de");
-        switch(art){
+        switch(art)
+        {
         case "gruppen":
             link = new URL ("https://raw.githubusercontent.com/jan-patrick/World-Cup-betting/master/Gruppen/"
             + dateiname +".txt");
@@ -57,7 +58,6 @@ public class Daten
         {
             aktuelledaten += zeile + "/";
         }  
-
         bu.close();
         return aktuelledaten;
     }
@@ -93,7 +93,8 @@ public class Daten
     public void speichereDatei(String art, String name, String[] daten) throws IOException
     {        
         String datei = "Error.txt";
-        switch(art){
+        switch(art)
+        {
         case "turniername":
             datei = "Allgemein/"+ name +".txt";
             break;
@@ -126,12 +127,11 @@ public class Daten
         String datei = "Laender/" + landteile[0] + ".txt";
         FileWriter fw = new FileWriter(datei);
         BufferedWriter bw = new BufferedWriter(fw);
-
-        for (int x = 0; x < landteile.length; x++) {
+        for (int x = 0; x < landteile.length; x++) 
+        {
             bw.write(landteile[x]);
             if(x<landteile.length){bw.newLine();};
         }
-        
         bw.close();
     }
     
@@ -146,7 +146,8 @@ public class Daten
         String datei = "Gruppen/" + gruppenName + ".txt";
         FileWriter fw = new FileWriter(datei);
         BufferedWriter bw = new BufferedWriter(fw);
-        for (int x = 0; x < gruppenteile.length; x++) {
+        for (int x = 0; x < gruppenteile.length; x++)
+        {
             bw.write(gruppenteile[x]);
             if(x<gruppenteile.length-1){bw.newLine();};
         }
@@ -164,12 +165,11 @@ public class Daten
         String datei = "Gruppen/" + teile[0] + ".txt";
         FileWriter fw = new FileWriter(datei);
         BufferedWriter bw = new BufferedWriter(fw);
-
-        for (int x = 1; x < teile.length; x++) {
+        for (int x = 1; x < teile.length; x++) 
+        {
             bw.write(teile[x]);
             if(x<teile.length-1){bw.newLine();};
         }
-
         bw.close();
     }
     
