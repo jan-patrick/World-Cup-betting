@@ -407,6 +407,7 @@ public class Main
             {
                 mainInterface.nachricht("Fehler", "Die Länder existieren nicht oder sind nicht in einer Gruppe.");
             }
+            ladeGruppen();
         }
     } 
     
