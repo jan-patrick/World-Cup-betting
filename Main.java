@@ -313,7 +313,7 @@ public class Main
         {
             try
             {
-                daten.landSpeichern(getDatenSpielergebnis(land, tore, punkte));
+                daten.speichereDatei("laender", land, getDatenSpielergebnis(land, tore, punkte));
             }
             catch (Exception e)
             {
@@ -645,7 +645,7 @@ public class Main
                 where.add(teile[i]);
                 try
                 {
-                    daten.landSpeichern(datenLand);
+                    daten.speichereDatei("laender", datenLand[0], datenLand);
                 }
                 catch (Exception e)
                 {

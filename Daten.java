@@ -115,25 +115,6 @@ public class Daten
         }
         bw.close();
     }
-
-    /**
-     * Noch zu Beschreiben
-     * 
-     * @param landteile
-     * @ToDo
-     */
-    public void landSpeichern(String[] landteile) throws IOException
-    {        
-        String datei = "Laender/" + landteile[0] + ".txt";
-        FileWriter fw = new FileWriter(datei);
-        BufferedWriter bw = new BufferedWriter(fw);
-        for (int x = 0; x < landteile.length; x++) 
-        {
-            bw.write(landteile[x]);
-            if(x<landteile.length){bw.newLine();};
-        }
-        bw.close();
-    }
     
     /**
      * Noch zu Beschreiben

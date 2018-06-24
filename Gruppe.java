@@ -45,7 +45,7 @@ public class Gruppe
         gruppenGroesse += 1;
         try
         {
-            daten.landSpeichern(getLandDetails(name));
+            daten.speichereDatei("laender", name, getLandDetails(name));
         }
         catch (Exception e)
         {
