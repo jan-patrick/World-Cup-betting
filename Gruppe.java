@@ -124,6 +124,25 @@ public class Gruppe
     /**
      * Noch zu Beschreiben
      * 
+     * @ToDo
+     */
+    public boolean existiertSpielergebnis (String land1, String land2)
+    {
+        String spiel = land1 + ":" + land2;
+        String spielRueck = land2 + ":" + land1;
+        String check = " : ";
+
+        if(check.equals(gruppenphaseSpiele.get(spiel)) == true || 
+           check.equals(gruppenphaseSpiele.get(spielRueck)) == true){
+            return true;
+        }
+        else return false;
+
+    }
+    
+    /**
+     * Noch zu Beschreiben
+     * 
      * @param ordner, datei
      * @return aktuelledaten
      * @ToDo

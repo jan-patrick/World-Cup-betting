@@ -311,7 +311,7 @@ public class Main
      * 
      * @ToDo
      */
-    private void speichereGruppe(String name, String[] teile)
+    private void saveGruppe(String name, String[] teile)
     {
         try{
             daten.gruppeSpeichern(name, teile);
@@ -333,6 +333,123 @@ public class Main
     {
         Gruppe gruppe = getGruppeWennLand(land);
         return gruppe.getUpdatedInfoLand(land, tore, punkte);
+    }
+    
+    /**
+     * Noch zu Beschreiben
+     * 
+     * @ToDo
+     * 
+     * @param String land, int tore, int punkte
+     * @return String updated Land Info (name, tore, punkte)
+     */
+    public void updateSpielergebnis()
+    {
+        aktualisiereGruppeninfo();
+        String[] datenEingabe = mainInterface.eingabeAufforderungSpielergebnis();
+        if(datenEingabe != null){ 
+            int tore1 = Integer.valueOf(datenEingabe[1]);
+            int tore2 = Integer.valueOf(datenEingabe[3]);
+            String land1 = createValideEingabe(datenEingabe[0]);
+            String land2 = createValideEingabe(datenEingabe[2]);
+            boolean check = true;
+            int[] punkte = berechnePunkte(tore1, tore2);
+
+            String nameGruppe = LaenderInGruppe(land1, land2);
+            if(nameGruppe != null){
+                Gruppe gruppe = gruppen.get(nameGruppe);
+
+                if (gruppe.existiertSpielergebnis(land1, land2) == false){
+                    if(mainInterface.bestaetigen("Fehler", "Das Ergebnis wurde bereits eingegeben. Möchten sie die alte Eingabe überschreiben?") == false){
+                        check = false;
+                    }
+                    else gruppe.deleteTorePunkteSpielergebnis(land1, land2);
+                }
+                if(gruppe.existiertSpielergebnis(land1, land2) == true && check == true){              
+                    saveLand(land1, tore1, punkte[0]); 
+                    saveLand(land2, tore2, punkte[1]);
+                    String daten = land1 + ":" + land2 + "-" + tore1 + ":" + tore2;
+                    saveGruppe(nameGruppe, updateGruppeSpielinfo(nameGruppe, land1, land2, daten));
+                    gruppe.loadGruppeninfo(nameGruppe);
+                }
+                else if(gruppe.existiertSpielergebnis(land2, land1) == true && check == true){
+                    saveLand(land1, tore1, punkte[0]); 
+                    saveLand(land2, tore2, punkte[1]);
+                    String daten = land2 + ":" + land1 + "-" + tore2 + ":" + tore1;
+                    saveGruppe(nameGruppe, updateGruppeSpielinfo(nameGruppe, land2, land1, daten));
+                    gruppe.loadGruppeninfo(nameGruppe);
+                }
+            }
+            else{mainInterface.nachricht("Fehler", "Die Länder existieren nicht oder sind nicht in einer Gruppe.");}
+        }
+    } 
+    
+    /**
+     * Noch zu Beschreiben
+     * 
+     * @ToDo
+     */
+    private void aktualisiereGruppeninfo()
+    {
+        for (String key : gruppen.keySet()) {
+            Gruppe gruppe = gruppen.get(key);
+            gruppe.loadGruppeninfo(key);
+        }
+    }
+    
+    /**
+     * Noch zu Beschreiben
+     * 
+     * @ToDo
+     */
+    private String[] updateGruppeSpielinfo(String nameGruppe, String land1, String land2, String aktuelledaten)
+    {        
+        Gruppe gruppe = gruppen.get(nameGruppe);
+        String gruppenDatenAlt = "";
+        try{
+            gruppenDatenAlt = daten.ladeDatei("Gruppen", nameGruppe);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        String[] teileGruppenDatenAlt = gruppenDatenAlt.split("/");
+        for (int i = 0; i < teileGruppenDatenAlt.length; i++) {
+            String check = teileGruppenDatenAlt[i];
+            if(check.contains(land1 + ":" + land2) == true){
+                teileGruppenDatenAlt[i] = aktuelledaten;
+            }
+        }
+
+        return teileGruppenDatenAlt;
+    }
+    
+    /**
+     * Noch zu Beschreiben
+     * 
+     * @ToDo
+     */
+    private String LaenderInGruppe(String land1, String land2)
+    {
+        String gruppe1 = "";
+        String gruppe2 = "";
+
+        for (String key : gruppen.keySet()) {
+            Gruppe gruppe = gruppen.get(key);
+
+            if(gruppe.existiertLand(land1) == true){
+                gruppe1 = key;
+            }
+            if(gruppe.existiertLand(land2) == true){
+                gruppe2 = key;
+            }
+        }
+
+        if(gruppe1 == gruppe2){
+            return gruppe1;
+        }
+        else{return null;}
+
     }
     
     /**
