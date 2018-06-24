@@ -169,7 +169,6 @@ public class Main
                 e.printStackTrace();
             }
         }
-        ladeGruppen();
         // lade TURNIERNAME
         try
         {   
@@ -180,7 +179,6 @@ public class Main
         {
             e.printStackTrace();
         }
-        loadTurnierName();
         // lade LÄNDER
         String[] vorlagelaender = {};
         try
@@ -203,7 +201,9 @@ public class Main
             {
                 e.printStackTrace();
             }
-            }
+        }
+        ladeGruppen();
+        loadTurnierName();
     }
     
     /**
