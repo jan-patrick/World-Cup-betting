@@ -404,9 +404,8 @@ public class Gruppe
 
         daten = gruppenphaseSpiele.get(spiel);
         String[] teile = daten.split(":");
-        int tore1 = Integer.valueOf(teile[0]);
-        int tore2 = Integer.valueOf(teile[1]);
-        System.out.println("Tore1: " + tore1 + "  Tore2: " + tore2);
+        int tore1 = Integer.valueOf(teile[0].replaceAll("\\W",""));
+        int tore2 = Integer.valueOf(teile[1].replaceAll("\\W",""));
         if(tore1 == tore2){
             landEins.zieheWerteAb(tore1, 1);
             landZwei.zieheWerteAb(tore2, 1);

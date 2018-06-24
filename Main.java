@@ -348,8 +348,8 @@ public class Main
         aktualisiereGruppeninfo();
         String[] datenEingabe = mainInterface.eingabeAufforderungSpielergebnis();
         if(datenEingabe != null){ 
-            int tore1 = Integer.valueOf(datenEingabe[1]);
-            int tore2 = Integer.valueOf(datenEingabe[3]);
+            int tore1 = Integer.valueOf(datenEingabe[1].replaceAll("\\W",""));
+            int tore2 = Integer.valueOf(datenEingabe[3].replaceAll("\\W",""));
             String land1 = createValideEingabe(datenEingabe[0]);
             String land2 = createValideEingabe(datenEingabe[2]);
             boolean check = true;
