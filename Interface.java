@@ -118,22 +118,28 @@ public class Interface
      * 
      * @ToDo
      */
-    public String[] eingabeAufforderungNeuesLand(String turniername)
+    public String[] eingabeAufforderungNeuesLand()
     {
         JTextField gruppe = new JTextField();
         JTextField name = new JTextField();
 
-        Object[] message = {"Wenn sie ein neues Land zu einer Gruppe hinzu fügen werden alle Daten zurückgesetzt.", " ",
-            "Gruppe des Landes", gruppe, 
-                "Name des Landes", name};
+        Object[] message = {"Bei Hinzufügen eines neuen Landes werden alle Daten resetted.", " ", 
+                            "Gruppe des neuen Landes", gruppe, "Name des Landes", name};
 
         JOptionPane pane = new JOptionPane( message, 
                 JOptionPane.PLAIN_MESSAGE, 
                 JOptionPane.OK_CANCEL_OPTION);
-        pane.createDialog(null, "Neues Land in " + turniername).setVisible(true);
+        pane.createDialog(null, "Neues Land").setVisible(true);
 
-        String[] daten = {gruppe.getText(), name.getText()};
-        return daten;
+        if(pane.getValue()!= null){
+            int value = ((Integer)pane.getValue()).intValue();
+            if(value == JOptionPane.CANCEL_OPTION){return null;}
+            if(gruppe.getText().isEmpty() == false && name.getText().isEmpty() == false){
+                String[] daten = {gruppe.getText(), name.getText()};
+                return daten;}
+            else {nachricht("Eingabefehler", "Sie müssen alle Felder ausfüllen!");  return eingabeAufforderungNeuesLand();}
+        }
+        else return null;
     }
     
     /**

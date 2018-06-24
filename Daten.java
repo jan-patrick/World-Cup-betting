@@ -3,6 +3,7 @@ import java.lang.*;
 import java.nio.file.*;
 import java.net.*;
 import java.awt.Desktop;
+import java.io.File;
 
 /**
  * Beschreiben Sie hier die Klasse Daten.
@@ -225,13 +226,35 @@ public class Daten
         }
         for(String arg:args)
         {
-            try{
+            try
+            {
                 java.net.URI uri = new java.net.URI(arg);
                 desktop.browse( uri );
             }
-            catch(Exception e){
+            catch(Exception e)
+            {
                 System.err.println(e.getMessage());
             }
         }
     }
+    
+    /**
+     * Noch zu Beschreiben
+     * 
+     * @ToDo
+     */
+    public void deleteAlleDaten()
+    {
+        try
+        {
+            String datei = "Allgemein/turnierName.txt";
+            FileWriter fw = new FileWriter(datei);
+            fw.flush();
+            fw.close(); // actually free any underlying file handles.
+        }
+            catch(Exception e)
+            {
+                System.err.println(e.getMessage());
+            }    
+    }    
 }

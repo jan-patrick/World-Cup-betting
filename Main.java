@@ -60,7 +60,7 @@ public class Main
     /**
      * Öffnet das GitHub Repository dieses Programms im Standardbrowser nachdem der Nutzer dies bestätigte.
      */
-    public void openGitHubLink(){
+    public void openGithubLink(){
         if(mainInterface.bestaetigen("Projekt von Jan Schneider","Quellcode auf Github anzeigen?"))
         {
             String[] aktuelledaten = {"https://github.com/jan-patrick/World-Cup-betting"};
@@ -140,7 +140,7 @@ public class Main
     }    
     
     /**
-     * Lädt Gruppen, Turniernamen und Länder aus dem Girhub Repository und überschreibt alle lokalen Daten.
+     * Lädt Gruppen, Turniernamen und Länder aus dem Github Repository und überschreibt alle lokalen Daten.
      */
     private void ladeVorlage()
     {
@@ -359,20 +359,20 @@ public class Main
             if(nameGruppe != null){
                 Gruppe gruppe = gruppen.get(nameGruppe);
 
-                if (gruppe.existiertSpielergebnis(land1, land2) == false){
-                    if(mainInterface.bestaetigen("Fehler", "Das Ergebnis wurde bereits eingegeben. Möchten sie die alte Eingabe überschreiben?") == false){
+                if (!gruppe.existiertSpielergebnis(land1, land2)){
+                    if(mainInterface.bestaetigen("Fehler", "Das Ergebnis wurde bereits eingegeben. Möchten Sie die alte Eingabe überschreiben?") == false){
                         check = false;
                     }
                     else gruppe.deleteTorePunkteSpielergebnis(land1, land2);
                 }
-                if(gruppe.existiertSpielergebnis(land1, land2) == true && check == true){              
+                if(gruppe.existiertSpielergebnis(land1, land2)&& check){              
                     saveLand(land1, tore1, punkte[0]); 
                     saveLand(land2, tore2, punkte[1]);
                     String daten = land1 + ":" + land2 + "-" + tore1 + ":" + tore2;
                     saveGruppe(nameGruppe, updateGruppeSpielinfo(nameGruppe, land1, land2, daten));
                     gruppe.loadGruppeninfo(nameGruppe);
                 }
-                else if(gruppe.existiertSpielergebnis(land2, land1) == true && check == true){
+                else if(gruppe.existiertSpielergebnis(land2, land1)&& check){
                     saveLand(land1, tore1, punkte[0]); 
                     saveLand(land2, tore2, punkte[1]);
                     String daten = land2 + ":" + land1 + "-" + tore2 + ":" + tore1;
@@ -395,6 +395,38 @@ public class Main
             Gruppe gruppe = gruppen.get(key);
             gruppe.loadGruppeninfo(key);
         }
+    }
+    
+    /**
+     * Noch zu Beschreiben
+     * 
+     * @ToDo
+     */
+    public void neuesLand()
+    {
+        String[] aktuelledaten = mainInterface.eingabeAufforderungNeuesLand();
+        if(aktuelledaten != null){
+            if(mainInterface.bestaetigen("Achtung", "Wollen sie wirklich alle Einträge löschen?")){
+                String gruppe = aktuelledaten[0];
+                if(gruppen.containsKey(gruppe) == true){
+                    String name = createValideEingabe(aktuelledaten[1]);
+                    addneuesLand(gruppe, name);
+                }
+                else mainInterface.nachricht("Fehler", "Die Gruppe " + gruppe + " existiert nicht.");
+            }
+        }
+    } 
+    
+    /**
+     * Noch zu Beschreiben
+     * 
+     * @ToDo
+     */
+    private void addneuesLand(String nameGruppe, String land)
+    {
+        deleteAktuelleTurnierDaten();
+        Gruppe gruppe = gruppen.get(createValideEingabe(nameGruppe));
+        gruppe.addLand(createValideEingabe(land));
     }
     
     /**
@@ -507,11 +539,12 @@ public class Main
      * 
      * @ToDo
      */
-    public void alleDatenloeschen()
+    public void alleTurnierDatenloeschen()
     {
-        if(mainInterface.bestaetigen("Achtung!", "Wollen Sie wirklich alle Daten löschen?"))
+        if(mainInterface.bestaetigen("Achtung!", 
+           "Wollen Sie wirklich die Ergebnisse, Tore und Punkte des Turniers löschen?"))
         {
-            deleteAlleDaten();
+            deleteAktuelleTurnierDaten();
         }
     }
     
@@ -520,7 +553,21 @@ public class Main
      * 
      * @ToDo
      */
-    private void deleteAlleDaten()
+    public void deleteAlleDaten()
+    {
+        if(mainInterface.bestaetigen("Achtung!", 
+           "Wollen Sie wirklich alle lokal gespeicherten Daten löschen?"))
+        {
+            daten.deleteAlleDaten();
+        }
+    }
+    
+    /**
+     * Noch zu Beschreiben
+     * 
+     * @ToDo
+     */
+    private void deleteAktuelleTurnierDaten()
     {
         for (String key : gruppen.keySet()) {
             String name = key;
@@ -596,7 +643,6 @@ public class Main
         if(tore1 == tore2){punkte[0] = 1; punkte[1] = 1;}
         return punkte;
     }
-
     
     /**
      * Noch zu Beschreiben
@@ -605,13 +651,13 @@ public class Main
      */
     public void showLandDetails()
     {
-        String daten = mainInterface.eingabeAufforderungEinFeld("Zeige Land", "", "Name des Landes");
+        String daten = mainInterface.eingabeAufforderungEinFeld("Landdetails", "", "Name des Landes");
         if(daten != null){
             String nameLand = createValideEingabe(daten);
             Gruppe gruppe = getGruppeWennLand(nameLand);
             if(gruppe != null){
                 String[] torePunkte = gruppe.getLandDetails(nameLand);
-                mainInterface.nachricht("Information", "Das Land " + nameLand + " hat " + torePunkte[1] + " Tore geschossen und derzeit " + torePunkte[2] + " Punkte.");
+                mainInterface.nachricht("Landdetails", "Das Land " + nameLand + " hat bisher " + torePunkte[1] + " Tore geschossen und damit " + torePunkte[2] + " Punkte erspielt.");
             }
             else mainInterface.nachricht("Fehler", "Das Land " + nameLand + " existiert nicht.");
         }      
