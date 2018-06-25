@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
@@ -143,6 +144,44 @@ public class Interface
         }
         else return null;
     }
+    
+    /**
+     * Noch zu Beschreiben
+     * 
+     * @ToDo
+     */
+    public String[] eingabeAufforderungNeueGruppe()
+    {
+        JTextField gruppe = new JTextField();
+        JTextField name1 = new JTextField();
+        JTextField name2 = new JTextField();
+        JTextField name3 = new JTextField();
+        JTextField name4 = new JTextField();
+
+        Object[] message = {"Fügen sie bitte mindestens zwei Länder hinzu.", " ", 
+                "Namen der Länder", name1, name2, name3, name4};
+
+        JOptionPane pane = new JOptionPane( message, 
+                JOptionPane.PLAIN_MESSAGE, 
+                JOptionPane.OK_CANCEL_OPTION);
+        pane.createDialog(null, "Neues Land").setVisible(true);
+
+        if(pane.getValue()!= null){
+            int value = ((Integer)pane.getValue()).intValue();
+            String[] datenAlt = {name1.getText(), name2.getText(), name3.getText(), name4.getText()};
+            ArrayList teile = new ArrayList<String>();
+            for (int i = 0; i < datenAlt.length; i++) {
+                if(datenAlt[i].isEmpty() == false){ teile.add(datenAlt[i]);}
+            }
+            String[] daten = new String[teile.size()];
+            teile.toArray( daten );
+
+            if( daten.length >= 2) {return daten;}
+            if(value == JOptionPane.CANCEL_OPTION){return null;}
+            else {nachricht("Eingabefehler", "Sie müssen mindestens 2 Länder eingeben!");  return eingabeAufforderungNeueGruppe();}
+        }
+        else return null;
+    }   
     
     /**
      * Noch zu Beschreiben

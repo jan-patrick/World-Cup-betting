@@ -155,7 +155,11 @@ public class Main
         // lade GRUPPEN
         try
         {
-            gruppenAnzahl = daten.ladeVorlage("gruppen","Gruppen").replaceAll("\\W","").length();
+            String gruppenDaten = daten.ladeVorlage("gruppen","Gruppen").replaceAll("\\W","");
+            gruppenAnzahl = gruppenDaten.replaceAll("\\W","").length();
+            String[] gruppenData = gruppenDaten.split("/");
+            daten.speichereDatei("gruppen", "Gruppen", gruppenData);
+            System.out.println(gruppenAnzahl);
         }
         catch (Exception e)
         {
@@ -538,11 +542,48 @@ public class Main
      * 
      * @ToDo
      */
+    public void neueGruppe()
+    {
+        String[] datenAlt = mainInterface.eingabeAufforderungNeueGruppe();
+        if(datenAlt != null){ 
+            ArrayList aktuelledaten = new ArrayList<String>();
+
+            String nameGruppe = String.valueOf((char)(65 + gruppen.size()));
+            try{
+                daten.gruppeAnhaengen(nameGruppe);
+            }
+            catch (Exception e) {
+                e.printStackTrace();
+            }
+            String [] teile = new String[] {"0"};
+            saveGruppe(nameGruppe, teile);
+            gruppen.put(nameGruppe, new Gruppe(nameGruppe));
+            for (int i = 0; i < datenAlt.length; i++) {
+                String aktuellesLand = createValideEingabe(datenAlt[i]);
+                addneuesLand(nameGruppe, aktuellesLand);
+            }
+        }
+    }
+    
+    /**
+     * Noch zu Beschreiben
+     * 
+     * @ToDo
+     */
     private void addneuesLand(String nameGruppe, String land)
     {
         deleteAktuelleTurnierDaten();
         Gruppe gruppe = gruppen.get(createValideEingabe(nameGruppe));
         gruppe.addLand(createValideEingabe(land));
+        String[] landd = {land, "0", "0"};
+        try
+        {
+        daten.speichereDatei("laender", land, landd);
+        }
+        catch (Exception e) {
+                e.printStackTrace();
+                nochRetten();
+        }
     }
     
     /**
@@ -709,6 +750,7 @@ public class Main
      */
     private void deleteAktuelleTurnierDaten()
     {
+        gruppenAnzahl = 0;
         for (String key : gruppen.keySet())
         {
             String name = key;

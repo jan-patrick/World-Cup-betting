@@ -141,7 +141,7 @@ public class Daten
      * @param daten
      * @ToDo
      */
-    public  void gruppeAnhaengen(String daten) throws IOException
+    public void gruppeAnhaengen(String daten) throws IOException
     {
         FileWriter fw = new FileWriter("Gruppen/Gruppen.txt", true);
         BufferedWriter bw = new BufferedWriter(fw);
