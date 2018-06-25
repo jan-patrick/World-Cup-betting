@@ -63,7 +63,7 @@ public class Main
     /**
      * Öffnet das GitHub Repository dieses Programms im Standardbrowser nachdem der Nutzer dies bestätigte.
      */
-    public void openGithubLink()
+    public void oeffneGithubLink()
     {
         if(mainInterface.bestaetigen("Projekt von Jan Schneider","Quellcode auf Github anzeigen?"))
         {
@@ -104,6 +104,7 @@ public class Main
                 catch (Exception e)
                 {
                     e.printStackTrace();
+                    nochRetten();
                 }
                 turnierName = neuerName;
             }
@@ -306,6 +307,7 @@ public class Main
             catch (Exception e)
             {
                 e.printStackTrace();
+                nochRetten();
             }
         }
         
@@ -427,6 +429,7 @@ public class Main
             catch (Exception e)
             {
                 e.printStackTrace();
+                nochRetten();
             }
         }
     }
@@ -445,6 +448,7 @@ public class Main
         catch (Exception e)
         {
             e.printStackTrace();
+            nochRetten();
         }
     }
     
@@ -470,7 +474,7 @@ public class Main
      * @param String land, int tore, int punkte
      * @return String updated Land Info (name, tore, punkte)
      */
-    public void updateSpielergebnis()
+    public void spielergebnisEingeben()
     {
         aktualisiereGruppeninfo();
         String[] datenEingabe = mainInterface.eingabeAufforderungSpielergebnis();
@@ -586,6 +590,7 @@ public class Main
         catch (Exception e)
         {
             e.printStackTrace();
+            nochRetten();
         }
         String[] teileGruppenDatenAlt = gruppenDatenAlt.split("/");
         for (int i = 0; i < teileGruppenDatenAlt.length; i++)
@@ -735,6 +740,7 @@ public class Main
             catch (Exception e)
             {
                 e.printStackTrace();
+                nochRetten();
             }
             try
             {
@@ -749,6 +755,7 @@ public class Main
             catch(Exception e)
             {
                 System.err.println(e.getMessage());
+                nochRetten();
             }            
         }
     }
@@ -779,6 +786,7 @@ public class Main
                 catch (Exception e)
                 {
                     e.printStackTrace();
+                    nochRetten();
                 }
             }
             String[] datenGruppe = new String[where.size()];
@@ -790,6 +798,7 @@ public class Main
             catch (Exception e)
             {
                 e.printStackTrace();
+                nochRetten();
             }
             gruppe.deleteSpiele();
         }
@@ -879,7 +888,7 @@ public class Main
      * 
      * @ToDo
      */
-    public static boolean isInteger(String s) {
+    private static boolean isInteger(String s) {
         boolean isValidInteger = false;
         try
         {
@@ -899,7 +908,7 @@ public class Main
      * 
      * @ToDo
      */
-    public int binominalkoeffizient(int n, int k)
+    private int binominalkoeffizient(int n, int k)
     {        
        if (k > n) return 0;
        else 

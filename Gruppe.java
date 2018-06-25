@@ -405,7 +405,7 @@ public class Gruppe
      * 
      * @ToDo
      */
-    public static boolean isInteger(String s) {
+    private static boolean isInteger(String s) {
         boolean isValidInteger = false;
         try
         {
