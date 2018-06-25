@@ -84,12 +84,13 @@ public class Main
     public void setTurnierName()
     {
         String neuerName = mainInterface.eingabeAufforderungTurniername(turnierName);
-        neuerName = neuerName.replaceAll("\\W","");
-        if (neuerName!=null || neuerName!= "" || neuerName!= " ")
+        if (neuerName!=null && !neuerName.equals(""))
         {
+            neuerName = createValideEingabe(neuerName);
             if( neuerName.length()<=4)
             {
-                mainInterface.nachricht("Fehler", "Der neue Name ist zu kurz.");
+                mainInterface.nachricht("Fehler", 
+                "Der neue Name ist zu kurz. Er darf nur aus Buchstaben und Zahlen bestehen.");
             }
             else if(neuerName.length() >=7)
             { 
@@ -260,7 +261,7 @@ public class Main
      * 
      * @ToDo
      */
-    public void ladeSpieleErgebnisse()
+    private void ladeSpieleErgebnisse()
     {
         char[] firstLetter = new char[MAX_GRUPPEN_ANZAHL];
         String[] aktuelledaten = {};
@@ -446,7 +447,10 @@ public class Main
         aktualisiereGruppeninfo();
         String[] datenEingabe = mainInterface.eingabeAufforderungSpielergebnis();
         if(datenEingabe != null && datenEingabe[1].replaceAll("\\W","") != null && 
-           datenEingabe[1].replaceAll("\\W","") != "")
+           !datenEingabe[0].replaceAll("\\W","").equals("") &&
+           !datenEingabe[1].replaceAll("\\W","").equals("") &&
+           !datenEingabe[2].replaceAll("\\W","").equals("") &&
+           !datenEingabe[3].replaceAll("\\W","").equals(""))
         { 
             int tore1 = Integer.valueOf(datenEingabe[1].replaceAll("\\W",""));
             int tore2 = Integer.valueOf(datenEingabe[3].replaceAll("\\W",""));
@@ -610,16 +614,19 @@ public class Main
     public void findeGruppevonLand()
     {
         String aktuellesLand = mainInterface.eingabeAufforderungEinFeld("Gruppe finden", "", "Name des Landes");
-        String nameLand = createValideEingabe(aktuellesLand);
-        Gruppe gruppe = getGruppeWennLand(nameLand);
-        if(gruppe == null)
+        if(aktuellesLand != null)
         {
-            mainInterface.nachricht("Fehler", "Das Land " + nameLand + " existiert nicht.");
-        }
-        else
-        {
-            mainInterface.nachricht("Gruppenanzeige", "Die Gruppe von " + nameLand + 
-                                    " ist " + gruppe.getGruppenName() + ".");
+            String nameLand = createValideEingabe(aktuellesLand);
+            Gruppe gruppe = getGruppeWennLand(nameLand);
+            if(gruppe == null)
+            {
+                mainInterface.nachricht("Fehler", "Das Land " + nameLand + " existiert nicht.");
+            }
+            else
+            {
+                mainInterface.nachricht("Gruppenanzeige", "Die Gruppe von " + nameLand + 
+                                        " ist " + gruppe.getGruppenName() + ".");
+            }
         }
     }
 
@@ -669,19 +676,14 @@ public class Main
      */
     private String createValideEingabe(String eingabe)
     {
-        //alle kleinen Umlaute ersetzen
         String ausgabe = eingabe.replace("ü", "ue")
                                 .replace("ö", "oe")
                                 .replace("ä", "ae")
                                 .replace("ß", "ss");
-
-        //alle großen Umlaute ersetzen
         ausgabe = ausgabe.replace("Ü", "Ue")
                          .replace("Ö", "Oe")
                          .replace("Ä", "Ae");
-
         ausgabe = ausgabe.replaceAll("\\W","");                
-
         ausgabe = ausgabe.substring(0, 1).toUpperCase() + ausgabe.substring(1).toLowerCase();
         return ausgabe;
     }
@@ -807,7 +809,7 @@ public class Main
     public void showLandDetails()
     {
         String aktuelledaten = mainInterface.eingabeAufforderungEinFeld("Landdetails", "", "Name des Landes");
-        if(daten != null)
+        if(aktuelledaten != null)
         {
             String nameLand = createValideEingabe(aktuelledaten);
             Gruppe gruppe = getGruppeWennLand(nameLand);
