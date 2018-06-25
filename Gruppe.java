@@ -307,7 +307,7 @@ public class Gruppe
      * 
      * @ToDo
      */
-    private String[] getDatenTeile(String ordner, String datei)
+    public String[] getDatenTeile(String ordner, String datei)
     {
         String aktuelleDaten = "";
         try{

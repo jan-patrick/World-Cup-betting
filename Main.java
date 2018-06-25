@@ -313,6 +313,46 @@ public class Main
         }
     }    
     
+    /**
+     * Öffnet ein Fenster das eine Eingabe erfordert. Um ein Land zu entfernen müssen alle Daten gelöscht werden.
+     * Ist dies Erwünscht wird das Land entfernt, alle Paarungen neu berechnet und Daten aktualisiert und gespeichert.
+     * @ToDo
+     */
+    public void entferneLand()
+    {
+        String check = mainInterface.eingabeAufforderungEinFeld("Land Entfernen", "Wenn sie ein Land aus einer Gruppe entfernen werden alle Daten resetted.", "Name des Landes");
+        if(check != null){
+            String nameLand = createValideEingabe(check);
+            Gruppe gruppe = getGruppeWennLand(nameLand);
+            if(gruppe != null){
+                if(mainInterface.bestaetigen("Bestätigung", "Wollen sie wirklich alle Einträge löschen?") == true){
+                    deleteAktuelleTurnierDaten();
+                    String name = gruppe.getGruppenName();
+                    String[] teile = gruppe.getDatenTeile("Gruppen", name);
+                    int gruppenGroesse = Integer.valueOf(teile[0]);
+                    teile[0] = String.valueOf(gruppenGroesse - 1);
+
+                    ArrayList aktuelledaten = new ArrayList<String>();
+                    for (int i = 0; i < teile.length; i++) {
+                        aktuelledaten.add(teile[i]);
+                    }
+                    aktuelledaten.remove(nameLand);
+                    String[] datenGruppe = new String[aktuelledaten.size()];
+                    aktuelledaten.toArray( datenGruppe );
+                    saveGruppe(name, datenGruppe);
+                    gruppe.deleteLaender();
+                    gruppe.loadGruppeninfo(name);
+                    try{
+                        daten.deleteDatei("Laender", name);
+                    }
+                    catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+            else mainInterface.nachricht("Fehler", "Das Land " + nameLand + " existiert nicht.");
+        }
+    }
     
     /**
      * Noch zu Beschreiben
@@ -645,45 +685,6 @@ public class Main
            "Wollen Sie wirklich die Ergebnisse, Tore und Punkte des Turniers löschen?"))
         {
             deleteAktuelleTurnierDaten();
-        }
-    }
-    
-    /**
-     * Noch zu Beschreiben
-     * 
-     * @ToDo
-     */
-    private void deleteAlleDaten()
-    {
-        if(mainInterface.bestaetigen("Achtung!", 
-           "Wollen Sie wirklich alle lokal gespeicherten Daten löschen?"))
-        {
-            int anzahlGruppen = 0;
-            char[] firstLetter = new char[MAX_GRUPPEN_ANZAHL];
-            try
-            {
-                anzahlGruppen = daten.ladeVorlage("gruppen","Gruppen").replaceAll("\\W","").length();
-            }
-            catch (Exception e)
-            {
-                e.printStackTrace();
-                nochRetten();
-            }
-            try
-            {
-                daten.deleteAlleDaten("turniername", "turnierName");
-                daten.deleteAlleDaten("gruppen", "Gruppen");
-                for(int i = 0; i < anzahlGruppen; i++)
-                {
-                    firstLetter[i] = (char)(65 + i);
-                    daten.deleteAlleDaten("gruppen", String.valueOf(firstLetter[i]));
-                }
-            }
-            catch(Exception e)
-            {
-                System.err.println(e.getMessage());
-                nochRetten();
-            }            
         }
     }
     

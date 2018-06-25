@@ -156,7 +156,7 @@ public class Daten
      * @param ordner, name
      * @ToDo
      */
-    public  void deleteDatei(String ordner, String name) throws IOException
+    public void deleteDatei(String ordner, String name) throws IOException
     {
         String datei = ordner + "/" + name + ".txt";
         Files.deleteIfExists(Paths.get(datei));
