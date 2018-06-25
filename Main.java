@@ -52,6 +52,7 @@ public class Main
         {
             ladeGruppen();
             loadTurnierName();
+            ladeSpieleErgebnisse();
         }
         catch (Exception e)
         {
@@ -208,6 +209,7 @@ public class Main
         }
         ladeGruppen();
         loadTurnierName();
+        ladeSpieleErgebnisse();
     }
     
     /**
@@ -274,15 +276,9 @@ public class Main
                 int gespeicherteGruppengroesse = Integer.valueOf(aktuelledaten[0]);
                 int anzahlSpiele = binominalkoeffizient(gespeicherteGruppengroesse, 2);
                 int gesamt = gespeicherteGruppengroesse+anzahlSpiele;
-                System.out.println(gespeicherteGruppengroesse + " " +anzahlSpiele + " " + gesamt);
                 for(int z = gespeicherteGruppengroesse+1; z <= gesamt; z++)
                 {
-                    //System.out.println(aktuelledaten[z]);
                     interessanteDaten = aktuelledaten[z].split("-");
-                    //for(int u = 0; u < interessanteDaten.length;u++)
-                    //{
-                    //    System.out.println(z+" "+u+" "+interessanteDaten[u]);
-                    //}
                     if(interessanteDaten[0].length()<3)
                     {
                         interessanteDaten[0] = " : ";
@@ -300,8 +296,12 @@ public class Main
                         beideTore[0] = String.valueOf(0);
                         beideTore[1] = String.valueOf(0);
                     }
-                    System.out.println(beideLaender[0] + " "+beideTore[0]+" | "
-                    + beideTore[1]+" "+beideLaender[1]);
+                    int[] punkte = berechnePunkte(Integer.valueOf(beideTore[0].replaceAll("\\W","")), 
+                                                  Integer.valueOf(beideTore[1].replaceAll("\\W","")));
+                    Gruppe gruppe1 = getGruppeWennLand(beideLaender[0].replaceAll("\\W",""));            
+                    gruppe1.landSetTorePunkte(beideLaender[0].replaceAll("\\W",""),
+                                              Integer.valueOf(beideTore[0].replaceAll("\\W","")), 
+                                              punkte[0]);
                 }
             }
             catch (Exception e)
@@ -310,84 +310,8 @@ public class Main
                 nochRetten();
             }
         }
-        
-        // TO DO
-        // TODO
-        if(0==1)
-        {
-            int tore1 = Integer.valueOf(aktuelledaten[1].replaceAll("\\W",""));
-            int tore2 = Integer.valueOf(aktuelledaten[3].replaceAll("\\W",""));
-            String land1 = createValideEingabe(aktuelledaten[0]);
-            String land2 = createValideEingabe(aktuelledaten[2]);
-            boolean check = true;
-            int[] punkte = berechnePunkte(tore1, tore2);
-            String nameGruppe = LaenderInGruppe(land1, land2);
-            if(nameGruppe != null)
-            {
-                Gruppe gruppe = gruppen.get(nameGruppe);
-                if (!gruppe.existiertSpielergebnis(land1, land2))
-                {
-                    if(!mainInterface.bestaetigen("Fehler", "Das Ergebnis wurde bereits eingegeben. Möchten Sie die alte Eingabe überschreiben?"))
-                    {
-                        check = false;
-                    }
-                    else gruppe.deleteTorePunkteSpielergebnis(land1, land2);
-                }
-                if(gruppe.existiertSpielergebnis(land1, land2)&& check)
-                {              
-                    addLand(land1, tore1, punkte[0]); 
-                    addLand(land2, tore2, punkte[1]);
-                    String daten = land1 + ":" + land2 + "-" + tore1 + ":" + tore2;
-                    saveGruppe(nameGruppe, updateGruppeSpielinfo(nameGruppe, land1, land2, daten));
-                    gruppe.loadGruppeninfo(nameGruppe);
-                }
-                else if(gruppe.existiertSpielergebnis(land2, land1)&& check)
-                {
-                    addLand(land1, tore1, punkte[0]); 
-                    addLand(land2, tore2, punkte[1]);
-                    String daten = land2 + ":" + land1 + "-" + tore2 + ":" + tore1;
-                    saveGruppe(nameGruppe, updateGruppeSpielinfo(nameGruppe, land2, land1, daten));
-                    gruppe.loadGruppeninfo(nameGruppe);
-                }
-            }
-            else
-            {
-                mainInterface.nachricht("Fehler", "Die Länder existieren nicht oder sind nicht in einer Gruppe.");
-            }
-        }
-        
-        
-        
-        
-    }
+    }    
     
-    /**
-     * Noch zu Beschreiben
-     * 
-     * @ToDo
-     */
-    private void createGruppen()
-    {
-        if(gruppenAnzahl>=MAX_GRUPPEN_ANZAHL)
-        {            
-            mainInterface.nachricht("Fehler", "Es sind zu viele Gruppen im System.");
-        }
-        else if(gruppenAnzahl != 0)
-        {
-            mainInterface.nachricht("Fehler", "Es sind bereits Gruppen im System.");
-        }
-        else
-        {     
-            char[] firstLetter = new char[MAX_GRUPPEN_ANZAHL];
-            // unicode upper-cased alphabet
-            for(int i = 0; i < MAX_GRUPPEN_ANZAHL; i++)
-            {
-                firstLetter[i] = (char)(65 + i);
-                gruppen.put(String.valueOf(firstLetter[i]), new Gruppe(String.valueOf(firstLetter[i])));
-                gruppenAnzahl += 1;
-            }
-        }    
-    }
     
     /**
      * Noch zu Beschreiben
@@ -410,7 +334,9 @@ public class Main
      * 
      * @ToDo
      * 
-     * @param land, tore, punkte
+     * @param land
+     * @param tore
+     * @param punkte
      */
     private void addLand(String land, int tore, int punkte)
     {
