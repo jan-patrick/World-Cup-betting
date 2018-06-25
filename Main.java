@@ -22,7 +22,7 @@ public class Main
     private HashMap<String, Gruppe> gruppen;
     private Daten daten;
     private Interface mainInterface;
-    private int gruppenAnzahl = 0;
+    private int gruppenAnzahl = 8;
     private int laenderAnzahl = 0;
     private final int MIN_GRUPPEN_ANZAHL = 2;
     private final int MAX_GRUPPEN_ANZAHL = 8;
@@ -148,7 +148,6 @@ public class Main
      */
     private void ladeVorlage()
     {
-        gruppenAnzahl = 0;
         char[] firstLetter = new char[MAX_GRUPPEN_ANZAHL];
         // lade GRUPPEN
         try
@@ -257,52 +256,13 @@ public class Main
      * 
      * @ToDo
      */
-    private void ladeLaender()
-    {
-        String[] aktuelledaten = {};
-        try
-        {
-            aktuelledaten = daten.ladeDatei("Laender", "Laender").split("/");
-        }
-        catch (Exception e)
-        {
-            e.printStackTrace();
-            nochRetten();
-        }
-        for(int k = 0; k < aktuelledaten.length; k++)
-        {
-            aktuelledaten[k] = createValideEingabe(aktuelledaten[k]);
-        }    
-        for(int z = 0; z < aktuelledaten.length; z++)
-        {
-            try
-            {   
-                String aktuelledatenla = daten.ladeVorlage("laender",aktuelledaten[z].replaceAll("\\W",""));
-                String[] aktuelledatenl = aktuelledatenla.split("/");
-                daten.speichereDatei("laender", aktuelledaten[z], aktuelledatenl);
-                Gruppe gruppe = getGruppeWennLand(aktuelledaten[z]);
-                gruppe.landSetTorePunkte(aktuelledaten[z], Integer.valueOf(aktuelledatenl[1]), 
-                                                       Integer.valueOf(aktuelledatenl[2]));
-            }
-            catch (Exception e)
-            {
-                e.printStackTrace();
-                nochRetten();
-            }
-        }
-        //Gruppe gruppe = getGruppeWennLand(nameLand);
-        //gruppen().landSetTorePunkte(String name, int tore, int punkte);
-    }
-    
-    /**
-     * Noch zu Beschreiben
-     * 
-     * @ToDo
-     */
     public void ladeSpieleErgebnisse()
     {
         char[] firstLetter = new char[MAX_GRUPPEN_ANZAHL];
         String[] aktuelledaten = {};
+        String[] interessanteDaten = {};
+        String[] beideLaender = {};
+        String[] beideTore ={};
         for(int i = 0; i < gruppenAnzahl; i++)
         {
             firstLetter[i] = (char)(65 + i);
@@ -310,8 +270,38 @@ public class Main
             {    
                 String aktuelledatengruppe = daten.ladeVorlage("gruppen",String.valueOf(firstLetter[i]));
                 aktuelledaten = aktuelledatengruppe.split("/");
-                System.out.println(aktuelledaten[0] +" "+ 
-                                   aktuelledaten[Integer.valueOf(aktuelledaten[0])]);
+                int gespeicherteGruppengroesse = Integer.valueOf(aktuelledaten[0]);
+                int anzahlSpiele = binominalkoeffizient(gespeicherteGruppengroesse, 2);
+                int gesamt = gespeicherteGruppengroesse+anzahlSpiele;
+                System.out.println(gespeicherteGruppengroesse + " " +anzahlSpiele + " " + gesamt);
+                for(int z = gespeicherteGruppengroesse+1; z <= gesamt; z++)
+                {
+                    //System.out.println(aktuelledaten[z]);
+                    interessanteDaten = aktuelledaten[z].split("-");
+                    //for(int u = 0; u < interessanteDaten.length;u++)
+                    //{
+                    //    System.out.println(z+" "+u+" "+interessanteDaten[u]);
+                    //}
+                    if(interessanteDaten[0].length()<3)
+                    {
+                        interessanteDaten[0] = " : ";
+                    }
+                    beideLaender = interessanteDaten[0].split(":");
+                    if(interessanteDaten[1].length()<3)
+                    {
+                        interessanteDaten[1] = " : ";
+                    }
+                    beideTore = interessanteDaten[1].split(":");
+                    if(beideTore==null || beideTore[0].isEmpty() || beideTore[1].isEmpty()
+                       || !isInteger(beideTore[0].replaceAll("\\W","")) 
+                       || !isInteger(beideTore[1].replaceAll("\\W","")))
+                    {
+                        beideTore[0] = String.valueOf(0);
+                        beideTore[1] = String.valueOf(0);
+                    }
+                    System.out.println(beideLaender[0] + " "+beideTore[0]+" | "
+                    + beideTore[1]+" "+beideLaender[1]);
+                }
             }
             catch (Exception e)
             {
@@ -882,5 +872,43 @@ public class Main
                 mainInterface.nachricht("Fehler", "Das Land " + nameLand + " existiert nicht.");
             }
         }      
+    }
+    
+    /**
+     * Noch zu Beschreiben
+     * 
+     * @ToDo
+     */
+    public static boolean isInteger(String s) {
+        boolean isValidInteger = false;
+        try
+        {
+            Integer.parseInt(s);
+            // s is a valid integer
+            isValidInteger = true;
+        }
+        catch (NumberFormatException ex)
+        {
+            // s is not an integer
+        }
+        return isValidInteger;
+    }
+    
+    /**
+     * Noch zu Beschreiben
+     * 
+     * @ToDo
+     */
+    public int binominalkoeffizient(int n, int k)
+    {        
+       if (k > n) return 0;
+       else 
+       {
+           int a = 1;
+           for (int i = n-k+1; i <= n; i++) a *= i;
+           int b = 1;
+           for (int i = 2; i <= k; i++) b *= i;
+           return a / b;
+       }
     }
 }
