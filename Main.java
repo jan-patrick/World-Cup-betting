@@ -22,7 +22,7 @@ public class Main
     private HashMap<String, Gruppe> gruppen;
     private Daten daten;
     private Interface mainInterface;
-    private int gruppenAnzahl = 8;
+    private int gruppenAnzahl = 0;
     private int laenderAnzahl = 0;
     private final int MIN_GRUPPEN_ANZAHL = 2;
     private final int MAX_GRUPPEN_ANZAHL = 8;
@@ -237,6 +237,7 @@ public class Main
         try
         {
             aktuelledaten = daten.ladeDatei("Gruppen", "Gruppen");
+            gruppenAnzahl = aktuelledaten.replaceAll("\\W","").length();
         }
         catch (Exception e)
         {
