@@ -156,9 +156,9 @@ public class Main
         // lade GRUPPEN
         try
         {
-            String gruppenDaten = daten.ladeVorlage("gruppen","Gruppen").replaceAll("\\W","");
-            gruppenAnzahl = gruppenDaten.replaceAll("\\W","").length();
+            String gruppenDaten = daten.ladeVorlage("gruppen","Gruppen");
             String[] gruppenData = gruppenDaten.split("/");
+            gruppenAnzahl = gruppenDaten.replaceAll("\\W","").length();
             daten.speichereDatei("gruppen", "Gruppen", gruppenData);
         }
         catch (Exception e)
