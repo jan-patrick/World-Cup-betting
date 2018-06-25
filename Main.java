@@ -515,7 +515,7 @@ public class Main
         {
             if(mainInterface.bestaetigen("Achtung", "Wollen sie wirklich alle Einträge löschen?"))
             {
-                String gruppe = aktuelledaten[0];
+                String gruppe = createValideEingabe(aktuelledaten[0]);
                 if(gruppen.containsKey(gruppe))
                 {
                     String name = createValideEingabe(aktuelledaten[1]);
@@ -669,8 +669,20 @@ public class Main
      */
     private String createValideEingabe(String eingabe)
     {
-        String ausgabe = eingabe.replaceAll("\\W","");
-        ausgabe = ausgabe.substring(0, 1).toUpperCase() + ausgabe.substring(1);
+        //alle kleinen Umlaute ersetzen
+        String ausgabe = eingabe.replace("ü", "ue")
+                                .replace("ö", "oe")
+                                .replace("ä", "ae")
+                                .replace("ß", "ss");
+
+        //alle großen Umlaute ersetzen
+        ausgabe = ausgabe.replace("Ü", "Ue")
+                         .replace("Ö", "Oe")
+                         .replace("Ä", "Ae");
+
+        ausgabe = ausgabe.replaceAll("\\W","");                
+
+        ausgabe = ausgabe.substring(0, 1).toUpperCase() + ausgabe.substring(1).toLowerCase();
         return ausgabe;
     }
     
