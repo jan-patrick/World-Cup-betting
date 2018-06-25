@@ -204,25 +204,28 @@ public class Daten
      * 
      * @ToDo
      */
-    public void deleteAlleDaten(String art, String dateiname) throws IOException
+    public void deleteAlleDaten() throws IOException
     {
-        String datei = "Allgemein/turnierName.txt";
-        switch(art)
-        {
-        case "gruppen":
-            datei = "Gruppen/" + dateiname +".txt";
-            break;
-        case "turniername":
-            datei = "Allgemein/" + dateiname +".txt";
-            break;
-        case "laender":
-            datei = "Laender/" + dateiname +".txt";
-            break;
-        default:
-            break;
+        File foldergruppe = new File("Gruppen");
+        File[] listOfFilesGruppe = foldergruppe.listFiles();
+        for (int i = 0; i < listOfFilesGruppe.length; i++) {
+            if (listOfFilesGruppe[i].isFile()) {
+                Files.deleteIfExists(Paths.get("Gruppen/"+listOfFilesGruppe[i].getName()));
+            }
         }
-        FileWriter fw = new FileWriter(datei);
-        fw.flush();
-        fw.close();
+        File folderallgemein = new File("Allgemein");
+        File[] listOfFilesAllgemein = folderallgemein.listFiles();
+        for (int i = 0; i < listOfFilesAllgemein.length; i++) {
+            if (listOfFilesAllgemein[i].isFile()) {
+                Files.deleteIfExists(Paths.get("Allgemein/"+listOfFilesAllgemein[i].getName()));
+            }
+        } 
+        File folderlaender = new File("Laender");
+        File[] listOfFilesLaender = folderlaender.listFiles();
+        for (int i = 0; i < listOfFilesLaender.length; i++) {
+            if (listOfFilesLaender[i].isFile()) {
+                Files.deleteIfExists(Paths.get("Laender/"+listOfFilesLaender[i].getName()));
+            }
+        }
     }    
 }

@@ -151,6 +151,7 @@ public class Main
      */
     private void ladeVorlage()
     {
+        deleteAlleDaten();
         char[] firstLetter = new char[MAX_GRUPPEN_ANZAHL];
         // lade GRUPPEN
         try
@@ -159,7 +160,6 @@ public class Main
             gruppenAnzahl = gruppenDaten.replaceAll("\\W","").length();
             String[] gruppenData = gruppenDaten.split("/");
             daten.speichereDatei("gruppen", "Gruppen", gruppenData);
-            System.out.println(gruppenAnzahl);
         }
         catch (Exception e)
         {
@@ -388,7 +388,7 @@ public class Main
     {
         if(getDatenSpielergebnis(land, tore, punkte) == null)
         {
-            System.out.println("Das Land " + land + " existiert nicht");
+            mainInterface.nachricht("Fehler", "Das Land " + land + " existiert nicht.");
         }
         else
         {
@@ -689,6 +689,25 @@ public class Main
         }
         return null;
     }
+
+    /**
+     * Noch zu Beschreiben
+     * 
+     * @ToDo
+    */
+    private void deleteAlleDaten()
+    {
+        try
+        {
+        daten.deleteAlleDaten();
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+        
+
     
     /**
      * Noch zu Beschreiben
