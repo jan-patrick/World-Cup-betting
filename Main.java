@@ -151,6 +151,7 @@ public class Main
      */
     private void ladeVorlage()
     {
+        deleteAktuelleTurnierDaten();
         deleteAlleDaten();
         char[] firstLetter = new char[MAX_GRUPPEN_ANZAHL];
         // lade GRUPPEN
@@ -764,8 +765,6 @@ public class Main
             e.printStackTrace();
         }
     }
-        
-
     
     /**
      * Noch zu Beschreiben
