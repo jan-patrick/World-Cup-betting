@@ -151,10 +151,10 @@ public class Daten
     }
     
     /**
-     * Noch zu Beschreiben
+     * Löscht die Text Datei mit dem übergebenen Namen in dem übergebenen Verzeichnis.
      * 
-     * @param ordner, name
-     * @ToDo
+     * @param ordner    Der Ordner, entweder "Gruppen", "Laender" oder "Allgemein"
+     * @param dateiname Der Dateiname der Textdatei
      */
     public void deleteDatei(String ordner, String name) throws IOException
     {

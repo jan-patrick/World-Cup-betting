@@ -348,7 +348,7 @@ public class Main
                     gruppe.deleteLaender();
                     gruppe.loadGruppeninfo(name);
                     try{
-                        daten.deleteDatei("Laender", name);
+                        daten.deleteDatei("Laender", name + ".txt");
                     }
                     catch (Exception e) {
                         e.printStackTrace();
@@ -356,6 +356,64 @@ public class Main
                 }
             }
             else mainInterface.nachricht("Fehler", "Das Land " + nameLand + " existiert nicht.");
+        }
+    }
+
+    /**
+     * Öffnet ein Fenste in dem der Name der zu entfernenden Gruppe eingegeben werden kann.
+     * Die Gruppen A-H sind als Standard nicht zu entfernen. Wenn eine Gruppe entfernt wird werden auch deren Länder gelöscht.
+     */
+    public void entferneGruppe()
+    {
+        String aktuelledaten = mainInterface.eingabeAufforderungEinFeld("Gruppe entfernen", 
+            "Wenn Sie eine Gruppe entfernen werden deren Länder ebenfallsgelöscht.", "Name der Gruppe");                 
+        if(aktuelledaten != null){
+            char[] firstLetter = new char[MIN_GRUPPEN_ANZAHL];
+            ArrayList<String> gruppenFest = new ArrayList<String>();
+            for(int i = 0; i < MIN_GRUPPEN_ANZAHL; i++)
+            {
+                firstLetter[i] = (char)(65 + i);
+                gruppenFest.add(String.valueOf(firstLetter[i]));
+            }
+            String nameGruppe = createValideEingabe(aktuelledaten);
+            if(!gruppenFest.contains(nameGruppe))
+            {
+                if(gruppen.containsKey(nameGruppe))
+                {
+                    Gruppe gruppe = gruppen.get(nameGruppe);
+                    String[] laender = gruppe.getLaender();
+                    for (int i = 0; i < laender.length; i++)
+                    {
+                        try
+                        {
+                            daten.deleteDatei("Laender", laender[i]);
+                        }
+                        catch (Exception e)
+                        {
+                            e.printStackTrace();
+                        }
+                    }                
+                    gruppen.remove(nameGruppe);
+                    String[] datenGruppen = getGruppen();
+                    try
+                    {
+                        daten.speichereDatei("gruppen", "Gruppen", datenGruppen);
+                    }
+                    catch (Exception e)
+                    {
+                        e.printStackTrace();
+                    }
+                    try
+                    {
+                        daten.deleteDatei("Gruppen", nameGruppe+".txt");
+                    }
+                    catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+                else mainInterface.nachricht("Fehler", "Die Gruppe " + nameGruppe + " existiert nicht.");
+            }
+            else mainInterface.nachricht("Fehler", "Die Gruppe " + nameGruppe + " darf nicht entfernt werden.");
         }
     }
     
@@ -760,6 +818,25 @@ public class Main
         {
             deleteAktuelleTurnierDaten();
         }
+    }
+    
+    /**
+     * Gibt die Namen aller existierenden Gruppen als String Array zurück.
+     * 
+     * @return teile Array mit den Keys aller Gruppen
+     */
+    private String[] getGruppen()
+    {
+        StringBuffer aktuelledaten = new StringBuffer();
+        for (String key : gruppen.keySet()) {
+            if (aktuelledaten.length() != 0) {
+                aktuelledaten.append("/");
+            }
+            aktuelledaten.append(key);         
+        }
+        String sDaten = daten.toString();
+        String[] teile = sDaten.split("/");
+        return teile;
     }
     
     /**
