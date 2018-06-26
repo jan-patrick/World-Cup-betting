@@ -6,15 +6,15 @@ import javax.swing.JPanel;
 import java.awt.GridLayout;
 
 /**
- * Beschreiben Sie hier die Klasse Interface.
+ * Die Klasse Interface erstellt ein User Interface, welches über die Hauptklasse Main aufgerufen wird.
  * 
  * @author Jan Schneider, HfG, IoT3
- * @version 2018.05.28
+ * @version 2018.06.26
  */
 public class Interface
-{   
+{
     /**
-     * Constructor for objects of class Interface
+     * Konstruktor für Objekte der Klasse Interface.
      */
     public Interface()
     {
@@ -42,63 +42,99 @@ public class Interface
     }
     
     /**
-     * Noch zu Beschreiben
+     * Öffnet ein Fenster, welches eine Nachricht und Textzeile oben lins enthält und die Option die Knöpfe "OK" und "Abbrechen" zu wählen.
+     * Bei Auswahl von OK durch den Benutzer wird true zurückgeliefert und bei Abbrechen false.
+     * Diese Methode ist ein Bestätigungsfenster durch das meist nochmal überprüft wird, ob eine Methode wirklick ausgeführt werden soll.
      * 
-     * @ToDo
+     * @param head Text der oben im Fenster steht
+     * @param nachricht Nachricht des Programms
+     * 
+     * @return true wenn "OK" geklickt wurde, false wenn das Fenster geschlossen oder "Abbrechen" geklickt wurde.
      */
-    public boolean bestaetigen(String kopfzeile, String nachricht)
+    public boolean bestaetigen(String head, String nachricht)
     {
         int eingabe = JOptionPane.showConfirmDialog(null,
                 nachricht,
-                kopfzeile,
+                head,
                 JOptionPane.YES_NO_OPTION);
-        if(eingabe == 0)
-        {
-            return true;
-        }
+        if(eingabe == 0) return true;
         else return false;
     }
 
     /**
-     * Noch zu Beschreiben
+     * Öffnet ein Fenster, dass eine Nachricht anzeigt. 
+     * Dieses Fenster kann mit OK oder dem [X] geschlossen werden.
+     * Meist wird dem User über diese Methode eine Information angezeigt.
      * 
-     * @ToDo
+     * @param head Text der oben im Fenster steht
+     * @param nachricht Nachricht des Programms bzw Information
      */
-    public void nachricht(String kopfzeile, String nachricht)
+    public void nachricht(String head, String nachricht)
     {
         JOptionPane.showMessageDialog(null,
             nachricht,
-            kopfzeile,                        
+            head,                        
             JOptionPane.WARNING_MESSAGE);
     }
 
     /**
-     * Noch zu Beschreiben
+     * Öffnet ein Fenster, in das ein Spielergebnis eingetragen werden kann. 
+     * Dies wird über vier Fleder möglich - je zwei für die Länder und zwei für deren Tore.
+     * Bei Auswahl von OK durch den Benutzer wird ein Array aller Felder zurückgeliefert und bei Abbrechen null.
+     * Eingegebene Werte werden überprüft (negativ, Leerzeichen, andere Zeichen),
+     * sodass nur bei korrekt ausgefüllen Feldern auch wirklich ein Array zurückgeliefert wird.
      * 
-     * @ToDo
+     * @return daten Spieldaten, ansonsten null
      */
     public String[] eingabeAufforderungSpielergebnis()
     {
-        JTextField mannschaft1 = new JTextField();
+        JTextField land1 = new JTextField();
         JTextField tore1 = new JTextField();
-        JTextField mannschaft2 = new JTextField();
+        JTextField land2 = new JTextField();
         JTextField tore2 = new JTextField();
-        Object[] message = {"Mannschaft", mannschaft1, 
-                "Tore", tore1, "Mannschaft", mannschaft2, 
+        Object[] message = {"Mannschaft", land1, 
+                "Tore", tore1, "Mannschaft", land2, 
                 "Tore", tore2};
         JOptionPane pane = new JOptionPane( message, 
                 JOptionPane.PLAIN_MESSAGE, 
                 JOptionPane.OK_CANCEL_OPTION);
-        pane.createDialog(null, "Spielergebnis").setVisible(true);
-        String[] daten = {mannschaft1.getText().replaceAll("\\W",""), tore1.getText().replaceAll("\\W",""),
-                          mannschaft2.getText().replaceAll("\\W",""), tore2.getText().replaceAll("\\W","")};
-        return daten;
+        pane.createDialog(null, "Spielergebnis eintragen").setVisible(true);
+        if(pane.getValue()!= null){
+            int value = ((Integer)pane.getValue()).intValue();
+            if(value == JOptionPane.CANCEL_OPTION)
+            {
+                return null;
+            }
+            if(!land1.getText().replaceAll("\\W","").isEmpty() && !tore1.getText().replaceAll("\\W","").isEmpty() &&
+               !land2.getText().replaceAll("\\W","").isEmpty() && !tore2.getText().replaceAll("\\W","").isEmpty())
+            {
+                String[] daten = {land1.getText().replaceAll("\\W",""), tore1.getText().replaceAll("\\W",""),
+                                  land2.getText().replaceAll("\\W",""), tore2.getText().replaceAll("\\W","")};
+                if(Integer.valueOf(tore1.getText()) >= 0 && Integer.valueOf(tore2.getText()) >= 0)
+                {
+                    return daten;
+                }           
+                else 
+                {
+                    nachricht("Fehler", "Sie können nur positive Werte eintragen");  
+                    return eingabeAufforderungSpielergebnis();
+                }
+            }
+            else 
+            {
+                nachricht("Fehler", "Sie müssen alle Felder ausfüllen!");  
+                return eingabeAufforderungSpielergebnis();
+            }
+        }
+        else return null;
     }
 
     /**
-     * Noch zu Beschreiben
+     * Öffnet ein Fenster und zeigt den Übersichtsplan an.
+     * Die einzelnen Spiele werden ausgegeben, zusammen mit dem Ergebnis
      * 
-     * @ToDo
+     * @param turniername Name des Turniers
+     * @param daten Daten aller Spielergebnisse
      */
     public void createSpielplan(String turniername, String daten)
     { 
@@ -113,9 +149,9 @@ public class Interface
     }
 
     /**
-     * Noch zu Beschreiben
+     * Öffnet ein Fenster, in das der Name eines neuen Landes und dessen Gruppe eingegeben werden kann. 
      * 
-     * @ToDo
+     * @return daten Landname, ansonsten null
      */
     public String[] eingabeAufforderungNeuesLand()
     {
@@ -146,9 +182,10 @@ public class Interface
     }
     
     /**
-     * Noch zu Beschreiben
+     * Öffnet ein Fenster mit einer Nachricht und vier Feldern zur Eingabe von möglichen vier Ländern.
+     * Mindestens zwei Länder müssen eingegeben werden.
      * 
-     * @ToDo
+     * @return daten neue Gruppe, ansonsten null
      */
     public String[] eingabeAufforderungNeueGruppe()
     {
@@ -184,11 +221,16 @@ public class Interface
     }   
     
     /**
-     * Noch zu Beschreiben
+     * Öffnet ein Fenster mit einer Nachricht und einem Feld zur Eingabe entweder möglicher Länder oder Gruppen je nach verwendung.
+     * Deshalb müssen die Nachricht, Kopfzeile und Beschreibung auch übergeben werden um die Variabilität zu gewährleisten.
      * 
-     * @ToDo
+     * @param head Text der oben im Fenster steht
+     * @param nachricht Nachricht des Programms bzw Information
+     * @param textfeld
+     * 
+     * @return daten wenn alle Bedingungen erfüllt sind, ansonsten null
      */
-    public String eingabeAufforderungEinFeld(String kopfzeile, String nachricht, String textfeld)
+    public String eingabeAufforderungEinFeld(String head, String nachricht, String textfeld)
     {
         JTextField gruppe = new JTextField();
         JTextField name = new JTextField();
@@ -196,7 +238,7 @@ public class Interface
         JOptionPane pane = new JOptionPane( message, 
                 JOptionPane.PLAIN_MESSAGE, 
                 JOptionPane.OK_CANCEL_OPTION);
-        pane.createDialog(null, kopfzeile).setVisible(true);
+        pane.createDialog(null, head).setVisible(true);
         if(pane.getValue()!= null)
         {
             int value = ((Integer)pane.getValue()).intValue();
@@ -212,10 +254,9 @@ public class Interface
             else 
             {
                 nachricht("Eingabefehler", "Sie müssen alle Felder ausfüllen!"); 
-                return eingabeAufforderungEinFeld(kopfzeile, nachricht, textfeld);
+                return eingabeAufforderungEinFeld(head, nachricht, textfeld);
             }
         }
         else return null;
-    } 
+    }
 }
-

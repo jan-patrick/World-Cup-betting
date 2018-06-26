@@ -4,7 +4,7 @@
  * Der Name des Landes wird neben dessen Tore und Punkte gespeichert.
  * 
  * @author Jan Schneider, HfG, IoT3
- * @version 2018.05.28
+ * @version 2018.06.26
  */
 public class Land
 {

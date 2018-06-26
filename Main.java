@@ -7,7 +7,7 @@ import java.util.Set;
  * Beschreiben Sie hier die Klasse Main.
  * 
  * @author Jan Schneider, HfG, IoT3
- * @version 2018.05.28
+ * @version 2018.06.26
  * 
  * - gutes Softwaredesign
  * - keine Codeduplizierung (denselben Code mehrfach, dann auslagern), 
@@ -241,7 +241,7 @@ public class Main
         String[] teile;
         try
         {
-            aktuelledaten = daten.ladeDatei("Gruppen", "Gruppen");
+            aktuelledaten = daten.ladeDatei("Gruppen", "Gruppen").replaceAll("//","/");
             gruppenAnzahl = aktuelledaten.replaceAll("\\W","").length();
         }
         catch (Exception e)
@@ -251,7 +251,7 @@ public class Main
         }
         teile = aktuelledaten.split("/");
         for(int k = 0; k < teile.length; k++)
-        {
+        {    
             teile[k] = createValideEingabe(teile[k]);
         }    
         for (int i = 0; i < teile.length; i++)
@@ -267,7 +267,7 @@ public class Main
      */
     private void ladeSpieleErgebnisse()
     {
-        char[] firstLetter = new char[MAX_GRUPPEN_ANZAHL];
+        char[] firstLetter = new char[gruppenAnzahl];
         String[] aktuelledaten = {};
         String[] interessanteDaten = {};
         String[] beideLaender = {};
@@ -277,7 +277,8 @@ public class Main
             firstLetter[i] = (char)(65 + i);
             try
             {    
-                String aktuelledatengruppe = daten.ladeVorlage("gruppen",String.valueOf(firstLetter[i]));
+                String aktuelledatengruppe = daten.ladeDatei("gruppen",String.valueOf(firstLetter[i]));
+                System.out.println(aktuelledatengruppe);
                 aktuelledaten = aktuelledatengruppe.split("/");
                 int gespeicherteGruppengroesse = Integer.valueOf(aktuelledaten[0]);
                 int anzahlSpiele = binominalkoeffizient(gespeicherteGruppengroesse, 2);
@@ -285,6 +286,10 @@ public class Main
                 for(int z = gespeicherteGruppengroesse+1; z <= gesamt; z++)
                 {
                     interessanteDaten = aktuelledaten[z].split("-");
+                    for(int ho = 0; ho < interessanteDaten.length; ho++)
+                    {
+                        System.out.println(String.valueOf(interessanteDaten[ho]));
+                    }
                     if(interessanteDaten[0].length()<3)
                     {
                         interessanteDaten[0] = " : ";

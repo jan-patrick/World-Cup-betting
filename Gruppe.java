@@ -6,11 +6,10 @@ import java.util.Arrays;
  * Beschreiben Sie hier die Klasse Gruppe.
  * 
  * @author Jan Schneider, HfG, IoT3
- * @version 2018.05.28
+ * @version 2018.06.26
  */
 public class Gruppe
 {
-    // Instanzvariablen - ersetzen Sie das folgende Beispiel mit Ihren Variablen
     private HashMap<String, Land> laender;
     private HashMap<String, String> gruppenphaseSpiele;
     private String gruppenName;

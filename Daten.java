@@ -8,7 +8,7 @@ import java.awt.Desktop;
  * Beschreiben Sie hier die Klasse Daten.
  * 
  * @author Jan Schneider, HfG, IoT3
- * @version 2018.06.11
+ * @version 2018.06.26
  */
 public class Daten
 {
@@ -176,7 +176,7 @@ public class Daten
         }
         if(args.length==0)
         {
-            System.out.println( "Usage: OpenURI [URI [URI ... ]]" );
+            System.err.println( "Usage: OpenURI [URI [URI ... ]]" );
             System.exit( 0 );
         }
         java.awt.Desktop desktop = java.awt.Desktop.getDesktop();
