@@ -278,7 +278,6 @@ public class Main
             try
             {    
                 String aktuelledatengruppe = daten.ladeDatei("gruppen",String.valueOf(firstLetter[i]));
-                System.out.println(aktuelledatengruppe);
                 aktuelledaten = aktuelledatengruppe.split("/");
                 int gespeicherteGruppengroesse = Integer.valueOf(aktuelledaten[0]);
                 int anzahlSpiele = binominalkoeffizient(gespeicherteGruppengroesse, 2);
@@ -286,10 +285,6 @@ public class Main
                 for(int z = gespeicherteGruppengroesse+1; z <= gesamt; z++)
                 {
                     interessanteDaten = aktuelledaten[z].split("-");
-                    for(int ho = 0; ho < interessanteDaten.length; ho++)
-                    {
-                        System.out.println(String.valueOf(interessanteDaten[ho]));
-                    }
                     if(interessanteDaten[0].length()<3)
                     {
                         interessanteDaten[0] = " : ";
@@ -670,7 +665,7 @@ public class Main
         String[] teileGruppenDatenAlt = gruppenDatenAlt.split("/");
         for (int i = 0; i < teileGruppenDatenAlt.length; i++)
         {
-            String check = teileGruppenDatenAlt[i];
+            String check = teileGruppenDatenAlt[i].replaceAll("\\W","");
             if(check.contains(land1 + ":" + land2))
             {
                 teileGruppenDatenAlt[i] = aktuelledaten;
@@ -790,6 +785,7 @@ public class Main
             aktuelledaten += ",";
         }
         mainInterface.createSpielplan(turnierName, aktuelledaten);
+        loadInitalData();
     }
     
     /**
