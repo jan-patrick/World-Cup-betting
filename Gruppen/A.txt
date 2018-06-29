@@ -3,9 +3,9 @@ Aegypten
 Russland
 Uruguay
 SaudiArabien
-Aegypten:Russland- 1:3
-Aegypten:Uruguay- 0:1 
-Aegypten:SaudiArabien- 1:2
-Russland:Uruguay- 0:3 
-Russland:SaudiArabien- 5:0
-Uruguay:SaudiArabien- 1:0
+Aegypten:Russland- : 
+Aegypten:Uruguay- : 
+Aegypten:SaudiArabien- : 
+Russland:Uruguay- : 
+Russland:SaudiArabien- : 
+Uruguay:SaudiArabien- : 

@@ -361,10 +361,10 @@ public class Main
     }
 
     /**
-     * Öffnet ein Fenste in dem der Name der zu entfernenden Gruppe eingegeben werden kann.
-     * Die Gruppen A-H sind als Standard nicht zu entfernen. Wenn eine Gruppe entfernt wird werden auch deren Länder gelöscht.
+     * Öffnet ein Fenster in dem der Name der zu entfernenden Gruppe eingegeben werden kann.
+     * 2 Gruppen sind als Standard nicht zu entfernen. Wenn eine Gruppe entfernt wird werden auch deren Länder gelöscht.
      */
-    public void entferneGruppe()
+    private void entferneGruppe()
     {
         String aktuelledaten = mainInterface.eingabeAufforderungEinFeld("Gruppe entfernen", 
             "Wenn Sie eine Gruppe entfernen werden deren Länder ebenfallsgelöscht.", "Name der Gruppe");                 
@@ -395,7 +395,10 @@ public class Main
                         }
                     }                
                     gruppen.remove(nameGruppe);
-                    String[] datenGruppen = getGruppen();
+                    String aktuellDaten = getGruppenAsString();
+                    System.out.println(aktuellDaten);
+                    String[] datenGruppen =aktuellDaten.split("/");
+                    System.out.println(datenGruppen[0]);
                     try
                     {
                         daten.speichereDatei("gruppen", "Gruppen", datenGruppen);
@@ -406,7 +409,7 @@ public class Main
                     }
                     try
                     {
-                        daten.deleteDatei("Gruppen", nameGruppe+".txt");
+                        daten.deleteDatei("Gruppen", nameGruppe);
                     }
                     catch (Exception e) {
                         e.printStackTrace();
