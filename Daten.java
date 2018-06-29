@@ -1,14 +1,20 @@
-import java.io.*;
-import java.lang.*;
-import java.nio.file.*;
-import java.net.*;
+import java.io.FileReader;
+import java.io.BufferedReader;
+import java.io.FileWriter;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.io.InputStreamReader;
+import java.io.File;
+import java.net.URL;
 import java.awt.Desktop;
 
 /**
  * Die Klasse Daten übernimmt das Auslesen und Speichern der Daten in .txt Dateien und das Öffnen von Links.
  * 
  * @author Jan Schneider, HfG, IoT3
- * @version 2018.06.26
+ * @version 2018.06.30
  */
 public class Daten
 {
@@ -125,7 +131,6 @@ public class Daten
      * 
      * @param teile Informationen, die gespeichert werden sollen
      * @throws IOException
-     */
      */
     public void gruppeReseten(String[] teile) throws IOException
     {

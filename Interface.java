@@ -6,10 +6,10 @@ import javax.swing.JPanel;
 import java.awt.GridLayout;
 
 /**
- * Die Klasse Interface erstellt ein User Interface, welches über die Hauptklasse Main aufgerufen wird.
+ * Die Klasse Interface erstellt verschiedene User Interfaces, welche über die Hauptklasse Main aufgerufen werden.
  * 
  * @author Jan Schneider, HfG, IoT3
- * @version 2018.06.26
+ * @version 2018.06.30
  */
 public class Interface
 {
@@ -22,9 +22,10 @@ public class Interface
     }
     
     /**
-     * Noch zu Beschreiben
+     * Öffnet ein Fenster, welches die Änderung des Turniernames erlaubt (Standard ist WM2018).
      * 
-     * @ToDo
+     * @param bisherigerTurniername Der bisherige Turniername, der beim Öffnen des Fensters mit angezeigt wird
+     * @return aktuelledaten Der eingegebene neue Turniername
      */
     public String eingabeAufforderungTurniername(String bisherigerTurniername)
     {
@@ -37,8 +38,8 @@ public class Interface
                 JOptionPane.PLAIN_MESSAGE, 
                 JOptionPane.OK_CANCEL_OPTION);
         pane.createDialog(null, "Turniername ändern").setVisible(true);
-        String daten = turniername.getText();
-        return daten;
+        String aktuelledaten = turniername.getText();
+        return aktuelledaten;
     }
     
     /**
@@ -48,7 +49,6 @@ public class Interface
      * 
      * @param head Text der oben im Fenster steht
      * @param nachricht Nachricht des Programms
-     * 
      * @return true wenn "OK" geklickt wurde, false wenn das Fenster geschlossen oder "Abbrechen" geklickt wurde.
      */
     public boolean bestaetigen(String head, String nachricht)
@@ -194,28 +194,39 @@ public class Interface
         JTextField name2 = new JTextField();
         JTextField name3 = new JTextField();
         JTextField name4 = new JTextField();
-
         Object[] message = {"Fügen sie bitte mindestens zwei Länder hinzu.", " ", 
                 "Namen der Länder", name1, name2, name3, name4};
-
         JOptionPane pane = new JOptionPane( message, 
                 JOptionPane.PLAIN_MESSAGE, 
                 JOptionPane.OK_CANCEL_OPTION);
         pane.createDialog(null, "Neues Land").setVisible(true);
-
-        if(pane.getValue()!= null){
+        if(pane.getValue()!= null)
+        {
             int value = ((Integer)pane.getValue()).intValue();
             String[] datenAlt = {name1.getText(), name2.getText(), name3.getText(), name4.getText()};
             ArrayList teile = new ArrayList<String>();
-            for (int i = 0; i < datenAlt.length; i++) {
-                if(datenAlt[i].isEmpty() == false){ teile.add(datenAlt[i]);}
+            for (int i = 0; i < datenAlt.length; i++)
+            {
+                if(!datenAlt[i].isEmpty())
+                { 
+                    teile.add(datenAlt[i]);
+                }
             }
             String[] daten = new String[teile.size()];
             teile.toArray( daten );
-
-            if( daten.length >= 2) {return daten;}
-            if(value == JOptionPane.CANCEL_OPTION){return null;}
-            else {nachricht("Eingabefehler", "Sie müssen mindestens 2 Länder eingeben!");  return eingabeAufforderungNeueGruppe();}
+            if( daten.length >= 2)
+            {
+                return daten;
+            }
+            if(value == JOptionPane.CANCEL_OPTION)
+            {
+                return null;
+            }
+            else 
+            {
+                nachricht("Eingabefehler", "Sie müssen mindestens 2 Länder eingeben!");  
+                return eingabeAufforderungNeueGruppe();
+            }
         }
         else return null;
     }   
@@ -227,7 +238,6 @@ public class Interface
      * @param head Text der oben im Fenster steht
      * @param nachricht Nachricht des Programms bzw Information
      * @param textfeld
-     * 
      * @return daten wenn alle Bedingungen erfüllt sind, ansonsten null
      */
     public String eingabeAufforderungEinFeld(String head, String nachricht, String textfeld)

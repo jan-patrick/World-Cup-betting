@@ -6,7 +6,7 @@ import java.util.Arrays;
  * Beschreiben Sie hier die Klasse Gruppe.
  * 
  * @author Jan Schneider, HfG, IoT3
- * @version 2018.06.26
+ * @version 2018.06.30
  */
 public class Gruppe
 {

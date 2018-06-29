@@ -7,7 +7,7 @@ import java.util.Set;
  * Beschreiben Sie hier die Klasse Main.
  * 
  * @author Jan Schneider, HfG, IoT3
- * @version 2018.06.26
+ * @version 2018.06.30
  * 
  * - gutes Softwaredesign
  * - keine Codeduplizierung (denselben Code mehrfach, dann auslagern), 
