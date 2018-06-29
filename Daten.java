@@ -5,7 +5,7 @@ import java.net.*;
 import java.awt.Desktop;
 
 /**
- * Beschreiben Sie hier die Klasse Daten.
+ * Die Klasse Daten übernimmt das Auslesen und Speichern der Daten in .txt Dateien und das Öffnen von Links.
  * 
  * @author Jan Schneider, HfG, IoT3
  * @version 2018.06.26
@@ -13,9 +13,7 @@ import java.awt.Desktop;
 public class Daten
 {
     /**
-     * Noch zu Beschreiben
-     * 
-     * @ToDo
+     * Konstruktor der Klasse Daten
      */
     public Daten()
     {
@@ -23,11 +21,13 @@ public class Daten
     }
     
     /**
-     * Noch zu Beschreiben
+     * Diese Methode lädt die aktuellen Daten des Vorlagenturniers (WM 2018) aus dem Github-Repository des Programms und speichert diese lokal.
+     * Dies dient einerseits als Backup, andererseits als einfache Methode um immer den aktuellsten Plan samt Ergebnissen zu sehen, 
+     * ohne diese als Nutzer selbst eingeben zu müssen (sofern eine Internetverbindung besteht und die Ergebnisse online sind).
      * 
-     * @param dateiname
-     * @return aktuelledaten
-     * @ToDo
+     * @param art Welche Art Daten wird abgefragt (Allgemein, Gruppen, Länder)
+     * @param dateiname Name der auszulesenden Datei
+     * @return aktuelledaten Daten, die zur angefragten Datei gehören
      */
     public String ladeVorlage(String art, String dateiname) throws IOException
     {
@@ -63,32 +63,36 @@ public class Daten
     }
 
     /**
-     * Noch zu Beschreiben
+     * Liest aus einer lokal gespeicherten Textdatei (in einem Ordner im Projektverzeichnis) die Daten einer Datei aus.
+     * Die Methode funktioniert praktisch identisch wie ladeVorlage().
      * 
-     * @param ordnername, dateiname
-     * @return daten
-     * @ToDo
+     * @param ordnername Der Ordner der gesuchten Datei (Allgemein, Gruppen, Länder)
+     * @param dateiname Der Dateiname der Textdatei
+     * 
+     * @return daten aller Zeilen getrennt durch "/" in einem String
      */
     public String ladeDatei(String ordnername, String dateiname) throws IOException
     {
         String datei = ordnername + "/" + dateiname + ".txt";
         FileReader fr = new FileReader(datei);
         BufferedReader br = new BufferedReader(fr);
-        String daten = "";
+        String aktuelledaten = "";
         String zeile = "";
         while( (zeile = br.readLine()) != null )
         {
-            daten += zeile + "/";
+            aktuelledaten += zeile + "/";
         }
         br.close();
-        return daten;
+        return aktuelledaten;
     }
     
     /**
-     * Noch zu Beschreiben
+     * Im Prinzip gegenläufig zu den beiden auslesenden Funktionen speichert diese Methode die Daten in die gewünschte Datei.
      * 
-     * @param landteile
-     * @ToDo
+     * @param art Art der zu speichernden Daten (turniername, Gruppen, Länder)
+     * @param name Dateiname der zu speichernden Textdatei
+     * @param daten Daten, die gespeichert werden sollen
+     * @throws IOException
      */
     public void speichereDatei(String art, String name, String[] daten) throws IOException
     {        
@@ -117,10 +121,11 @@ public class Daten
     }
     
     /**
-     * Noch zu Beschreiben
+     * Überschreibt eine bereits vorhandene Gruppen Textdatei.
      * 
-     * @param teile
-     * @ToDo
+     * @param teile Informationen, die gespeichert werden sollen
+     * @throws IOException
+     */
      */
     public void gruppeReseten(String[] teile) throws IOException
     {
@@ -136,25 +141,27 @@ public class Daten
     }
     
     /**
-     * Noch zu Beschreiben
+     * Fügt der lokalen Text Datei "Gruppen" eine Gruppe hinzu.
+     * Die vorhandenen Einträge bleiben dabei bestehen.
      * 
-     * @param daten
-     * @ToDo
+     * @param daten Information die der Datei angehängt werden soll
+     * @throws IOException
      */
-    public void gruppeAnhaengen(String daten) throws IOException
+    public void gruppeAnhaengen(String aktuelledaten) throws IOException
     {
         FileWriter fw = new FileWriter("Gruppen/Gruppen.txt", true);
         BufferedWriter bw = new BufferedWriter(fw);
         bw.newLine();
-        bw.write(daten);        
+        bw.write(aktuelledaten);        
         bw.close();
     }
     
     /**
      * Löscht die Text Datei mit dem übergebenen Namen in dem übergebenen Verzeichnis.
      * 
-     * @param ordner    Der Ordner, entweder "Gruppen", "Laender" oder "Allgemein"
+     * @param ordner Der Ordner, entweder "Gruppen", "Laender" oder "Allgemein"
      * @param dateiname Der Dateiname der Textdatei
+     * @throws IOException
      */
     public void deleteDatei(String ordner, String name) throws IOException
     {
@@ -163,9 +170,10 @@ public class Daten
     }  
         
     /**
-     * Noch zu Beschreiben
+     * Öffnet die übergebenen Links im Standardbrowser.
      * 
-     * @ToDo
+     * @param args Die zu öffnenden Links (Webadressen)
+     * @see Die zu öffnenden Websiten im Standardbrowser des Systems
      */
     public void openLink(String[] args)
     {
@@ -200,9 +208,9 @@ public class Daten
     }
     
     /**
-     * Noch zu Beschreiben
+     * Löscht alle Text Dateien, die in den drei Speicherorten liegen (Allgemein, Gruppen, Länder)
      * 
-     * @ToDo
+     * @throws IOException
      */
     public void deleteAlleDaten() throws IOException
     {

@@ -19,9 +19,9 @@ public class Land
      * alle Länder mit aktuellen Werten erzeugt bzw wieder eingeleden werden können, auch wenn 
      * diese dann beispielsweise schon Tore und Punkte besitzen.
      * 
-     * @param   name    Der Name des Landes
-     * @param   tore    Die Toranzahl des Landes
-     * @param   punkte  Die Punkte des Landes
+     * @param name Der Name des Landes
+     * @param tore Die Toranzahl des Landes
+     * @param punkte Die Punkte des Landes
      */
     public Land(String name, int tore, int punkte)
     {
@@ -31,9 +31,9 @@ public class Land
     /**
      * Setzt die Werte der Klasse den übergebenen Werten der Methode gleich. 
      * 
-     * @param   name    Der Name des Landes
-     * @param   tore    Die Toranzahl des Landes
-     * @param   punkte  Die Punkte des Landes
+     * @param name Der Name des Landes
+     * @param tore Die Toranzahl des Landes
+     * @param punkte Die Punkte des Landes
      */
     private void setDetails(String name, int tore, int punkte)
     {
@@ -45,7 +45,7 @@ public class Land
     /**
      * Gibt alle Werte (Name, Tore, Punkte) dieser Klasse als String Array zurück.
      * 
-     * @return  aktuelledaten   Ein String Array bestehend aus Name, Tore und Punkte des Landes
+     * @return aktuelledaten Ein String Array bestehend aus Name, Tore und Punkte des Landes
      */
     public String[] getDetails()
     {
@@ -56,7 +56,7 @@ public class Land
     /**
      * Gibt den Namen des Landes zurück.
      * 
-     * @return  name    Der Name des Landes
+     * @return name Der Name des Landes
      */
     public String getName() {
         return name;
@@ -65,9 +65,9 @@ public class Land
     /**
      * Aktualisiert erst die Tore und Punkte und gibt anschließend alle Werte (Name, Tore, Punkte) als Array zurück.
      * 
-     * @param   tore            Die neue Toranzahl des Landes
-     * @param   punkte          Die neue Punktzahl des Landes
-     * @return  aktuelledaten   Den String resultierend aus der Methode getDetails()
+     * @param tore Die neue Toranzahl des Landes
+     * @param punkte Die neue Punktzahl des Landes
+     * @return aktuelledaten Den String resultierend aus der Methode getDetails()
      */
     public String[] getUpdatedInfo (int tore, int punkte)
     {
@@ -79,8 +79,8 @@ public class Land
     /**
      * Setzt die Tore und Punkte des Landes gleich den neu übergebenen Werten.
      * 
-     * @param   tore            Die neue Toranzahl des Landes
-     * @param   punkte          Die neue Punktzahl des Landes
+     * @param tore Die neue Toranzahl des Landes
+     * @param punkte Die neue Punktzahl des Landes
      */
     public void setTorePunkte (int tore, int punkte)
     {
@@ -91,8 +91,8 @@ public class Land
     /**
      * Zieht den Toren und Punkten des Landes den gegebenen Wert ab
      * 
-     * @param   tore            Die neue Toranzahl des Landes
-     * @param   punkte          Die neue Punktzahl des Landes
+     * @param tore Die neue Toranzahl des Landes
+     * @param punkte Die neue Punktzahl des Landes
      */
     public void zieheWerteAb (int tore, int punkte)
     {
