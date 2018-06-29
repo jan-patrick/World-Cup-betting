@@ -97,10 +97,10 @@ public class Daten
      * 
      * @param art Art der zu speichernden Daten (turniername, Gruppen, Länder)
      * @param name Dateiname der zu speichernden Textdatei
-     * @param daten Daten, die gespeichert werden sollen
+     * @param aktuelledaten Daten, die gespeichert werden sollen
      * @throws IOException
      */
-    public void speichereDatei(String art, String name, String[] daten) throws IOException
+    public void speichereDatei(String art, String name, String[] aktuelledaten) throws IOException
     {        
         String datei = "Error.txt";
         switch(art)
@@ -119,9 +119,9 @@ public class Daten
         }
         FileWriter fw = new FileWriter(datei);
         BufferedWriter bw = new BufferedWriter(fw);
-        for (int x = 0; x < daten.length; x++) {
-            bw.write(daten[x]);
-            if(x<daten.length){bw.newLine();};
+        for (int x = 0; x < aktuelledaten.length; x++) {
+            bw.write(aktuelledaten[x]);
+            if(x<aktuelledaten.length){bw.newLine();};
         }
         bw.close();
     }
@@ -149,7 +149,7 @@ public class Daten
      * Fügt der lokalen Text Datei "Gruppen" eine Gruppe hinzu.
      * Die vorhandenen Einträge bleiben dabei bestehen.
      * 
-     * @param daten Information die der Datei angehängt werden soll
+     * @param aktuelledaten Information die der Datei angehängt werden soll
      * @throws IOException
      */
     public void gruppeAnhaengen(String aktuelledaten) throws IOException

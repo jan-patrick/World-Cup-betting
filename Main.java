@@ -4,8 +4,8 @@ import java.util.HashMap;
 import java.util.Set;
 
 /**
- * Beschreiben Sie hier die Klasse Main.
- * 
+ * Die Klasse Main dient als Hauptklasse und dient zur Ausführung aller Methoden und Funktionen des Programms.
+ *  
  * @author Jan Schneider, HfG, IoT3
  * @version 2018.06.30
  * 
@@ -43,8 +43,8 @@ public class Main
     }
     
     /**
-     * Lädt bei Programmstart alle Daten aus den lokalen Textdateien. Sollte dabei ein Fehler auftreten 
-     * wird der Nutzer darüber informiert und die Funktion nochRetten() gestartet.
+     * Lädt bei alle Daten aus den lokalen Textdateien. 
+     * Sollte dabei ein Fehler auftreten wird der Nutzer darüber informiert und die Funktion nochRetten() gestartet.
      */
     private void loadInitalData()
     {
@@ -62,7 +62,7 @@ public class Main
     }
     
     /**
-     * Öffnet das GitHub Repository dieses Programms im Standardbrowser nachdem der Nutzer dies bestätigte.
+     * Öffnet das GitHub Repository dieses Programms im Standardbrowser nachdem der Nutzer dies bestätigt hat.
      */
     public void oeffneGithubLink()
     {
@@ -604,20 +604,23 @@ public class Main
     public void neueGruppe()
     {
         String[] datenAlt = mainInterface.eingabeAufforderungNeueGruppe();
-        if(datenAlt != null){ 
+        if(datenAlt != null)
+        { 
             ArrayList aktuelledaten = new ArrayList<String>();
-
             String nameGruppe = String.valueOf((char)(65 + gruppen.size()));
-            try{
+            try
+            {
                 daten.gruppeAnhaengen(nameGruppe);
             }
-            catch (Exception e) {
+            catch (Exception e)
+            {
                 e.printStackTrace();
             }
             String [] teile = new String[] {"0"};
             saveGruppe(nameGruppe, teile);
             gruppen.put(nameGruppe, new Gruppe(nameGruppe));
-            for (int i = 0; i < datenAlt.length; i++) {
+            for (int i = 0; i < datenAlt.length; i++)
+            {
                 String aktuellesLand = createValideEingabe(datenAlt[i]);
                 addneuesLand(nameGruppe, aktuellesLand);
             }
@@ -639,7 +642,8 @@ public class Main
         {
         daten.speichereDatei("laender", land, landd);
         }
-        catch (Exception e) {
+        catch (Exception e)
+        {
                 e.printStackTrace();
                 nochRetten();
         }
@@ -737,7 +741,7 @@ public class Main
      */
     private Gruppe getGruppeWennLand(String land)
     {
-        String daten = "";
+        String aktuelledaten = "";
         for (String key : gruppen.keySet())
         {
             Gruppe gruppe = gruppen.get(key);
@@ -827,8 +831,10 @@ public class Main
     private String[] getGruppen()
     {
         StringBuffer aktuelledaten = new StringBuffer();
-        for (String key : gruppen.keySet()) {
-            if (aktuelledaten.length() != 0) {
+        for (String key : gruppen.keySet())
+        {
+            if (aktuelledaten.length() != 0)
+            {
                 aktuelledaten.append("/");
             }
             aktuelledaten.append(key);         
@@ -956,7 +962,8 @@ public class Main
                 mainInterface.nachricht("Landdetails", "Das Land " + nameLand + " hat bisher " 
                                         + torePunkte[1] + " Tore geschossen und damit " + torePunkte[2] + " Punkte erspielt.");
             }
-            else {
+            else
+            {
                 mainInterface.nachricht("Fehler", "Das Land " + nameLand + " existiert nicht.");
             }
         }      
@@ -989,14 +996,14 @@ public class Main
      */
     private int binominalkoeffizient(int n, int k)
     {        
-       if (k > n) return 0;
-       else 
-       {
-           int a = 1;
-           for (int i = n-k+1; i <= n; i++) a *= i;
-           int b = 1;
-           for (int i = 2; i <= k; i++) b *= i;
-           return a / b;
-       }
+        if (k > n) return 0;
+        else 
+        {
+            int a = 1;
+            for (int i = n-k+1; i <= n; i++) a *= i;
+            int b = 1;
+            for (int i = 2; i <= k; i++) b *= i;
+            return a / b;
+        }
     }
 }

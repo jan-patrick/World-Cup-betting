@@ -108,11 +108,11 @@ public class Interface
             if(!land1.getText().replaceAll("\\W","").isEmpty() && !tore1.getText().replaceAll("\\W","").isEmpty() &&
                !land2.getText().replaceAll("\\W","").isEmpty() && !tore2.getText().replaceAll("\\W","").isEmpty())
             {
-                String[] daten = {land1.getText().replaceAll("\\W",""), tore1.getText().replaceAll("\\W",""),
+                String[] aktuelledaten = {land1.getText().replaceAll("\\W",""), tore1.getText().replaceAll("\\W",""),
                                   land2.getText().replaceAll("\\W",""), tore2.getText().replaceAll("\\W","")};
                 if(Integer.valueOf(tore1.getText()) >= 0 && Integer.valueOf(tore2.getText()) >= 0)
                 {
-                    return daten;
+                    return aktuelledaten;
                 }           
                 else 
                 {
@@ -134,11 +134,11 @@ public class Interface
      * Die einzelnen Spiele werden ausgegeben, zusammen mit dem Ergebnis
      * 
      * @param turniername Name des Turniers
-     * @param daten Daten aller Spielergebnisse
+     * @param aktuelledaten Daten aller Spielergebnisse
      */
-    public void createSpielplan(String turniername, String daten)
+    public void createSpielplan(String turniername, String aktuelledaten)
     { 
-        String [] teile = daten.split(",");     
+        String [] teile = aktuelledaten.split(",");     
         JPanel panel = new JPanel( new GridLayout(1, teile.length) );
         for (int i = 0; i < teile.length; i++)
         {
@@ -151,7 +151,7 @@ public class Interface
     /**
      * Öffnet ein Fenster, in das der Name eines neuen Landes und dessen Gruppe eingegeben werden kann. 
      * 
-     * @return daten Landname, ansonsten null
+     * @return aktuelledaten Landname, ansonsten null
      */
     public String[] eingabeAufforderungNeuesLand()
     {
@@ -169,8 +169,8 @@ public class Interface
             if(value == JOptionPane.CANCEL_OPTION){return null;}
             if(!gruppe.getText().isEmpty() && !name.getText().isEmpty())
             {
-                String[] daten = {gruppe.getText(), name.getText()};
-                return daten;
+                String[] aktuelledaten = {gruppe.getText(), name.getText()};
+                return aktuelledaten;
             }
             else
             {
@@ -185,7 +185,7 @@ public class Interface
      * Öffnet ein Fenster mit einer Nachricht und vier Feldern zur Eingabe von möglichen vier Ländern.
      * Mindestens zwei Länder müssen eingegeben werden.
      * 
-     * @return daten neue Gruppe, ansonsten null
+     * @return aktuelledaten neue Gruppe, ansonsten null
      */
     public String[] eingabeAufforderungNeueGruppe()
     {
@@ -212,11 +212,11 @@ public class Interface
                     teile.add(datenAlt[i]);
                 }
             }
-            String[] daten = new String[teile.size()];
-            teile.toArray( daten );
-            if( daten.length >= 2)
+            String[] aktuelledaten = new String[teile.size()];
+            teile.toArray( aktuelledaten );
+            if( aktuelledaten.length >= 2)
             {
-                return daten;
+                return aktuelledaten;
             }
             if(value == JOptionPane.CANCEL_OPTION)
             {
@@ -238,7 +238,7 @@ public class Interface
      * @param head Text der oben im Fenster steht
      * @param nachricht Nachricht des Programms bzw Information
      * @param textfeld
-     * @return daten wenn alle Bedingungen erfüllt sind, ansonsten null
+     * @return aktuelledaten wenn alle Bedingungen erfüllt sind, ansonsten null
      */
     public String eingabeAufforderungEinFeld(String head, String nachricht, String textfeld)
     {
@@ -252,10 +252,10 @@ public class Interface
         if(pane.getValue()!= null)
         {
             int value = ((Integer)pane.getValue()).intValue();
-            String daten = name.getText();
-            if(!daten.isEmpty())
+            String aktuelledaten = name.getText();
+            if(!aktuelledaten.isEmpty())
             {
-                return daten;
+                return aktuelledaten;
             }
             if(value == JOptionPane.CANCEL_OPTION)
             {

@@ -429,7 +429,7 @@ public class Gruppe
         String spielVor = land1 + ":" + land2;
         String spielRück = land2 + ":" + land1;
         String spiel = "";
-        String daten = "";
+        String aktuelledaten = "";
         String landEINS = land1;        
         String landZWEI = land2;
         if(gruppenphaseSpiele.containsKey(spielVor))
@@ -444,8 +444,8 @@ public class Gruppe
         }
         Land landEins = laender.get(landEINS);
         Land landZwei = laender.get(landZWEI);
-        daten = gruppenphaseSpiele.get(spiel);
-        String[] teile = daten.split(":");
+        aktuelledaten = gruppenphaseSpiele.get(spiel);
+        String[] teile = aktuelledaten.split(":");
         int tore1 = Integer.valueOf(teile[0].replaceAll("\\W",""));
         int tore2 = Integer.valueOf(teile[1].replaceAll("\\W",""));
         if(tore1 == tore2)
