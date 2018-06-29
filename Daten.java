@@ -178,7 +178,6 @@ public class Daten
      * Öffnet die übergebenen Links im Standardbrowser.
      * 
      * @param args Die zu öffnenden Links (Webadressen)
-     * @see Die zu öffnenden Websiten im Standardbrowser des Systems
      */
     public void openLink(String[] args)
     {
