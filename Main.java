@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Set;
 
 /**
- * Die Klasse Main dient als Hauptklasse und dient zur Ausführung aller Methoden und Funktionen des Programms.
+ * Die Klasse Main dient als Hauptklasse und somit zur Ausführung aller Methoden und Funktionen des Programms.
  *  
  * @author Jan Schneider, HfG, IoT3
  * @version 2018.06.30
@@ -990,9 +990,11 @@ public class Main
     }
     
     /**
-     * Noch zu Beschreiben
+     * Berechnet mathematisch korrekt die Anzahl der Spiele, die aus der Länderanzahl erfolgen muss
      * 
-     * @ToDo
+     * @param n Basis
+     * @param k Quadratzahl
+     * @return binominalkoeffizient
      */
     private int binominalkoeffizient(int n, int k)
     {        
