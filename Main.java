@@ -542,11 +542,13 @@ public class Main
                 if(gruppe.existiertSpielergebnis(land1, land2)&& check)
                 {              
                     String aktuelledaten = land1 + ":" + land2 + "-" + tore1 + ":" + tore2;
+                    System.out.println(nameGruppe + land1 + land2 + aktuelledaten);
                     saveGruppe(nameGruppe, updateGruppeSpielinfo(nameGruppe, land1, land2, aktuelledaten));
                 }
                 else if(gruppe.existiertSpielergebnis(land2, land1)&& check)
                 {
                     String aktuelledaten = land2 + ":" + land1 + "-" + tore2 + ":" + tore1;
+                    System.out.println(nameGruppe + land2 + land1 + aktuelledaten);
                     saveGruppe(nameGruppe, updateGruppeSpielinfo(nameGruppe, land2, land1, aktuelledaten));;
                 }
             }
@@ -673,10 +675,11 @@ public class Main
         String[] teileGruppenDatenAlt = gruppenDatenAlt.split("/");
         for (int i = 0; i < teileGruppenDatenAlt.length; i++)
         {
-            String check = teileGruppenDatenAlt[i].replaceAll("\\W","");
+            String check = teileGruppenDatenAlt[i];
             if(check.contains(land1 + ":" + land2))
             {
                 teileGruppenDatenAlt[i] = aktuelledaten;
+                System.out.println("found");
             }
         }
         return teileGruppenDatenAlt;
