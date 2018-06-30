@@ -9,13 +9,6 @@ import java.util.Set;
  * @author Jan Schneider, HfG, IoT3
  * @version 2018.06.30
  * 
- * - gutes Softwaredesign
- * - keine Codeduplizierung (denselben Code mehrfach, dann auslagern), 
- * - Kopplung (je loser, desto bessere Wartbarkeit)
- * - Datenhaltung (geschlossen, nur über Zugriffsmethoden)
- * - Kohäsion (eine Klasse oder Methode hat möglichst spezifischen Aufgabenbereich hat, 
- *   Chance auf Wiederverwertung höher)
- * - Test (einfaches Testen des Projekts)
  */
 public class Main
 {
