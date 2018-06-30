@@ -220,7 +220,7 @@ public class Main
     
     /**
      * Wird dann aufgerufen, wenn eine Methode lokale Daten nicht korrekt auslesen kann.
-     * Dies ist praktisch ein eine Art Reset, wenn etwas nicht mehr funktioniert.
+     * Dies ist praktisch eine Art Reset, wenn etwas nicht mehr funktioniert.
      */
     private void nochRetten()
     {
@@ -232,9 +232,7 @@ public class Main
     }    
     
     /**
-     * Noch zu Beschreiben
-     * 
-     * @ToDo
+     * Lädt zuerst aus der Gruppenübersicht (Gruppen/Gruppen.txt) alle Gruppennamen und anschließend darauf basierend alle Gruppen samt Daten in das Programm.
      */
     private void ladeGruppen()
     {
@@ -262,9 +260,7 @@ public class Main
     }
     
     /**
-     * Noch zu Beschreiben
-     * 
-     * @ToDo
+     * Lädt alle Spielergebnisse aus den Textdateien und speichert sie in die Programmvariablen ein, inklusive der Landdaten.
      */
     private void ladeSpieleErgebnisse()
     {
@@ -420,9 +416,9 @@ public class Main
     }
     
     /**
-     * Noch zu Beschreiben
+     * Gibt alle Gruppen als String zurück (z.B. A/B/C/D)
      * 
-     * @ToDo
+     * @return Gruppen als String
      */ 
     private String getGruppenAsString()
     {
@@ -436,13 +432,11 @@ public class Main
     }
     
     /**
-     * Noch zu Beschreiben
+     * Ändert an einem Land die Tore und Punkte.
      * 
-     * @ToDo
-     * 
-     * @param land
-     * @param tore
-     * @param punkte
+     * @param land Name des Landes
+     * @param tore Tore des Landes
+     * @param punkte Punkte des Landes
      */
     private void addLand(String land, int tore, int punkte)
     {
@@ -467,9 +461,10 @@ public class Main
     }
     
     /**
-     * Noch zu Beschreiben
+     * Speichert die eingegebene Gruppe samt Daten in ihrer Textdatei.
      * 
-     * @ToDo
+     * @param name Name der Gruppe
+     * @param teile Gruppendaten
      */
     private void saveGruppe(String name, String[] teile)
     {
@@ -485,12 +480,12 @@ public class Main
     }
     
     /**
-     * Noch zu Beschreiben
+     * Updated die Daten eines Landes und gibt die neuen Werte zurück.
      * 
-     * @ToDo
-     * 
-     * @param String land, int tore, int punkte
-     * @return String updated Land Info (name, tore, punkte)
+     * @param land
+     * @param tore
+     * @param punkte
+     * @return  neue Landdetails
      */
     private String[] getDatenSpielergebnis(String land, int tore, int punkte)
     {
@@ -499,12 +494,8 @@ public class Main
     }
     
     /**
-     * Noch zu Beschreiben
-     * 
-     * @ToDo
-     * 
-     * @param String land, int tore, int punkte
-     * @return String updated Land Info (name, tore, punkte)
+     * Öffnet ein Fenster, über das sich ein Spielergebnis eintragen lässt.
+     * Dieses wird geprüft und gespeichert.
      */
     public void spielergebnisEingeben()
     {
@@ -558,9 +549,7 @@ public class Main
     } 
     
     /**
-     * Noch zu Beschreiben
-     * 
-     * @ToDo
+     * Lädt die Gruppendaten neu, um diese aktuell zu halten.
      */
     private void aktualisiereGruppeninfo()
     {
@@ -572,9 +561,8 @@ public class Main
     }
     
     /**
-     * Noch zu Beschreiben
-     * 
-     * @ToDo
+     * Öffnet ein Fenster, dass es ermöglicht ein neues Land einer Gruppe hinzuzufügen.
+     * Danach wird die Eingabe geprüft und gegebenenfalls geprüft.
      */
     public void neuesLand()
     {
@@ -598,9 +586,8 @@ public class Main
     } 
     
     /**
-     * Noch zu Beschreiben
-     * 
-     * @ToDo
+     * Öffnet ein Fenster, dass die Eingabe von vier Ländern in die Gruppe ermöglicht (mindestens so viel wie mindestens pro Gruppe definiert).
+     * Anschließend wird die Eingabe geprüft und gegebenenfalls gespeichert.
      */
     public void neueGruppe()
     {
@@ -629,9 +616,10 @@ public class Main
     }
     
     /**
-     * Noch zu Beschreiben
+     * Nachdem alle bisherigen Ergebnisse gelöscht wurden wird in die eingegebene Gruppe das eingegebene Land hinzugefügt und gespeichert.
      * 
-     * @ToDo
+     * @param nameGruppe Name der Gruppe, in die das Land soll
+     * @param land Name des neuen Landes
      */
     private void addneuesLand(String nameGruppe, String land)
     {
@@ -651,9 +639,13 @@ public class Main
     }
     
     /**
-     * Noch zu Beschreiben
+     * Fügt ein aktualisiertes Spielergebnis in die gespeicherten Gruppendaten hinzu und speichert diese wieder ab.
      * 
-     * @ToDo
+     * @param nameGruppe Name der Gruppe
+     * @param land1 Land 1
+     * @param land2 Land 2
+     * @param aktuelledaten aktualisierte Spielergebnisse
+     * @return aktualisierte Gruppendaten
      */
     private String[] updateGruppeSpielinfo(String nameGruppe, String land1, String land2, String aktuelledaten)
     {        
@@ -681,9 +673,11 @@ public class Main
     }
     
     /**
-     * Noch zu Beschreiben
+     * Überprüft, ob zwei eingegebene Länder in derselben Gruppe sind.
      * 
-     * @ToDo
+     * @param land1 Land 1
+     * @param land2 Land 2
+     * @return Gruppe, wenn beide Länder in derselben, ansonsten null
      */
     private String LaenderInGruppe(String land1, String land2)
     {
@@ -712,9 +706,7 @@ public class Main
     }
     
     /**
-     * Noch zu Beschreiben
-     * 
-     * @ToDo
+     * Öffnet ein Fenster, dass die Eingabe eines Landes ermöglicht. Sofern dieses Land in einer Gruppen enthalten ist wird deren Name ausgegeben.
      */
     public void findeGruppevonLand()
     {
@@ -736,9 +728,10 @@ public class Main
     }
 
     /**
-     * Noch zu Beschreiben
+     * Gibt die Gruppe des eingegebenen Landes zurück.
      * 
-     * @ToDo
+     * @param land Name des Landes
+     * @return Gruppe, falls Land gefunden, ansonsten null
      */
     private Gruppe getGruppeWennLand(String land)
     {
@@ -755,9 +748,8 @@ public class Main
     }
 
     /**
-     * Noch zu Beschreiben
-     * 
-     * @ToDo
+     * Ruft die Funktion in Daten auf, um alle lokalen Textdateien (den gesamten Speicher des Programms) zu löschen.
+     * Löscht alle existierenden Textdateien in den Ordnern Allgemein, Gruppen, Laender.
     */
     private void deleteAlleDaten()
     {
@@ -772,9 +764,7 @@ public class Main
     }
     
     /**
-     * Noch zu Beschreiben
-     * 
-     * @ToDo
+     * Öffnet eine Übersicht, die alle Gruppenphasespiele samt Ergebnissen anzeigt.
      */
     public void getAlleSpielergebnise ()
     {
@@ -792,9 +782,14 @@ public class Main
     }
     
     /**
-     * Noch zu Beschreiben
+     * Bearbeitet den eingegebenen String so, dass es bei seiner Rückgabe vom Programm ohne Probleme verwendet werden kann.
+     * Überarbeitet werden: <br><b>
+     * - Umlaute, z.B. ö zu oe <br>
+     * - alles außer Buchstaben und Zahlen gelöscht <br>
+     * - Anfangsbuchstabe Versal, alles Nachfolgende als Minuskeln
      * 
-     * @ToDo
+     * @param eingabe String, unbearbeitet
+     * @return ausgabe String, überarbeitet
      */
     private String createValideEingabe(String eingabe)
     {
@@ -811,9 +806,7 @@ public class Main
     }
     
     /**
-     * Noch zu Beschreiben
-     * 
-     * @ToDo
+     * Ruft nach Bestätigung die Methode auf, um alle Turnierdaten zurückzusetzen (Tore, Punkte, Ergebnisse).
      */
     public void alleTurnierDatenloeschen()
     {
@@ -846,9 +839,7 @@ public class Main
     }
     
     /**
-     * Noch zu Beschreiben
-     * 
-     * @ToDo
+     * Löscht alle Turnierdaten (Ergebnisse, Punkte, Tore).
      */
     private void deleteAktuelleTurnierDaten()
     {
@@ -891,40 +882,11 @@ public class Main
     }
     
     /**
-     * Noch zu Beschreiben
+     * Rechnet auf Basis der eingegebenen Tore die Punkte beider Länder aus.
      * 
-     * @ToDo
-     */
-    private String sindLaenderInGruppe(String land1, String land2)
-    {
-        String gruppe1 = "";
-        String gruppe2 = "";
-        for (String key : gruppen.keySet())
-        {
-            Gruppe gruppe = gruppen.get(key);
-            if(gruppe.existiertLand(land1))
-            {
-                gruppe1 = key;
-            }
-            if(gruppe.existiertLand(land2))
-            {
-                gruppe2 = key;
-            }
-        }
-        if(gruppe1 == gruppe2)
-        {
-            return gruppe1;
-        }
-        else
-        {
-            return null;
-        }
-    }
-    
-    /**
-     * Noch zu Beschreiben
-     * 
-     * @ToDo
+     * @param tore1 Tore von Land 1
+     * @param tore2 Tore von Land 2
+     * @return punkte als Array (Punkte von Land 1, Punte von Land 2)
      */
     private int[] berechnePunkte(int tore1, int tore2)
     {
@@ -946,9 +908,7 @@ public class Main
     }
     
     /**
-     * Noch zu Beschreiben
-     * 
-     * @ToDo
+     * Öffnet ein Fenster, dass die Eingabe eines Lands ermöglicht. Ist es eine valide Eingabe werden die Landdetails angezeigt (Name, Tore, Punkte).
      */
     public void showLandDetails()
     {
@@ -979,9 +939,10 @@ public class Main
     }
     
     /**
-     * Noch zu Beschreiben
+     * Überprüft, ob der übergebene String ein valider Integer ist.
      * 
-     * @ToDo
+     * @param s zu überprüfender String
+     * @return true, wenn String einen validen Integer ergibt, ansosnten false
      */
     private static boolean isInteger(String s) {
         boolean isValidInteger = false;

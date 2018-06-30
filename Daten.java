@@ -146,7 +146,7 @@ public class Daten
     }
     
     /**
-     * Fügt der lokalen Text Datei "Gruppen" eine Gruppe hinzu.
+     * Fügt der lokalen Textdatei "Gruppen" eine Gruppe hinzu.
      * Die vorhandenen Einträge bleiben dabei bestehen.
      * 
      * @param aktuelledaten Information die der Datei angehängt werden soll
@@ -162,7 +162,7 @@ public class Daten
     }
     
     /**
-     * Löscht die Text Datei mit dem übergebenen Namen in dem übergebenen Verzeichnis.
+     * Löscht die Textdatei mit dem übergebenen Namen in dem übergebenen Verzeichnis.
      * 
      * @param ordner Der Ordner, entweder "Gruppen", "Laender" oder "Allgemein"
      * @param dateiname Der Dateiname der Textdatei
@@ -212,7 +212,7 @@ public class Daten
     }
     
     /**
-     * Löscht alle Text Dateien, die in den drei Speicherorten liegen (Allgemein, Gruppen, Länder)
+     * Löscht alle Textdateien, die in den drei Speicherorten liegen (Allgemein, Gruppen, Länder)
      * 
      * @throws IOException
      */
