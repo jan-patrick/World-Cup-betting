@@ -257,9 +257,7 @@ public class Main
         }    
         for (int i = 0; i < teile.length; i++)
         {
-            if(teile[i].length()==1){
             gruppen.put(teile[i], new Gruppe(teile[i]));
-            }
         }
     }
     

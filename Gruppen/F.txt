@@ -3,9 +3,9 @@ Mexiko
 Suedkorea
 Deutschland
 Schweden
-Mexiko:Suedkorea- : 
-Mexiko:Deutschland- : 
-Mexiko:Schweden- : 
-Suedkorea:Deutschland- : 
-Suedkorea:Schweden- : 
-Deutschland:Schweden- : 
+Mexiko:Suedkorea- 2:1 
+Mexiko:Deutschland- 1:0
+Mexiko:Schweden- 0:3 
+Suedkorea:Deutschland- 2:0 
+Suedkorea:Schweden- 0:1 
+Deutschland:Schweden- 2:1

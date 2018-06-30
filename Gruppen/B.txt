@@ -3,9 +3,9 @@ Iran
 Spanien
 Portugal
 Marokko
-Iran:Spanien- : 
-Iran:Portugal- : 
-Iran:Marokko- : 
-Spanien:Portugal- : 
-Spanien:Marokko- : 
-Portugal:Marokko- : 
+Iran:Spanien- 0:1 
+Iran:Portugal- 1:1 
+Iran:Marokko- 1:0 
+Spanien:Portugal- 3:3 
+Spanien:Marokko- 2:2 
+Portugal:Marokko- 1:0
