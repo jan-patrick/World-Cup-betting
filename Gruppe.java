@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
- * Beschreiben Sie hier die Klasse Gruppe.
+ * Die Klasse Gruppe beinhaltet alle Länder der Gruppe und ebenso deren Gruppenpahsenspiele sowie deren Ergebnisse.
  * 
  * @author Jan Schneider, HfG, IoT3
  * @version 2018.06.30
@@ -17,10 +17,9 @@ public class Gruppe
     private Daten daten;
  
     /**
-     * Noch zu Beschreiben
+     * Konstruktor der Klasse Gruppe
      * 
-     * @param gruppenName
-     * @ToDo
+     * @param gruppenName Der Name der Gruppe, zum Beispiel "A"
      */
     public Gruppe(String gruppenName)
     {
@@ -32,10 +31,9 @@ public class Gruppe
     }
            
     /**
-     * Noch zu Beschreiben
+     * Fügt der Gruppe ein Land hinzu (in die laender HashMap)
      * 
-     * @param name
-     * @ToDo
+     * @param name Name des hinzuzufügenden Landes
      */
     public void addLand(String name)
     {
@@ -77,7 +75,7 @@ public class Gruppe
     }
     
     /**
-     * Gibt die Gruppengröße zurück.
+     * Gibt die Variable Gruppengröße zurück.
      * 
      * @return gruppenGroesse
      */
@@ -97,9 +95,9 @@ public class Gruppe
     }
     
     /**
-     * Noch zu Beschreiben
+     * Lädt ein Land aus den lokal gespeicherten Textdateien.
      * 
-     * @ToDo
+     * @param name Name des zu ladenden Landes
      */
     public void ladeLand(String name)
     {
@@ -111,9 +109,10 @@ public class Gruppe
     }
        
     /**
-     * Noch zu Beschreiben
+     * Überprüft, ob ein Land in der Gruppe existiert.
      * 
-     * @ToDo
+     * @param name Name des zu findenden Landes
+     * @return true, wenn gefunden, false wenn nicht
      */
     public boolean existiertLand(String name)
     {
@@ -128,9 +127,11 @@ public class Gruppe
     }
     
     /**
-     * Noch zu Beschreiben
+     * Überprüft, ob ein Spielergebnis bereits eingetragen ist, oder nicht.
      * 
-     * @ToDo
+     * @param land1 Name des ersten Lands
+     * @param land2 Name des zweiten Lands
+     * @return true, wenn Spielergebnis bereits eingetragen, false wenn nicht
      */
     public boolean existiertSpielergebnis (String land1, String land2)
     {
@@ -146,12 +147,11 @@ public class Gruppe
     }
     
     /**
-     * Noch zu Beschreiben
+     * Liest Daten aus einer existierenden Datei aus.
      * 
-     * @param ordner 
-     * @param datei
-     * @return aktuelledaten
-     * @ToDo
+     * @param ordner Ordnername in dem die Datei liegt
+     * @param datei Dateiname
+     * @return aktuelledaten, ausgelesene Daten aus der Datei
      */
     private String getDaten(String ordner, String datei)
     {
@@ -168,9 +168,7 @@ public class Gruppe
     }
     
     /**
-     * Noch zu Beschreiben
-     * 
-     * @ToDo
+     * Berechnet aus allen existierenden Ländern in der Gruppe alle möglichen Spielpaarungen und speichert diese ab.
      */
     public void berechnePaarungen()
     {
@@ -201,9 +199,10 @@ public class Gruppe
     }
           
     /**
-     * Noch zu Beschreiben
+     * Gibt die Details eines Landes zurück.
      * 
-     * @ToDo
+     * @param name Name des Landes
+     * @return Landdetails (Name, Tore, Punkte)
      */
     public String[] getLandDetails(String name)
     {
@@ -212,13 +211,12 @@ public class Gruppe
     }
     
     /**
-     * Noch zu Beschreiben
+     * Ändert die gespeicherten Tore und Punkte eines existierenden Landes und gibt die neuen Details zurück.
      * 
-     * @param name
-     * @param tore
-     * @param punkte
-     * 
-     * @ToDo
+     * @param name Name des Landes
+     * @param tore neue Tore des Landes
+     * @param punkte neue Punkte des Landes
+     * @return neue Details des Landes
      */
     public String[] getUpdatedInfoLand(String name, int tore, int punkte)
     {
@@ -227,13 +225,11 @@ public class Gruppe
     }
     
     /**
-     * Noch zu Beschreiben
+     * Ändert die gespeicherten Tore und Punkte eines existierenden Landes.
      * 
-     * @param name
-     * @param tore
-     * @param punkte
-     * 
-     * @ToDo
+     * @param name Name des Landes
+     * @param tore neue Tore des Landes
+     * @param punkte neue Punkte des Landes
      */
     public void landSetTorePunkte(String name, int tore, int punkte)
     {
@@ -242,10 +238,9 @@ public class Gruppe
     }
     
     /**
-     * Noch zu Beschreiben
+     * Lädt aus dem übergebenen String Array die Spiele in die HashMap
      * 
-     * @param teile
-     * @ToDo
+     * @param teile einzelnen Spiele
      */
     public void loadSpiele(String[] teile)
     {
@@ -260,9 +255,9 @@ public class Gruppe
     }
     
     /**
-     * Noch zu Beschreiben
+     * Gibt alle Länder als String Array zurück
      * 
-     * @ToDo
+     * @return alle existierenden Länder
      */
     public String[] getLaender()
     {
@@ -281,9 +276,9 @@ public class Gruppe
     }
     
     /**
-     * Noch zu Beschreiben
+     * Lädt Gruppen.
      * 
-     * @ToDo
+     * @param name Name der zu ladenden Gruppe
      */
     public void loadGruppeninfo(String name)
     {
@@ -302,9 +297,11 @@ public class Gruppe
     }
     
     /**
-     * Noch zu Beschreiben
+     * Gibt aus einer angeforderten Datei die Daten als String Array zurück.
      * 
-     * @ToDo
+     * @param ordner Ordner der gesuchten Datei
+     * @param datei Dateiname
+     * @return Daten im String Array
      */
     public String[] getDatenTeile(String ordner, String datei)
     {
@@ -320,10 +317,9 @@ public class Gruppe
     }
     
     /**
-     * Noch zu Beschreiben
-     * Löscht zur Sicherheit alle Leerzeichen aus den ausgelesenen Ländern
+     * Gibt die gespeicherten Spiele zurück
      * 
-     * @ToDo
+     * @return Spiele, umsortiert
      */
     public String getSpielergebnisDaten()
     {
@@ -400,9 +396,10 @@ public class Gruppe
     }
     
     /**
-     * Noch zu Beschreiben
+     * Überprüft, ob der übergebene String ein valider Integer ist.
      * 
-     * @ToDo
+     * @param s zu überprüfender String
+     * @return true, wenn String einen validen Integer ergibt, ansosnten false
      */
     private static boolean isInteger(String s) {
         boolean isValidInteger = false;
@@ -420,9 +417,10 @@ public class Gruppe
     }
     
     /**
-     * Noch zu Beschreiben
+     * Löscht ein spezifisches Spielergebnis
      * 
-     * @ToDo
+     * @param land1 Land 1 des Spiels
+     * @param land2 Land 2 des Spiels
      */
     public void deleteTorePunkteSpielergebnis (String land1, String land2)
     {
@@ -466,9 +464,11 @@ public class Gruppe
     }
     
     /**
-     * Noch zu Beschreiben
+     * Überprüft, ob ein Spielergebnis bereits existiert.
      * 
-     * @ToDo
+     * @param land1 Land 1 des Spiels
+     * @param land2 Land 2 des Spiels
+     * @return true, wenn ja, sonst false
      */
     public boolean pruefeExistenzSpielergebnis (String land1, String land2)
     {
@@ -485,9 +485,11 @@ public class Gruppe
     }
     
     /**
-     * Noch zu Beschreiben
+     * Fügt dem übergebenen String Leerzeichen hinzu (voraus).
      * 
-     * @ToDo
+     * @param i Anzahl der hinzuzufügenden Leerzeichen
+     * @param str zu verändernder String
+     * @return String mit Leerzeichen
      */
     String addspace(int i, String str)
     {       
