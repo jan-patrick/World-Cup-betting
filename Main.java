@@ -396,9 +396,7 @@ public class Main
                     }                
                     gruppen.remove(nameGruppe);
                     String aktuellDaten = getGruppenAsString();
-                    System.out.println(aktuellDaten);
                     String[] datenGruppen =aktuellDaten.split("/");
-                    System.out.println(datenGruppen[0]);
                     try
                     {
                         daten.speichereDatei("gruppen", "Gruppen", datenGruppen);
@@ -542,13 +540,11 @@ public class Main
                 if(gruppe.existiertSpielergebnis(land1, land2)&& check)
                 {              
                     String aktuelledaten = land1 + ":" + land2 + "-" + tore1 + ":" + tore2;
-                    System.out.println(nameGruppe + land1 + land2 + aktuelledaten);
                     saveGruppe(nameGruppe, updateGruppeSpielinfo(nameGruppe, land1, land2, aktuelledaten));
                 }
                 else if(gruppe.existiertSpielergebnis(land2, land1)&& check)
                 {
                     String aktuelledaten = land2 + ":" + land1 + "-" + tore2 + ":" + tore1;
-                    System.out.println(nameGruppe + land2 + land1 + aktuelledaten);
                     saveGruppe(nameGruppe, updateGruppeSpielinfo(nameGruppe, land2, land1, aktuelledaten));;
                 }
             }
@@ -679,7 +675,6 @@ public class Main
             if(check.contains(land1 + ":" + land2))
             {
                 teileGruppenDatenAlt[i] = aktuelledaten;
-                System.out.println("found");
             }
         }
         return teileGruppenDatenAlt;
@@ -965,8 +960,16 @@ public class Main
             if(gruppe != null)
             {
                 String[] torePunkte = gruppe.getLandDetails(nameLand);
+                if(Integer.parseInt(torePunkte[1]) == 0)
+                {
+                    mainInterface.nachricht("Landdetails", "Das Land " + nameLand + " hat bisher " 
+                                        + torePunkte[1] + " Tore geschossen und damit 0 Punkte erspielt.");
+                }
+                else
+                {
                 mainInterface.nachricht("Landdetails", "Das Land " + nameLand + " hat bisher " 
                                         + torePunkte[1] + " Tore geschossen und damit " + torePunkte[2] + " Punkte erspielt.");
+                }
             }
             else
             {
